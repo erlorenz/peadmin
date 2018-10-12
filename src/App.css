@@ -1,0 +1,43 @@
+.App {
+  display: grid;
+  grid-template-columns: 10vw 1fr;
+  grid-template-rows: 100vh;
+}
+
+.main {
+  margin-top: 10vh;
+  margin-left: 2rem;
+}
+
+table {
+  width: 100%;
+}
+
+.sidebar {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+}
+
+.list {
+  margin-top: 10vh;
+}
+
+.list-item {
+  width: 100%;
+  padding-left: 0.5rem;
+}
+
+.list-item:hover {
+  background-color: #9dfab1;
+}
+
+.list-link {
+  display: block;
+  line-height: 4rem;
+}
+
+.order-row:hover {
+  background-color: yellow;
+}
