@@ -71,12 +71,12 @@ table {
   flex-direction: column;
 }
 
-button {
+.button {
   border: none;
   background-color: purple;
   color: white;
   font-weight: bold;
-  padding: 0.5rem;
+  padding: 1rem 1.5rem;
   margin-top: 1rem;
 }
 
@@ -89,6 +89,32 @@ select {
   padding: 0.5rem;
 }
 
+.login-form {
+  margin: 20vh auto;
+  box-shadow: 0 2px 5px rgba(black, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  width: 400px;
+  background-color: white;
+}
+
+input {
+  display: block;
+  border: 1px solid lightgray;
+  background-color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  margin-bottom: 2rem;
+}
+
+input::placeholder {
+  color: lightgray;
+  opacity: 1;
+}
+
 @media (max-width: 600px) {
   .order__edits {
     flex-direction: column;
@@ -97,6 +123,7 @@ select {
     display: none;
   }
   .main {
+    font-size: 0.9rem;
   }
   .App {
     grid-template-columns: 1fr;

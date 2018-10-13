@@ -2,14 +2,14 @@ import React, { Component, Fragment } from 'react';
 import axios from '../axios-auth';
 import format from 'date-fns/format';
 
-const sampleID = '5b39b7f5484d850014197528';
+const sampleID = '5b3598c0e67ff00014a966cd';
 const formattedDate = isoDate => format(new Date(isoDate), 'MM/DD/YYYY h:mm a');
 
 class Order extends Component {
   state = {
     order: {},
     id: sampleID,
-    status: 'Completed',
+    status: 'Out For Delivery',
     adminComment: null,
     cartItems: [],
     comments: [],
