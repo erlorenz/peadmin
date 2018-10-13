@@ -7,19 +7,54 @@ class Order extends Component {
   state = {
     order: {},
     id: sampleID,
-    status: null,
+    status: 'Completed',
     adminComment: null,
     cartItems: [],
+    comments: [],
+    username: 'erik@test.com',
   };
 
   async componentDidMount() {
     const response = await axios.get(`/admin/order/${this.state.id}`);
     console.log('the response:', response.data);
-    this.setState({ order: response.data, cartItems: response.data.cartItems });
+    this.setState({
+      order: response.data,
+      cartItems: response.data.cartItems,
+      comments: response.data.adminComments,
+    });
   }
 
+  statusChangeHandler = async () => {
+    if (this.state.status) {
+      const response = await axios.patch(
+        `/admin/order/${this.state.id}/status`,
+        {
+          status: this.state.status,
+        },
+      );
+      console.log(response.data);
+    } else {
+      alert('No status updated!!');
+    }
+  };
+
+  commentHandler = async () => {
+    if (this.state.adminComment) {
+      const response = await axios.patch(
+        `/admin/order/${this.state.id}/comments`,
+        {
+          comment: this.state.adminComment,
+          user: this.state.username,
+        },
+      );
+      console.log(response.data);
+    } else {
+      alert('No comment added!!');
+    }
+  };
+
   render() {
-    const { order, id, cartItems } = this.state;
+    const { order, id, cartItems, comments } = this.state;
     console.log('cartitems:', cartItems);
 
     const cartList = cartItems.map(cartItem => (
@@ -30,12 +65,20 @@ class Order extends Component {
       </tr>
     ));
 
+    const commentList = comments.map(comment => (
+      <tr key={comment.time}>
+        <td>{comment.time}</td>
+        <td>{comment.user}</td>
+        <td>{comment.comment}</td>
+      </tr>
+    ));
+
     return (
       <Fragment>
-        <h1>
+        <h1 className="order__title">
           Order {id} - {order.status}
         </h1>
-        <div className="order__info">
+        <div className="order__info data">
           <ul>
             <li>Name: {order.name}</li>
             <li>Phone: {order.phone}</li>
@@ -53,17 +96,19 @@ class Order extends Component {
               Return: {order.returnDate} {order.returnHour}
             </li>
           </ul>
+        </div>
+
+        <div className="order__status data">
           <ul>
             <li>Created: {order.created}</li>
             <li>Picked Up: {order.pickedUp}</li>
             <li>Checked In: {order.checkedIn}</li>
-            <li>Out for Delivery: {order.outForDelivery}</li>
+            <li>Out For Delivery: {order.outForDelivery}</li>
             <li>Delivered: {order.delivered}</li>
-            <li>Comments: {order.adminComment}</li>
           </ul>
         </div>
 
-        <table className="order__cart">
+        <table className="order__cart data">
           <tbody>
             {cartList}
             <tr>
@@ -74,18 +119,32 @@ class Order extends Component {
           </tbody>
         </table>
 
-        <div className="edits">
-          <textarea rows="5" />
-          <select>
-            <option>Processed</option>
-            <option>Picked Up</option>
-            <option>Checked In</option>
-            <option>Out for Delivery</option>
-            <option>Completed</option>
-            <option>Cancelled</option>
-            <option>Refunded</option>
-          </select>
-          <button type="button">Submit</button>
+        <table className="order__comments data">
+          <tbody>{commentList}</tbody>
+        </table>
+
+        <div className="order__edits">
+          <div className="order__addcomment">
+            <textarea rows="5" />
+            <button type="button" onClick={this.commentHandler}>
+              Add Comment
+            </button>
+          </div>
+          <div className="order__changestatus">
+            <select defaultValue="">
+              <option disabled />
+              <option>Processed</option>
+              <option>Picked Up</option>
+              <option>Checked In</option>
+              <option>Out For Delivery</option>
+              <option>Completed</option>
+              <option>Cancelled</option>
+              <option>Refunded</option>
+            </select>
+            <button type="button" onClick={this.statusChangeHandler}>
+              Update Status
+            </button>
+          </div>
         </div>
       </Fragment>
     );

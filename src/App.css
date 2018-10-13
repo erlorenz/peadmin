@@ -1,12 +1,11 @@
 .App {
   display: grid;
   grid-template-columns: 10vw 1fr;
-  grid-template-rows: 100vh;
 }
 
 .main {
-  margin-top: 10vh;
-  margin-left: 2rem;
+  padding: 4rem 1rem;
+  min-height: 100vh;
 }
 
 table {
@@ -46,11 +45,46 @@ table {
   font-weight: bold;
 }
 
+.data {
+  background-color: white;
+  margin: 2rem 0;
+  padding: 1rem;
+}
+
+.order__title {
+  text-align: center;
+}
+
 .order__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order__edits {
   display: flex;
   justify-content: space-evenly;
 }
 
-.order__cart {
-  background-color: white;
+.order__addcomment,
+.order__changestatus {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+textarea {
+  width: 400px;
+}
+
+select {
+  width: 400px;
+  padding: 0.5rem;
 }
