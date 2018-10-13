@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import axios from '../axios-auth';
+import format from 'date-fns/format';
 
 const sampleID = '5b39b7f5484d850014197528';
+const formattedDate = isoDate => format(new Date(isoDate), 'MM/DD/YYYY h:mm a');
 
 class Order extends Component {
   state = {
@@ -67,7 +69,7 @@ class Order extends Component {
 
     const commentList = comments.map(comment => (
       <tr key={comment.time}>
-        <td>{comment.time}</td>
+        <td>{formattedDate(comment.time)}</td>
         <td>{comment.user}</td>
         <td>{comment.comment}</td>
       </tr>
@@ -98,15 +100,24 @@ class Order extends Component {
           </ul>
         </div>
 
-        <div className="order__status data">
-          <ul>
-            <li>Created: {order.created}</li>
-            <li>Picked Up: {order.pickedUp}</li>
-            <li>Checked In: {order.checkedIn}</li>
-            <li>Out For Delivery: {order.outForDelivery}</li>
-            <li>Delivered: {order.delivered}</li>
-          </ul>
-        </div>
+        <table className="order__status data">
+          <tbody>
+            <tr>
+              <td>Created</td>
+              <td>Picked Up</td>
+              <td>Checked In</td>
+              <td>Out For Delivery</td>
+              <td>Delivered</td>
+            </tr>
+            <tr>
+              <td>{formattedDate(order.created)}</td>
+              <td>{formattedDate(order.pickedUp)}</td>
+              <td>{formattedDate(order.checkedIn)}</td>
+              <td>{formattedDate(order.outForDelivery)}</td>
+              <td>{formattedDate(order.delivered)}</td>
+            </tr>
+          </tbody>
+        </table>
 
         <table className="order__cart data">
           <tbody>

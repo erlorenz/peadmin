@@ -57,7 +57,7 @@ table {
 
 .order__info {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .order__edits {
@@ -87,4 +87,24 @@ textarea {
 select {
   width: 400px;
   padding: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .order__edits {
+    flex-direction: column;
+  }
+  .sidebar {
+    display: none;
+  }
+  .main {
+  }
+  .App {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr;
+  }
+
+  textarea,
+  select {
+    width: 100%;
+  }
 }
