@@ -5,7 +5,7 @@ const instance = axios.create({
   // baseURL: 'http://localhost:3001',
   headers: {
     Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyaWtAcHJlc3NleHByZXNzbHYuY29tIiwiaWF0IjoxNTM5MzkyMjEzLCJleHAiOjE1MzkzOTU4MTN9.JIgUJyR6RNN1XXf2eZfr9Zf1RzdIdwFYvtolPVPpcrY',
+      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVyaWtAcHJlc3NleHByZXNzbHYuY29tIiwiaWF0IjoxNTM5Mzk2MjAwLCJleHAiOjE1MzkzOTk4MDB9.K8o05zc63XGabMKRxd1Y3yAwM7YJI42D-_Q_bywOEDg',
   },
 });
 

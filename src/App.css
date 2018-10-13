@@ -45,3 +45,12 @@ table {
 .tableHeader {
   font-weight: bold;
 }
+
+.order__info {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.order__cart {
+  background-color: white;
+}
