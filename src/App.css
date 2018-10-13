@@ -41,3 +41,7 @@ table {
 .order-row:hover {
   background-color: yellow;
 }
+
+.tableHeader {
+  font-weight: bold;
+}
