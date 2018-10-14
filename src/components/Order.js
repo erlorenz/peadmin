@@ -46,6 +46,8 @@ class Order extends Component {
           error: false,
           cartItems: response.data.cartItems,
           comments: response.data.adminComments,
+          status: '',
+          adminComment: '',
         });
         console.log(response.data);
       } catch (e) {
@@ -71,6 +73,8 @@ class Order extends Component {
           error: false,
           cartItems: response.data.cartItems,
           comments: response.data.adminComments,
+          adminComment: '',
+          status: '',
         });
         console.log(response.data);
       } catch (e) {
