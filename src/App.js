@@ -3,7 +3,7 @@ import Login from './containers/Login';
 import Admin from './containers/Admin';
 import NotFound from './components/NotFound';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from './axios-auth';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {

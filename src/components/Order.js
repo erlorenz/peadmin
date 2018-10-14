@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import axios from '../axios-auth';
+import axios from 'axios';
 import format from 'date-fns/format';
 
 const sampleID = '5b3598c0e67ff00014a966cd';
