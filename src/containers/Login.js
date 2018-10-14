@@ -1,49 +1,37 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 
 class Login extends Component {
-  state = {
-    email: '',
-    password: '',
-  };
-
-  onChangeHandler = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  onSubmit = formProps => {
+    console.log(formProps);
   };
 
   render() {
-    const loginData = {
-      email: this.state.email,
-      password: this.state.password,
-    };
+    const { handleSubmit } = this.props;
 
     return (
       <div className="login">
-        <div className="login-form">
-          <input
+        <form className="login-form" onSubmit={handleSubmit(this.onSubmit)}>
+          <Field
             type="email"
-            placeholder="Email"
+            component="input"
             name="email"
-            value={this.state.email}
-            onChange={this.onChangeHandler}
+            placeholder="Email"
           />
-          <input
+          <Field
             type="password"
             placeholder="Password"
             name="password"
-            value={this.state.password}
-            onChange={this.onChangeHandler}
+            component="input"
           />
-          <button
-            type="button"
-            className="button"
-            onClick={() => this.props.submitted(loginData)}>
+          <button type="submit" className="button">
             Log In
           </button>
-          <p> {this.props.error} </p>
-        </div>
+          <p> heres where it goes </p>
+        </form>
       </div>
     );
   }
 }
 
-export default Login;
+export default reduxForm({ form: 'login' })(Login);

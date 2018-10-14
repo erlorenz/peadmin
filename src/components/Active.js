@@ -4,16 +4,21 @@ import axios from 'axios';
 class Active extends Component {
   state = {
     orders: [],
+    error: false,
   };
 
   async componentDidMount() {
-    const response = await axios.get('/admin/active');
-    console.log('the response:', response.data);
-    this.setState({ orders: response.data });
+    try {
+      const response = await axios.get('/admin/active');
+      console.log('the response:', response.data);
+      this.setState({ orders: response.data, error: false });
+    } catch (e) {
+      this.setState({ error: true });
+    }
   }
 
   render() {
-    const orderRows = this.state.orders.map(order => (
+    let orderRows = this.state.orders.map(order => (
       <tr key={order._id} className="order-row">
         <td>{order.name}</td>
         <td>{order.hotel}</td>
@@ -22,6 +27,10 @@ class Active extends Component {
         <td>{order.status}</td>
       </tr>
     ));
+
+    if (this.state.error) {
+      orderRows = <h1>Error retrieving data</h1>;
+    }
 
     return (
       <table>

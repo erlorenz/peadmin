@@ -7,11 +7,7 @@ import axios from 'axios';
 import './App.css';
 
 class App extends Component {
-  state = {
-    isLoggedIn: false,
-    loginError: '',
-    user: '',
-  };
+  state = {};
 
   // Check if logged in when first at site
   componentDidMount() {

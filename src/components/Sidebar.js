@@ -1,39 +1,40 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <ul className="list">
         <li className="list-item">
-          <a href="#" className="list-link">
+          <Link to="/admin/active" className="list-link">
             Active
-          </a>
+          </Link>
         </li>
         <li className="list-item">
-          <a href="#" className="list-link">
+          <Link to="/admin/completed" className="list-link">
             Completed
-          </a>
+          </Link>
         </li>
         <li className="list-item">
-          <a href="#" className="list-link">
+          <Link to="/admin/cancelled" className="list-link">
             Cancelled
-          </a>
+          </Link>
         </li>
         <li className="list-item">
-          <a href="#" className="list-link">
+          <Link to="/admin/exceptions" className="list-link">
             Exceptions
-          </a>
+          </Link>
         </li>
         <li className="list-item">
-          <a href="#" className="list-link">
+          <Link to="/admin/orderform" className="list-link">
             Order Form
-          </a>
+          </Link>
         </li>
-        <li className="list-item">
-          <a href="#" className="list-link">
+        {/* <li className="list-item">
+          <Link to="/admin/active" className="list-link">
             Log Out
-          </a>
-        </li>
+          </Link> 
+        </li>*/}
       </ul>
     </div>
   );
