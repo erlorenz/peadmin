@@ -4,12 +4,18 @@ import axios from 'axios';
 class Cancelled extends Component {
   state = {
     orders: [],
+    error: false,
   };
 
   async componentDidMount() {
-    const response = await axios.get('/admin/cancelled');
-    console.log('the response:', response.data);
-    this.setState({ orders: response.data });
+    try {
+      const response = await axios.get('/admin/cancelled');
+      console.log('the response:', response.data);
+      this.setState({ orders: response.data, error: false });
+    } catch (e) {
+      this.setState({ error: true });
+      console.log(e.response.data.message);
+    }
   }
 
   render() {
@@ -22,6 +28,10 @@ class Cancelled extends Component {
         <td>{order.status}</td>
       </tr>
     ));
+
+    if (this.state.error) {
+      return <h1>Error retrieving data, please log out and try again</h1>;
+    }
 
     return (
       <table>

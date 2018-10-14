@@ -3,14 +3,19 @@ import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
-  onSubmit = formProps => {
-    this.props.login(formProps, () => this.props.history.push('/admin/active'));
+  onSubmit = formData => {
+    this.props.login(formData);
   };
 
   render() {
     const { handleSubmit } = this.props;
+
+    if (this.props.authenticated) {
+      return <Redirect to="/admin/active" />;
+    }
 
     return (
       <div className="login">
@@ -38,7 +43,10 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  return { errorMessage: state.auth.errorMessage };
+  return {
+    errorMessage: state.auth.errorMessage,
+    authenticated: state.auth.authenticated,
+  };
 };
 
 export default compose(

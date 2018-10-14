@@ -10,16 +10,14 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <Fragment>
-          <Switch>
-            <Route path="/" exact component={Login} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/logout" component={Logout} />
-            <Route path="/" component={NotFound} />
-          </Switch>
-        </Fragment>
-      </BrowserRouter>
+      <Fragment>
+        <Switch>
+          <Route path="/" exact component={Login} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/" component={NotFound} />
+        </Switch>
+      </Fragment>
     );
   }
 }

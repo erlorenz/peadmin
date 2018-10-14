@@ -71,7 +71,7 @@ table {
   flex-direction: column;
 }
 
-.button {
+button {
   border: none;
   background-color: purple;
   color: white;
@@ -118,6 +118,11 @@ input {
 input::placeholder {
   color: rgb(161, 161, 161);
   opacity: 1;
+}
+
+.user-signed-in {
+  font-size: 0.8rem;
+  margin-top: 2rem;
 }
 
 @media (max-width: 600px) {

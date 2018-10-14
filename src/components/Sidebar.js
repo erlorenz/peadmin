@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Sidebar = () => {
+const Sidebar = ({ user }) => {
   return (
     <div className="sidebar">
       <ul className="list">
@@ -36,8 +37,18 @@ const Sidebar = () => {
           </Link>
         </li>
       </ul>
+      <div className="user-signed-in">
+        {' '}
+        <p>
+          Signed In As <br /> {user}
+        </p>
+      </div>
     </div>
   );
 };
 
-export default Sidebar;
+const mapStateToProps = state => {
+  return { user: state.auth.user };
+};
+
+export default connect(mapStateToProps)(Sidebar);

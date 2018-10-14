@@ -22,7 +22,7 @@ class Admin extends Component {
         <div className="main">
           <Switch>
             <Route exact path="/admin/active" component={Active} />
-            <Route exact path="/admin/order" component={Order} />
+            <Route exact path="/admin/order/:id" component={Order} />
             <Route exact path="/admin/completed" component={Completed} />
             <Route exact path="/admin/exceptions" component={Exceptions} />
             <Route exact path="/admin/cancelled" component={Cancelled} />

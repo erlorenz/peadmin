@@ -14,11 +14,12 @@ class Active extends Component {
       this.setState({ orders: response.data, error: false });
     } catch (e) {
       this.setState({ error: true });
+      console.log(e.response.data.message);
     }
   }
 
   render() {
-    let orderRows = this.state.orders.map(order => (
+    const orderRows = this.state.orders.map(order => (
       <tr key={order._id} className="order-row">
         <td>{order.name}</td>
         <td>{order.hotel}</td>
@@ -29,7 +30,7 @@ class Active extends Component {
     ));
 
     if (this.state.error) {
-      orderRows = <h1>Error retrieving data</h1>;
+      return <h1>Error retrieving data, please log out and try again</h1>;
     }
 
     return (

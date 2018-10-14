@@ -1,40 +1,56 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import format from 'date-fns/format';
+import { connect } from 'react-redux';
 
-const sampleID = '5b3598c0e67ff00014a966cd';
 const formattedDate = isoDate => format(new Date(isoDate), 'MM/DD/YYYY h:mm a');
 
 class Order extends Component {
   state = {
     order: {},
-    id: sampleID,
-    status: 'Out For Delivery',
-    adminComment: null,
+    id: this.props.match.params.id,
+    status: '',
+    adminComment: '',
     cartItems: [],
     comments: [],
-    username: 'erik@test.com',
+    username: this.props.user,
   };
 
   async componentDidMount() {
-    const response = await axios.get(`/admin/order/${this.state.id}`);
-    console.log('the response:', response.data);
-    this.setState({
-      order: response.data,
-      cartItems: response.data.cartItems,
-      comments: response.data.adminComments,
-    });
+    try {
+      const response = await axios.get(`/admin/order/${this.state.id}`);
+      console.log('the response:', response.data);
+      this.setState({
+        order: response.data,
+        error: false,
+        cartItems: response.data.cartItems,
+        comments: response.data.adminComments,
+      });
+    } catch (e) {
+      this.setState({ error: true });
+      console.log(e.response.data.message);
+    }
   }
 
   statusChangeHandler = async () => {
     if (this.state.status) {
-      const response = await axios.patch(
-        `/admin/order/${this.state.id}/status`,
-        {
-          status: this.state.status,
-        },
-      );
-      console.log(response.data);
+      try {
+        const response = await axios.patch(
+          `/admin/order/${this.state.id}/status`,
+          {
+            status: this.state.status,
+          },
+        );
+        this.setState({
+          order: response.data,
+          error: false,
+          cartItems: response.data.cartItems,
+          comments: response.data.adminComments,
+        });
+        console.log(response.data);
+      } catch (e) {
+        console.log(e.response.data);
+      }
     } else {
       alert('No status updated!!');
     }
@@ -42,17 +58,31 @@ class Order extends Component {
 
   commentHandler = async () => {
     if (this.state.adminComment) {
-      const response = await axios.patch(
-        `/admin/order/${this.state.id}/comments`,
-        {
-          comment: this.state.adminComment,
-          user: this.state.username,
-        },
-      );
-      console.log(response.data);
+      try {
+        const response = await axios.patch(
+          `/admin/order/${this.state.id}/comments`,
+          {
+            comment: this.state.adminComment,
+            user: this.state.username,
+          },
+        );
+        this.setState({
+          order: response.data,
+          error: false,
+          cartItems: response.data.cartItems,
+          comments: response.data.adminComments,
+        });
+        console.log(response.data);
+      } catch (e) {
+        console.log(e.response.data);
+      }
     } else {
       alert('No comment added!!');
     }
+  };
+
+  changeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
@@ -74,6 +104,10 @@ class Order extends Component {
         <td>{comment.comment}</td>
       </tr>
     ));
+
+    if (this.state.error) {
+      return <h1>Error retrieving data, please log out and try again</h1>;
+    }
 
     return (
       <Fragment>
@@ -136,13 +170,21 @@ class Order extends Component {
 
         <div className="order__edits">
           <div className="order__addcomment">
-            <textarea rows="5" />
+            <textarea
+              rows="5"
+              name="adminComment"
+              value={this.state.adminComment}
+              onChange={this.changeHandler}
+            />
             <button type="button" onClick={this.commentHandler}>
               Add Comment
             </button>
           </div>
           <div className="order__changestatus">
-            <select defaultValue="">
+            <select
+              value={this.state.status}
+              name="status"
+              onChange={this.changeHandler}>
               <option disabled />
               <option>Processed</option>
               <option>Picked Up</option>
@@ -162,4 +204,7 @@ class Order extends Component {
   }
 }
 
-export default Order;
+const mapStateToProps = state => {
+  return { user: state.auth.user };
+};
+export default connect(mapStateToProps)(Order);
