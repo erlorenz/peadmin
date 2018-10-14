@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Sidebar from './components/Sidebar';
-import Active from './components/Active';
-import Login from './components/Login';
-import Order from './components/Order';
+import React, { Component, Fragment } from 'react';
+import Login from './containers/Login';
+import Admin from './containers/Admin';
+import NotFound from './components/NotFound';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from './axios-auth';
 import './App.css';
 
@@ -56,15 +56,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Sidebar />
-        <div className="main">
-          <Login
-            submitted={loginData => this.loginHandler(loginData)}
-            error={this.state.loginError}
-          />
-        </div>
-      </div>
+      <BrowserRouter>
+        <Fragment>
+          <Switch>
+            <Route path="/" exact component={Login} />
+            <Route path="/admin" component={Admin} />
+            <Route path="/" component={NotFound} />
+          </Switch>
+        </Fragment>
+      </BrowserRouter>
     );
   }
 }

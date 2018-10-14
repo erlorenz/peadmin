@@ -1,4 +1,4 @@
-.App {
+.admin {
   display: grid;
   grid-template-columns: 10vw 1fr;
 }
@@ -75,9 +75,14 @@ table {
   border: none;
   background-color: purple;
   color: white;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 1.1rem;
   padding: 1rem 1.5rem;
   margin-top: 1rem;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: rgb(167, 4, 167);
 }
 
 textarea {
@@ -91,7 +96,7 @@ select {
 
 .login-form {
   margin: 20vh auto;
-  box-shadow: 0 2px 5px rgba(black, 0.2);
+  box-shadow: 0 4px 6px rgba(black, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,7 +107,7 @@ select {
 
 input {
   display: block;
-  border: 1px solid lightgray;
+  border: 2px solid rgb(92, 92, 92);
   background-color: white;
   padding: 1rem 1.5rem;
   font-size: 1.2rem;
@@ -111,7 +116,7 @@ input {
 }
 
 input::placeholder {
-  color: lightgray;
+  color: rgb(161, 161, 161);
   opacity: 1;
 }
 
