@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class Login extends Component {
   onSubmit = formProps => {
-    console.log(formProps);
+    this.props.login(formProps, () => this.props.history.push('/admin/active'));
   };
 
   render() {
@@ -27,11 +30,21 @@ class Login extends Component {
           <button type="submit" className="button">
             Log In
           </button>
-          <p> heres where it goes </p>
+          <p> {this.props.errorMessage}</p>
         </form>
       </div>
     );
   }
 }
 
-export default reduxForm({ form: 'login' })(Login);
+const mapStateToProps = state => {
+  return { errorMessage: state.auth.errorMessage };
+};
+
+export default compose(
+  connect(
+    mapStateToProps,
+    actions,
+  ),
+  reduxForm({ form: 'login' }),
+)(Login);

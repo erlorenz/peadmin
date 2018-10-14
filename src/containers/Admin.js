@@ -7,9 +7,14 @@ import Completed from '../components/Completed';
 import Exceptions from '../components/Exceptions';
 import Cancelled from '../components/Cancelled';
 import OrderForm from '../components/OrderForm';
+import { connect } from 'react-redux';
 
 class Admin extends Component {
-  state = {};
+  componentDidMount() {
+    if (!this.props.auth) {
+      this.props.history.push('/');
+    }
+  }
   render() {
     return (
       <div className="admin">
@@ -29,4 +34,8 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+const mapStateToProps = state => {
+  return { auth: state.auth.authenticated };
+};
+
+export default connect(mapStateToProps)(Admin);

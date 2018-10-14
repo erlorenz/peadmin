@@ -30,11 +30,11 @@ const Sidebar = () => {
             Order Form
           </Link>
         </li>
-        {/* <li className="list-item">
-          <Link to="/admin/active" className="list-link">
+        <li className="list-item">
+          <Link to="/logout" className="list-link">
             Log Out
-          </Link> 
-        </li>*/}
+          </Link>
+        </li>
       </ul>
     </div>
   );
