@@ -1,22 +1,10 @@
-.admin {
-  display: flex;
-  width: 100%;
-}
-
-.main {
-  padding: 5.8rem 1.8rem;
-  min-height: 100vh;
-  background-color: var(--main-bg-color);
-  flex: 1;
-}
-
 .card {
   background-color: white;
   padding: 1.8rem;
   margin-bottom: 1.8rem;
   border-radius: 2px;
   box-shadow: var(--box-shadow-card);
-  overflow-x: auto;
+  overflow: auto;
 }
 
 th,
