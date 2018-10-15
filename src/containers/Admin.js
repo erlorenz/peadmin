@@ -7,9 +7,13 @@ import Completed from '../components/Completed';
 import Exceptions from '../components/Exceptions';
 import Cancelled from '../components/Cancelled';
 import OrderForm from '../components/OrderForm';
+import Topbar from '../components/Topbar';
 import { connect } from 'react-redux';
 
 class Admin extends Component {
+  state = {
+    sidebarOpen: true,
+  };
   componentDidMount() {
     if (!this.props.auth) {
       this.props.history.push('/');
@@ -19,7 +23,8 @@ class Admin extends Component {
     return (
       <div className="admin">
         <Sidebar />
-        <div className="main">
+        <main className="main">
+          <Topbar />
           <Switch>
             <Route exact path="/admin/active" component={Active} />
             <Route exact path="/admin/order/:id" component={Order} />
@@ -28,7 +33,7 @@ class Admin extends Component {
             <Route exact path="/admin/cancelled" component={Cancelled} />
             <Route exact path="/admin/orderform" component={OrderForm} />
           </Switch>
-        </div>
+        </main>
       </div>
     );
   }

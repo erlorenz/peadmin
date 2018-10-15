@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import Login from './containers/Login';
-import Admin from './containers/Admin';
-import NotFound from './components/NotFound';
-import Logout from './components/Logout';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
-import './App.css';
+import Login from './Login';
+import Admin from './Admin';
+import NotFound from '../components/NotFound';
+import Logout from '../components/Logout';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   render() {

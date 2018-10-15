@@ -1,0 +1,88 @@
+.admin {
+  display: flex;
+  width: 100%;
+}
+
+.main {
+  padding: 5.8rem 1.8rem;
+  min-height: 100vh;
+  background-color: var(--main-bg-color);
+  flex: 1;
+}
+
+.card {
+  background-color: white;
+  padding: 1.8rem;
+  margin-bottom: 1.8rem;
+  border-radius: 2px;
+  box-shadow: var(--box-shadow-card);
+  overflow-x: auto;
+}
+
+th,
+td {
+  padding: 1.1rem 1.8rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  white-space: pre-line;
+}
+
+tr:nth-child(even) {
+  background-color: var(--main-bg-color);
+}
+
+button {
+  border: none;
+  background-color: var(--button-color);
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 2px;
+}
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+textarea,
+select,
+input {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+select {
+  padding: 0.5rem;
+}
+input {
+  display: block;
+  border: 1px solid var(--form-element-border);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  margin-bottom: 2rem;
+}
+
+input::placeholder {
+  color: var(--form-element-border);
+  opacity: 1;
+}
+
+@media (max-width: 1000px) {
+  .order__edits {
+    flex-direction: column;
+  }
+  .sidebar {
+    display: none;
+  }
+  .main {
+    font-size: 0.9rem;
+  }
+  .App {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr;
+  }
+}

@@ -13,7 +13,7 @@ class Order extends Component {
     adminComment: '',
     cartItems: [],
     comments: [],
-    username: this.props.user,
+    username: this.props.userName,
   };
 
   async componentDidMount() {
@@ -98,14 +98,17 @@ class Order extends Component {
         <td>{cartItem.name}</td>
         <td>${cartItem.price / 100}</td>
         <td>{cartItem.quantity}</td>
+        <td>${(cartItem.price * cartItem.quantity) / 100}</td>
       </tr>
     ));
 
     const commentList = comments.map(comment => (
       <tr key={comment.time}>
-        <td>{formattedDate(comment.time)}</td>
-        <td>{comment.user}</td>
-        <td>{comment.comment}</td>
+        <td className="order__admin-timestamp-cell">
+          {formattedDate(comment.time)}
+        </td>
+        <td className="order__admin-user-cell">{comment.user}</td>
+        <td className="order__admin-comments-cell">{comment.comment}</td>
       </tr>
     ));
 
@@ -118,59 +121,106 @@ class Order extends Component {
         <h1 className="order__title">
           Order {id} - {order.status}
         </h1>
-        <div className="order__info data">
-          <ul>
-            <li>Name: {order.name}</li>
-            <li>Phone: {order.phone}</li>
-            <li>Email: {order.email}</li>
-
-            <li>Stripe ID: {order.stripeCharge}</li>
-          </ul>
-          <ul>
-            <li>Hotel: {order.hotel}</li>
-            <li>Room: {order.room}</li>
-            <li>
-              Pickup: {order.pickupDate} {order.pickupHour}
-            </li>
-            <li>
-              Return: {order.returnDate} {order.returnHour}
-            </li>
-          </ul>
+        <div className="order__info card">
+          <table className="order__info1">
+            <tr>
+              <th>Name:</th>
+              <td>{order.name}</td>
+            </tr>
+            <tr>
+              <th>Phone:</th>
+              <td>{order.phone}</td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td>{order.email}</td>
+            </tr>
+            <tr>
+              <th>Stripe ID:</th>
+              <td>{order.stripeCharge}</td>
+            </tr>
+          </table>
+          <table className="order__info2">
+            <tr>
+              <th>Hotel:</th>
+              <td>{order.hotel}</td>
+            </tr>
+            <tr>
+              <th>Room:</th>
+              <td>{order.room}</td>
+            </tr>
+            <tr>
+              <th>Pickup:</th>
+              <td>
+                {order.pickupDate} {order.pickupHour}
+              </td>
+            </tr>
+            <tr>
+              <th>Return:</th>
+              <td>
+                {order.returnDate} {order.returnHour}
+              </td>
+            </tr>
+          </table>
         </div>
 
-        <table className="order__status data">
-          <tbody>
-            <tr>
-              <td>Created</td>
-              <td>Picked Up</td>
-              <td>Checked In</td>
-              <td>Out For Delivery</td>
-              <td>Delivered</td>
-            </tr>
-            <tr>
-              <td>{formattedDate(order.created)}</td>
-              <td>{formattedDate(order.pickedUp)}</td>
-              <td>{formattedDate(order.checkedIn)}</td>
-              <td>{formattedDate(order.outForDelivery)}</td>
-              <td>{formattedDate(order.delivered)}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="card">
+          <table className="order__status">
+            <thead>
+              <tr>
+                <th>Created</th>
+                <th>Picked Up</th>
+                <th>Checked In</th>
+                <th>Out For Delivery</th>
+                <th>Delivered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{formattedDate(order.created)}</td>
+                <td>{formattedDate(order.pickedUp)}</td>
+                <td>{formattedDate(order.checkedIn)}</td>
+                <td>{formattedDate(order.outForDelivery)}</td>
+                <td>{formattedDate(order.delivered)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <table className="order__cart data">
-          <tbody>
-            {cartList}
-            <tr>
-              <td />
-              <td />
-              <td>${order.totalPrice / 100}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="card">
+          <table className="order__cart">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cartList}
+              <tr>
+                <td />
+                <td />
+                <td />
+                <th>Total: ${order.totalPrice / 100}</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <table className="order__comments data">
-          <tbody>{commentList}</tbody>
-        </table>
+        <div className="card">
+          <table className="order__comments ">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>User</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tbody>{commentList}</tbody>
+          </table>
+        </div>
 
         <div className="order__edits">
           <div className="order__addcomment">
@@ -197,6 +247,8 @@ class Order extends Component {
               <option>Completed</option>
               <option>Cancelled</option>
               <option>Refunded</option>
+              <option>Additional Charge</option>
+              <option>Returned</option>
             </select>
             <button type="button" onClick={this.statusChangeHandler}>
               Update Status
@@ -209,6 +261,6 @@ class Order extends Component {
 }
 
 const mapStateToProps = state => {
-  return { user: state.auth.user };
+  return { user: state.auth.user, userName: state.auth.userName };
 };
 export default connect(mapStateToProps)(Order);

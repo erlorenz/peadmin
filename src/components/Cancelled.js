@@ -34,18 +34,20 @@ class Cancelled extends Component {
     }
 
     return (
-      <table>
-        <thead className="tableHeader">
-          <tr>
-            <td>Name</td>
-            <td>Hotel</td>
-            <td>Pickup</td>
-            <td>Return</td>
-            <td>Status</td>
-          </tr>
-        </thead>
-        <tbody>{orderRows}</tbody>
-      </table>
+      <div className="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Hotel</th>
+              <th>Pickup</th>
+              <th>Return</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>{orderRows}</tbody>
+        </table>
+      </div>
     );
   }
 }

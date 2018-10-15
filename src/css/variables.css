@@ -1,0 +1,12 @@
+:root {
+  --main-bg-color: rgb(242, 248, 249);
+  --main-hover-color: rgb(216, 245, 252);
+  --button-color: #308ee0;
+  --button-color-secondary: rgb(31, 255, 98);
+  --button-hover: rgb(104, 142, 223);
+  --form-element-border: #e0dede;
+  /* --box-shadow-card: 0px 2px 6px 0px rgba(0, 0, 0, 0.18); */
+  --active-link-color: rgb(36, 137, 184);
+  --main-color: #1d7a8c;
+  --topbar-color: linear-gradient(120deg, #62f5ff, #4392db);
+}

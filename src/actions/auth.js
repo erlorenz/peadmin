@@ -5,13 +5,15 @@ export const login = formData => async dispatch => {
   try {
     const response = await axios.post('/auth/login', formData);
     const jwt = response.data.token;
+    const name = response.data.userName;
     axios.defaults.headers.common.Authorization = jwt;
     dispatch({
       type: AUTH_USER,
-      payload: { token: jwt, user: formData.email },
+      payload: { token: jwt, user: formData.email, userName: name },
     });
     localStorage.setItem('user', formData.email);
     localStorage.setItem('token', jwt);
+    localStorage.setItem('userName', name);
   } catch (e) {
     dispatch({ type: AUTH_ERROR, payload: e.response.data.message });
     setTimeout(() => {
@@ -26,6 +28,6 @@ export const logout = () => {
   delete axios.defaults.headers.common.Authorization;
   return {
     type: AUTH_USER,
-    payload: { token: '', user: '' },
+    payload: { token: '', user: '', userName: '' },
   };
 };

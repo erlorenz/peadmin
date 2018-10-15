@@ -6,12 +6,13 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 
-import App from './App';
-import './index.css';
+import App from './containers/App';
+import './css/index.css';
 import reducers from './reducers';
 
 const token = localStorage.getItem('token');
 const user = localStorage.getItem('user');
+const userName = localStorage.getItem('userName');
 
 // Axios URL and Header setup on load and refresh
 axios.defaults.baseURL = 'http://localhost:3001';
@@ -21,7 +22,8 @@ axios.defaults.headers.common.Authorization = token;
 // Check for initial state
 const checkAuth = {
   authenticated: token,
-  user: user,
+  user,
+  userName,
 };
 
 // Set up devtools

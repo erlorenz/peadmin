@@ -1,0 +1,63 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 4rem;
+  background-image: var(--topbar-color);
+  width: 100%;
+  color: white;
+}
+
+.topbar__menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 5rem;
+  padding: 1rem;
+  background-color: white;
+}
+
+.topbar__list {
+  display: flex;
+  justify-content: flex-end;
+  width: 30vw;
+}
+
+.topbar__list-item {
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.react-gravatar {
+  border-radius: 50%;
+  height: 37px;
+  width: 37px;
+  margin-left: 0.5rem;
+}
+
+.topbar__log-out:hover {
+  color: lightblue;
+}
+
+.topbar__log-out a {
+  line-height: 64px;
+}
+
+@media (max-width: 1000px) {
+  .topbar__list {
+    width: 50vw;
+  }
+  .topbar__log-out {
+    display: none;
+  }
+
+  .topbar__menu {
+    display: block;
+  }
+}

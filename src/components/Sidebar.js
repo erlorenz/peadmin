@@ -1,49 +1,42 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Logo from '../assets/img/pressexpresslogo.svg';
 
 const Sidebar = ({ user }) => {
   return (
-    <div className="sidebar">
-      <ul className="list">
-        <li className="list-item">
-          <Link to="/admin/active" className="list-link">
-            Active
-          </Link>
-        </li>
-        <li className="list-item">
-          <Link to="/admin/completed" className="list-link">
-            Completed
-          </Link>
-        </li>
-        <li className="list-item">
-          <Link to="/admin/cancelled" className="list-link">
-            Cancelled
-          </Link>
-        </li>
-        <li className="list-item">
-          <Link to="/admin/exceptions" className="list-link">
-            Exceptions
-          </Link>
-        </li>
-        <li className="list-item">
-          <Link to="/admin/orderform" className="list-link">
+    <nav className="sidebar">
+      <div className="sidebar__logo">
+        <img src={Logo} alt="Press Express Logo" />
+      </div>
+      <ul className="sidebar__list">
+        <li className="sidebar__list-item">
+          <NavLink to="/admin/orderform" className="sidebar__list-link">
             Order Form
-          </Link>
+          </NavLink>
         </li>
-        <li className="list-item">
-          <Link to="/logout" className="list-link">
-            Log Out
-          </Link>
+        <li className="sidebar__list-item">
+          <NavLink to="/admin/active" className="sidebar__list-link">
+            Active
+          </NavLink>
+        </li>
+        <li className="sidebar__list-item">
+          <NavLink to="/admin/completed" className="sidebar__list-link">
+            Completed
+          </NavLink>
+        </li>
+        <li className="sidebar__list-item">
+          <NavLink to="/admin/cancelled" className="sidebar__list-link">
+            Cancelled
+          </NavLink>
+        </li>
+        <li className="sidebar__list-item">
+          <NavLink to="/admin/exceptions" className="sidebar__list-link">
+            Exceptions
+          </NavLink>
         </li>
       </ul>
-      <div className="user-signed-in">
-        {' '}
-        <p>
-          Signed In As <br /> {user}
-        </p>
-      </div>
-    </div>
+    </nav>
   );
 };
 
@@ -51,4 +44,4 @@ const mapStateToProps = state => {
   return { user: state.auth.user };
 };
 
-export default connect(mapStateToProps)(Sidebar);
+export default withRouter(connect(mapStateToProps)(Sidebar));

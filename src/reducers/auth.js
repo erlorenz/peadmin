@@ -4,6 +4,7 @@ const initialState = {
   authenticated: '',
   errorMessage: '',
   user: '',
+  userName: '',
 };
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -13,6 +14,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         authenticated: action.payload.token,
         user: action.payload.user,
+        userName: action.payload.userName,
       };
     //
     case AUTH_ERROR:
