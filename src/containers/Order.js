@@ -1,14 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import format from 'date-fns/format';
 import { connect } from 'react-redux';
 import OrderInfo from '../components/Order/OrderInfo';
 import OrderStatus from '../components/Order/OrderStatus';
 import OrderCart from '../components/Order/OrderCart';
 import OrderComments from '../components/Order/OrderComments';
 import OrderEdits from '../components/Order/OrderEdits';
-
-const formattedDate = isoDate => format(new Date(isoDate), 'MM/DD/YYYY h:mm a');
 
 class Order extends Component {
   state = {
