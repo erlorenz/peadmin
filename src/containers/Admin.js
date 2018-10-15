@@ -7,6 +7,7 @@ import Completed from '../components/Completed';
 import Exceptions from '../components/Exceptions';
 import Cancelled from '../components/Cancelled';
 import OrderForm from '../components/OrderForm';
+import SpecialOrders from '../components/SpecialOrders';
 import Topbar from '../components/Topbar';
 import { connect } from 'react-redux';
 
@@ -32,6 +33,7 @@ class Admin extends Component {
             <Route exact path="/admin/exceptions" component={Exceptions} />
             <Route exact path="/admin/cancelled" component={Cancelled} />
             <Route exact path="/admin/orderform" component={OrderForm} />
+            <Route exact path="/admin/special" component={SpecialOrders} />
           </Switch>
         </main>
       </div>

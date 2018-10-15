@@ -1,6 +1,5 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import Logo from '../assets/img/pressexpresslogo.svg';
 
 const Sidebar = ({ user }) => {
@@ -10,10 +9,12 @@ const Sidebar = ({ user }) => {
         <img src={Logo} alt="Press Express Logo" />
       </div>
       <ul className="sidebar__list">
-        <li className="sidebar__list-item">
-          <NavLink to="/admin/orderform" className="sidebar__list-link">
+        <li className="sidebar__list-item sidebar__order-form-list-item">
+          <Link
+            to="/admin/orderform"
+            className="sidebar__list-link sidebar__order-form-link">
             Order Form
-          </NavLink>
+          </Link>
         </li>
         <li className="sidebar__list-item">
           <NavLink to="/admin/active" className="sidebar__list-link">
@@ -23,6 +24,11 @@ const Sidebar = ({ user }) => {
         <li className="sidebar__list-item">
           <NavLink to="/admin/completed" className="sidebar__list-link">
             Completed
+          </NavLink>
+        </li>
+        <li className="sidebar__list-item">
+          <NavLink to="/admin/special" className="sidebar__list-link">
+            Special Orders
           </NavLink>
         </li>
         <li className="sidebar__list-item">
@@ -40,8 +46,4 @@ const Sidebar = ({ user }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return { user: state.auth.user };
-};
-
-export default withRouter(connect(mapStateToProps)(Sidebar));
+export default withRouter(Sidebar);

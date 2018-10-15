@@ -59,6 +59,13 @@ input::placeholder {
   opacity: 1;
 }
 
+.spinner {
+  height: 400px;
+  width: 800px;
+  margin: auto;
+  z-index: 50;
+}
+
 @media (max-width: 1000px) {
   .order__edits {
     flex-direction: column;
