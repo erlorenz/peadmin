@@ -23,9 +23,7 @@ class SpecialOrders extends Component {
       <tr
         key={order._id}
         className="order-row"
-        onClick={() =>
-          this.props.history.push(`/admin/specialorders/${order._id}`)
-        }>
+        onClick={() => this.props.history.push(`/admin/special/${order._id}`)}>
         <td>{order.name}</td>
         <td>{order.company}</td>
         <td>{order.phone}</td>
