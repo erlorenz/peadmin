@@ -8,6 +8,11 @@
 
 .order__title {
   text-align: center;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .order__info {

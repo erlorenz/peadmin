@@ -81,9 +81,8 @@ class Order extends Component {
           adminComment: '',
           status: '',
         });
-        console.log(response.data);
       } catch (e) {
-        console.log(e.response.data);
+        alert(e.response.data);
       }
     } else {
       alert('No comment added!!');
@@ -95,62 +94,31 @@ class Order extends Component {
   };
 
   render() {
-    const { order, id, cartItems, comments, adminComment } = this.state;
+    const { order, id, cartItems, comments, adminComment, status } = this.state;
 
     if (this.state.error) {
       return <h1>Error retrieving data, please log out and try again</h1>;
     }
 
+    const title = `${id} - ${order.status}`;
+
     return (
       <Fragment>
-        <h1 className="order__title">
-          Order {id} - {order.status}
-        </h1>
+        <div className="card order__title">
+          <p>{order.status && id ? title.toUpperCase() : null}</p>
+        </div>
 
         <OrderInfo order={order} />
         <OrderStatus order={order} />
         <OrderCart order={order} cartItems={cartItems} />
         <OrderComments comments={comments} />
         <OrderEdits
-          adminComment={adminComment}
+          adminCommentValue={adminComment}
+          statusValue={status}
           changed={this.changeHandler}
           commentClicked={this.commentAddHandler}
-          statusClicked={this.statusHandler}
+          statusClicked={this.statusChangeHandler}
         />
-
-        <div className="order__edits">
-          <div className="order__addcomment">
-            <textarea
-              rows="5"
-              name="adminComment"
-              value={this.state.adminComment}
-              onChange={this.changeHandler}
-            />
-            <button type="button" onClick={this.commentHandler}>
-              Add Comment
-            </button>
-          </div>
-          <div className="order__changestatus">
-            <select
-              value={this.state.status}
-              name="status"
-              onChange={this.changeHandler}>
-              <option disabled />
-              <option>Processed</option>
-              <option>Picked Up</option>
-              <option>Checked In</option>
-              <option>Out For Delivery</option>
-              <option>Completed</option>
-              <option>Cancelled</option>
-              <option>Refunded</option>
-              <option>Additional Charge</option>
-              <option>Returned</option>
-            </select>
-            <button type="button" onClick={this.statusChangeHandler}>
-              Update Status
-            </button>
-          </div>
-        </div>
       </Fragment>
     );
   }
