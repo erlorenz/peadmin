@@ -29,7 +29,7 @@
 }
 
 .order__admin-comments-cell {
-  width: 75%;
+  width: 65%;
 }
 
 .order__admin-timestamp-cell {
@@ -37,7 +37,7 @@
 }
 
 .order__admin-user-cell {
-  width: 10%;
+  width: 15%;
 }
 
 @media (max-width: 1000px) {

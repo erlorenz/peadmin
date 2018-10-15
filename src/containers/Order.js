@@ -2,6 +2,11 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import format from 'date-fns/format';
 import { connect } from 'react-redux';
+import OrderInfo from '../components/Order/OrderInfo';
+import OrderStatus from '../components/Order/OrderStatus';
+import OrderCart from '../components/Order/OrderCart';
+import OrderComments from '../components/Order/OrderComments';
+import OrderEdits from '../components/Order/OrderEdits';
 
 const formattedDate = isoDate => format(new Date(isoDate), 'MM/DD/YYYY h:mm a');
 
@@ -58,7 +63,7 @@ class Order extends Component {
     }
   };
 
-  commentHandler = async () => {
+  commentAddHandler = async () => {
     if (this.state.adminComment) {
       try {
         const response = await axios.patch(
@@ -90,27 +95,7 @@ class Order extends Component {
   };
 
   render() {
-    const { order, id, cartItems, comments } = this.state;
-    console.log('cartitems:', cartItems);
-
-    const cartList = cartItems.map(cartItem => (
-      <tr key={cartItem.id}>
-        <td>{cartItem.name}</td>
-        <td>${cartItem.price / 100}</td>
-        <td>{cartItem.quantity}</td>
-        <td>${(cartItem.price * cartItem.quantity) / 100}</td>
-      </tr>
-    ));
-
-    const commentList = comments.map(comment => (
-      <tr key={comment.time}>
-        <td className="order__admin-timestamp-cell">
-          {formattedDate(comment.time)}
-        </td>
-        <td className="order__admin-user-cell">{comment.user}</td>
-        <td className="order__admin-comments-cell">{comment.comment}</td>
-      </tr>
-    ));
+    const { order, id, cartItems, comments, adminComment } = this.state;
 
     if (this.state.error) {
       return <h1>Error retrieving data, please log out and try again</h1>;
@@ -121,106 +106,17 @@ class Order extends Component {
         <h1 className="order__title">
           Order {id} - {order.status}
         </h1>
-        <div className="order__info card">
-          <table className="order__info1">
-            <tr>
-              <th>Name:</th>
-              <td>{order.name}</td>
-            </tr>
-            <tr>
-              <th>Phone:</th>
-              <td>{order.phone}</td>
-            </tr>
-            <tr>
-              <th>Email:</th>
-              <td>{order.email}</td>
-            </tr>
-            <tr>
-              <th>Stripe ID:</th>
-              <td>{order.stripeCharge}</td>
-            </tr>
-          </table>
-          <table className="order__info2">
-            <tr>
-              <th>Hotel:</th>
-              <td>{order.hotel}</td>
-            </tr>
-            <tr>
-              <th>Room:</th>
-              <td>{order.room}</td>
-            </tr>
-            <tr>
-              <th>Pickup:</th>
-              <td>
-                {order.pickupDate} {order.pickupHour}
-              </td>
-            </tr>
-            <tr>
-              <th>Return:</th>
-              <td>
-                {order.returnDate} {order.returnHour}
-              </td>
-            </tr>
-          </table>
-        </div>
 
-        <div className="card">
-          <table className="order__status">
-            <thead>
-              <tr>
-                <th>Created</th>
-                <th>Picked Up</th>
-                <th>Checked In</th>
-                <th>Out For Delivery</th>
-                <th>Delivered</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{formattedDate(order.created)}</td>
-                <td>{formattedDate(order.pickedUp)}</td>
-                <td>{formattedDate(order.checkedIn)}</td>
-                <td>{formattedDate(order.outForDelivery)}</td>
-                <td>{formattedDate(order.delivered)}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="card">
-          <table className="order__cart">
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cartList}
-              <tr>
-                <td />
-                <td />
-                <td />
-                <th>Total: ${order.totalPrice / 100}</th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="card">
-          <table className="order__comments ">
-            <thead>
-              <tr>
-                <th>Timestamp</th>
-                <th>User</th>
-                <th>Comments</th>
-              </tr>
-            </thead>
-            <tbody>{commentList}</tbody>
-          </table>
-        </div>
+        <OrderInfo order={order} />
+        <OrderStatus order={order} />
+        <OrderCart order={order} cartItems={cartItems} />
+        <OrderComments comments={comments} />
+        <OrderEdits
+          adminComment={adminComment}
+          changed={this.changeHandler}
+          commentClicked={this.commentAddHandler}
+          statusClicked={this.statusHandler}
+        />
 
         <div className="order__edits">
           <div className="order__addcomment">

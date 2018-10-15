@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Active from '../components/Active';
-import Order from '../components/Order';
+import Order from './Order';
 import Completed from '../components/Completed';
 import Exceptions from '../components/Exceptions';
 import Cancelled from '../components/Cancelled';
