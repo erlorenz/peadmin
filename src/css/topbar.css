@@ -8,7 +8,6 @@
   height: 4rem;
   background-image: var(--topbar-color);
   width: 100%;
-  color: white;
 }
 
 .topbar__menu {
@@ -31,6 +30,7 @@
   display: flex;
   align-items: center;
   padding-right: 2rem;
+  color: white;
 }
 
 .react-gravatar {

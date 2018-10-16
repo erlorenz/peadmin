@@ -9,7 +9,7 @@
 }
 
 .login {
-  background: var(--main-bg-color);
+  background-color: var(--main-bg-color);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -22,8 +22,5 @@
     width: 80%;
     padding: 1.8rem;
     justify-content: center;
-  }
-
-  .login {
   }
 }

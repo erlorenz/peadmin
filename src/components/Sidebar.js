@@ -1,6 +1,14 @@
 import React from 'react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import Logo from '../assets/img/pressexpresslogo.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faClock,
+  faCheckCircle,
+  faExclamationTriangle,
+  faGift,
+  faBan,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = ({ user, isOpen, clicked }) => {
   let sidebarClass = 'sidebar';
@@ -21,27 +29,27 @@ const Sidebar = ({ user, isOpen, clicked }) => {
         </li>
         <li className="sidebar__list-item">
           <NavLink to="/admin/active" className="sidebar__list-link">
-            Active
+            <FontAwesomeIcon icon={faClock} /> Active
           </NavLink>
         </li>
         <li className="sidebar__list-item">
           <NavLink to="/admin/completed" className="sidebar__list-link">
-            Completed
+            <FontAwesomeIcon icon={faCheckCircle} /> Completed
           </NavLink>
         </li>
         <li className="sidebar__list-item">
           <NavLink to="/admin/special" className="sidebar__list-link">
-            Special Orders
+            <FontAwesomeIcon icon={faGift} /> Special Orders
           </NavLink>
         </li>
         <li className="sidebar__list-item">
           <NavLink to="/admin/cancelled" className="sidebar__list-link">
-            Cancelled
+            <FontAwesomeIcon icon={faBan} /> Cancelled
           </NavLink>
         </li>
         <li className="sidebar__list-item">
           <NavLink to="/admin/exceptions" className="sidebar__list-link">
-            Exceptions
+            <FontAwesomeIcon icon={faExclamationTriangle} /> Exceptions
           </NavLink>
         </li>
         <li className="sidebar__list-item sidebar__logout">

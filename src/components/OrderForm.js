@@ -23,10 +23,8 @@ class OrderForm extends Component {
     }
 
     return (
-      <div className="card">
-        <form
-          className="order-form"
-          onSubmit={this.props.handleSubmit(this.onSubmit)}>
+      <div className="card order-form">
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field
             type="text"
             component="input"
