@@ -17,9 +17,8 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 5rem;
+  width: 64px;
   padding: 1rem;
-  background-color: white;
 }
 
 .topbar__list {
@@ -51,7 +50,7 @@
 
 @media (max-width: 1000px) {
   .topbar__list {
-    width: 50vw;
+    width: 50%;
   }
   .topbar__log-out {
     display: none;

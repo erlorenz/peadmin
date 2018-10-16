@@ -5,12 +5,10 @@ import Gravatar from 'react-gravatar';
 import Hamburger from '../assets/img/hamburger.svg';
 
 class Topbar extends Component {
-  state = {};
-
   render() {
     return (
       <header className="topbar">
-        <div className="topbar__menu">
+        <div className="topbar__menu" onClick={this.props.clicked}>
           <img src={Hamburger} className="topbar__hamburger" alt="menu icon" />
         </div>
         <ul className="topbar__list">

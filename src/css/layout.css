@@ -1,16 +1,21 @@
 .admin {
-  display: flex;
-  width: 100%;
-}
-
-.sidebar {
-  z-index: 1;
-  width: 255px;
+  display: grid;
+  grid-template-columns: 255px auto;
+  max-width: 100%;
 }
 
 .main {
   padding: 5.8rem 1.8rem;
   min-height: 100vh;
   background-color: var(--main-bg-color);
-  flex: 1;
+  max-width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .main {
+    padding: 4rem 0 0 0;
+  }
+  .admin {
+    display: block;
+  }
 }

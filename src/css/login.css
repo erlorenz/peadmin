@@ -16,3 +16,14 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 1000px) {
+  .login-form {
+    width: 80%;
+    padding: 1.8rem;
+    justify-content: center;
+  }
+
+  .login {
+  }
+}

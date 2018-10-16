@@ -31,7 +31,7 @@ const SpecialOrderInfo = ({ order }) => {
           </tr>
           <tr>
             <th>Total Price:</th>
-            <td>{order.totalPrice}</td>
+            <td>${order.totalPrice / 100}</td>
           </tr>
           <tr>
             <th>Description:</th>

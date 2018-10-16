@@ -1,3 +1,13 @@
 .order-form {
   padding: 4rem 10rem;
 }
+
+@media (max-width: 1000px) {
+  .order-form {
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

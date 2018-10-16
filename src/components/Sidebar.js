@@ -2,17 +2,20 @@ import React from 'react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import Logo from '../assets/img/pressexpresslogo.svg';
 
-const Sidebar = ({ user }) => {
+const Sidebar = ({ user, isOpen, clicked }) => {
+  let sidebarClass = 'sidebar';
+  if (isOpen) {
+    sidebarClass = 'sidebar sidebar--open';
+  }
+
   return (
-    <nav className="sidebar">
+    <nav className={sidebarClass} onClick={clicked}>
       <div className="sidebar__logo">
         <img src={Logo} alt="Press Express Logo" />
       </div>
       <ul className="sidebar__list">
         <li className="sidebar__list-item sidebar__order-form-list-item">
-          <Link
-            to="/admin/orderform"
-            className="sidebar__list-link sidebar__order-form-link">
+          <Link to="/admin/orderform" className=" sidebar__order-form-link">
             Order Form
           </Link>
         </li>
@@ -40,6 +43,11 @@ const Sidebar = ({ user }) => {
           <NavLink to="/admin/exceptions" className="sidebar__list-link">
             Exceptions
           </NavLink>
+        </li>
+        <li className="sidebar__list-item sidebar__logout">
+          <Link to="/logout" className="sidebar__list-link">
+            Log Out
+          </Link>
         </li>
       </ul>
     </nav>

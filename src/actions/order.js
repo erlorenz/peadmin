@@ -24,6 +24,9 @@ export const submitOrder = formData => async dispatch => {
     // Start Spinner
     dispatch({ type: ORDER_PENDING });
 
+    //Change Dollar Amount
+    submitData.totalPrice = submitData.totalPrice * 100;
+
     // Get Stripe Token
     // const tokenResponse = await createToken();
     // console.log(tokenResponse.token.id);

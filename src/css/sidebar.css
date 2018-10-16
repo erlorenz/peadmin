@@ -62,14 +62,19 @@
   padding-left: 64px;
 }
 
+.sidebar__logout {
+  display: none;
+}
+
 @media (max-width: 1000px) {
   .sidebar {
     position: fixed;
     top: 65px;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     transform: translateX(-100%);
+    transition: ease-in 0.2s all;
   }
 
   .sidebar__logo {
@@ -78,5 +83,13 @@
 
   .sidebar--open {
     transform: translateX(0);
+  }
+
+  .sidebar__logout {
+    display: block;
+  }
+
+  .sidebar__list-link {
+    padding-left: 8rem;
   }
 }

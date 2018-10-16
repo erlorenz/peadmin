@@ -14,19 +14,27 @@ import { connect } from 'react-redux';
 
 class Admin extends Component {
   state = {
-    sidebarOpen: true,
+    sidebarOpen: false,
   };
   componentDidMount() {
     if (!this.props.auth) {
       this.props.history.push('/');
     }
   }
+
+  sidebarToggleHandler = () => {
+    this.setState({ sidebarOpen: !this.state.sidebarOpen });
+  };
+
   render() {
     return (
       <div className="admin">
-        <Sidebar />
+        <Sidebar
+          isOpen={this.state.sidebarOpen}
+          clicked={this.sidebarToggleHandler}
+        />
         <main className="main">
-          <Topbar />
+          <Topbar clicked={this.sidebarToggleHandler} />
           <Switch>
             <Route exact path="/admin/active" component={Active} />
             <Route exact path="/admin/order/:id" component={Order} />

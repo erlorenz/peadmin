@@ -4,7 +4,12 @@
   margin-bottom: 1.8rem;
   border-radius: 2px;
   box-shadow: var(--box-shadow-card);
-  overflow: auto;
+  display: block;
+  overflow-x: auto;
+}
+
+.table-wrap {
+  overflow-x: auto;
 }
 
 th,
@@ -29,6 +34,7 @@ button {
   cursor: pointer;
   width: 100%;
   border-radius: 2px;
+  margin-bottom: 1.5rem;
 }
 .button:hover {
   background-color: var(--button-hover);
@@ -49,7 +55,7 @@ input {
   border: 1px solid var(--form-element-border);
   background-color: white;
   padding: 1rem 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: inherit;
   margin-bottom: 2rem;
 }
@@ -60,10 +66,14 @@ input::placeholder {
 }
 
 .spinner {
-  height: 400px;
-  width: 800px;
-  margin: auto;
+  position: relative;
+  height: 50%;
+  width: 100%;
   z-index: 50;
+  left: 50%;
+  margin-left: -50px;
+  top: 50%;
+  margin-top: -50px;
 }
 
 @media (max-width: 1000px) {
