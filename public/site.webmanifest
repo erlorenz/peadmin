@@ -1,6 +1,6 @@
 {
-    "name": "Press Express",
-    "short_name": "Press Express",
+    "name": "Admin",
+    "short_name": "Admin",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#1d7a8c",
-    "background_color": "#1d7a8c",
+    "theme_color": "#00c2d5",
+    "background_color": "#00c2d5",
     "display": "standalone"
 }
