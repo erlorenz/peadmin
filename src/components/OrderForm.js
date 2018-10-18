@@ -5,10 +5,9 @@ import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 import Spinner from 'react-spinkit';
+import Portal from './Portal';
 
 class OrderForm extends Component {
-  state = {};
-
   onSubmit = formData => {
     this.props.submitOrder(formData);
   };
@@ -19,7 +18,11 @@ class OrderForm extends Component {
     }
 
     if (this.props.orderStatus === 'pending') {
-      return <Spinner name="three-bounce" className="spinner" />;
+      return (
+        <Portal>
+          <Spinner name="three-bounce" className="spinner" />
+        </Portal>
+      );
     }
 
     return (

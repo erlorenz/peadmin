@@ -20,7 +20,10 @@ class Exceptions extends Component {
 
   render() {
     const orderRows = this.state.orders.map(order => (
-      <tr key={order._id} className="order-row">
+      <tr
+        key={order._id}
+        className="order-row"
+        onClick={() => this.props.history.push(`/admin/order/${order._id}`)}>
         <td>{order.name}</td>
         <td>{order.hotel}</td>
         <td>{order.pickupDate + ' ' + order.pickupHour}</td>

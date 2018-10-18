@@ -66,9 +66,8 @@ input::placeholder {
 }
 
 .spinner {
-  position: relative;
-  height: 50%;
-  width: 100%;
+  position: absolute;
+
   z-index: 50;
   left: 50%;
   margin-left: -50px;
