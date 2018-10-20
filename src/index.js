@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 
 import App from './containers/App';
-import './css/index.css';
+import './scss/index.scss';
 import reducers from './reducers';
 
 const token = localStorage.getItem('token');

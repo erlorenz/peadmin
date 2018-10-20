@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { Redirect } from 'react-router-dom';
+import { main, form } from '../scss/Login.module.scss';
 
 class Login extends Component {
   onSubmit = formData => {
@@ -18,8 +19,8 @@ class Login extends Component {
     }
 
     return (
-      <div className="login">
-        <form className="login-form" onSubmit={handleSubmit(this.onSubmit)}>
+      <div className={main}>
+        <form className={form} onSubmit={handleSubmit(this.onSubmit)}>
           <Field
             type="email"
             component="input"

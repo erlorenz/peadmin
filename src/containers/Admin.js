@@ -18,6 +18,7 @@ class Admin extends Component {
   };
   componentDidMount() {
     if (!this.props.auth) {
+      alert('You are not logged in!');
       this.props.history.push('/');
     }
   }

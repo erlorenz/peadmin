@@ -3,7 +3,7 @@
   padding: 1.8rem;
   margin-bottom: 1.8rem;
   border-radius: 2px;
-  box-shadow: var(--box-shadow-card);
+  // box-shadow: $box-shadow-card;
   display: block;
   overflow-x: auto;
 }
@@ -21,12 +21,12 @@ td {
 }
 
 tr:nth-child(even) {
-  background-color: var(--main-bg-color);
+  background-color: $main-bg-color;
 }
 
 button {
   border: none;
-  background-color: var(--button-color);
+  background-color: $button-color;
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
@@ -37,7 +37,7 @@ button {
   margin-bottom: 1.5rem;
 }
 .button:hover {
-  background-color: var(--button-hover);
+  background-color: $button-hover;
 }
 
 textarea,
@@ -52,7 +52,7 @@ select {
 }
 input {
   display: block;
-  border: 1px solid var(--form-element-border);
+  border: 1px solid $form-element-border;
   background-color: white;
   padding: 1rem 1.5rem;
   font-size: 1rem;
@@ -61,7 +61,7 @@ input {
 }
 
 input::placeholder {
-  color: var(--form-element-border);
+  color: $form-element-border;
   opacity: 1;
 }
 

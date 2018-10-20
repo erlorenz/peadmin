@@ -2,7 +2,7 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--box-shadow-card);
+  // box-shadow: $box-shadow-card;
   z-index: 5;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .sidebar__list-item:hover {
-  background-color: var(--main-hover-color);
+  background-color: $main-hover-color;
 }
 
 .sidebar__list-link {
@@ -51,7 +51,7 @@
 }
 
 .sidebar__order-form-link {
-  background-color: var(--button-color-secondary);
+  background-color: $button-color-secondary;
   color: white;
   line-height: 3rem;
   font-weight: 500;
@@ -62,9 +62,9 @@
 }
 
 .active {
-  color: var(--active-link-color);
-  border-left: 8px solid var(--active-link-color);
-  background-color: var(--main-hover-color);
+  color: $active-link-color;
+  border-left: 8px solid $active-link-color;
+  background-color: $main-hover-color;
   padding-left: 48px;
 }
 
