@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
-import Logo from '../assets/img/pressexpresslogo.svg';
+import { ReactComponent as Logo } from '../assets/img/pressexpresslogo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
@@ -19,7 +19,7 @@ const Sidebar = ({ user, isOpen, clicked }) => {
   return (
     <nav className={sidebarClass} onClick={clicked}>
       <div className="sidebar__logo">
-        <img src={Logo} alt="Press Express Logo" />
+        <Logo alt="Press Express Logo" />
       </div>
       <ul className="sidebar__list">
         <li className="sidebar__list-item sidebar__order-form-list-item">
