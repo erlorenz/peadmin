@@ -1,9 +1,9 @@
 import React from 'react';
 
-const OrderInfo = ({ order }) => {
+const OrderInfo = ({ order, styles }) => {
   return (
-    <div className="order__info card">
-      <table className="order__info1">
+    <div className={styles.info}>
+      <table>
         <tbody>
           <tr>
             <th>Name:</th>
@@ -23,7 +23,7 @@ const OrderInfo = ({ order }) => {
           </tr>
         </tbody>
       </table>
-      <table className="order__info2">
+      <table>
         <tbody>
           <tr>
             <th>Hotel:</th>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrderCart = ({ order, cartItems }) => {
+const OrderCart = ({ order, cartItems, styles }) => {
   const cartList = cartItems.map(cartItem => (
     <tr key={cartItem.id}>
       <td>{cartItem.name}</td>
@@ -12,7 +12,7 @@ const OrderCart = ({ order, cartItems }) => {
 
   return (
     <div className="card">
-      <table className="order__cart">
+      <table className={styles.cart}>
         <thead>
           <tr>
             <th>Item</th>

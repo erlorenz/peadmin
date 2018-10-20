@@ -1,12 +1,10 @@
 import React from 'react';
-import format from 'date-fns/format';
-
-const formattedDate = isoDate => format(new Date(isoDate), 'MM/DD/YYYY h:mm a');
+import formatDate from '../../utils/formatDate';
 
 const OrderStatus = ({ order }) => {
   return (
     <div className="card">
-      <table className="order__status">
+      <table>
         <thead>
           <tr>
             <th>Created</th>
@@ -18,11 +16,11 @@ const OrderStatus = ({ order }) => {
         </thead>
         <tbody>
           <tr>
-            <td>{formattedDate(order.created)}</td>
-            <td>{formattedDate(order.pickedUp)}</td>
-            <td>{formattedDate(order.checkedIn)}</td>
-            <td>{formattedDate(order.outForDelivery)}</td>
-            <td>{formattedDate(order.delivered)}</td>
+            <td>{formatDate(order.created)}</td>
+            <td>{formatDate(order.pickedUp)}</td>
+            <td>{formatDate(order.checkedIn)}</td>
+            <td>{formatDate(order.outForDelivery)}</td>
+            <td>{formatDate(order.delivered)}</td>
           </tr>
         </tbody>
       </table>

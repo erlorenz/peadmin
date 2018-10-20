@@ -6,9 +6,10 @@ const OrderEdits = ({
   commentClicked,
   statusValue,
   statusClicked,
+  styles,
 }) => (
-  <div className="order__edits">
-    <div className="order__addcomment">
+  <div className={styles.edits}>
+    <div className={styles.addcomment}>
       <textarea
         rows="5"
         name="adminComment"
@@ -19,7 +20,7 @@ const OrderEdits = ({
         Add Comment
       </button>
     </div>
-    <div className="order__changestatus">
+    <div className={styles.changestatus}>
       <select value={statusValue} name="status" onChange={changed}>
         <option disabled />
         <option>Processed</option>

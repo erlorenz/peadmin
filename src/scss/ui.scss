@@ -75,6 +75,14 @@ input::placeholder {
   margin-top: -50px;
 }
 
+.order-row {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $main-hover-color;
+  }
+}
+
 @media (max-width: 1000px) {
   .order__edits {
     flex-direction: column;

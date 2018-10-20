@@ -6,6 +6,7 @@ import OrderStatus from '../components/Order/OrderStatus';
 import OrderCart from '../components/Order/OrderCart';
 import OrderComments from '../components/Order/OrderComments';
 import OrderEdits from '../components/Order/OrderEdits';
+import styles from '../scss/Order.module.scss';
 
 class Order extends Component {
   state = {
@@ -101,20 +102,21 @@ class Order extends Component {
 
     return (
       <Fragment>
-        <div className="card order__title">
+        <div className={`card ${styles.title}`}>
           <p>{order.status && id ? title.toUpperCase() : null}</p>
         </div>
 
-        <OrderInfo order={order} />
-        <OrderStatus order={order} />
-        <OrderCart order={order} cartItems={cartItems} />
-        <OrderComments comments={comments} />
+        <OrderInfo order={order} styles={styles} />
+        <OrderStatus order={order} styles={styles} />
+        <OrderCart order={order} cartItems={cartItems} styles={styles} />
+        <OrderComments comments={comments} styles={styles} />
         <OrderEdits
           adminCommentValue={adminComment}
           statusValue={status}
           changed={this.changeHandler}
           commentClicked={this.commentAddHandler}
           statusClicked={this.statusChangeHandler}
+          styles={styles}
         />
       </Fragment>
     );
