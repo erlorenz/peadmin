@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import getOrders from '../../utils/getOrders';
 
 class Cancelled extends Component {
   state = {
@@ -7,15 +7,8 @@ class Cancelled extends Component {
     error: false,
   };
 
-  async componentDidMount() {
-    try {
-      const response = await axios.get('/admin/cancelled');
-      console.log('the response:', response.data);
-      this.setState({ orders: response.data, error: false });
-    } catch (e) {
-      this.setState({ error: true });
-      console.log(e.response.data.message);
-    }
+  componentDidMount() {
+    getOrders('cancelled', this);
   }
 
   render() {

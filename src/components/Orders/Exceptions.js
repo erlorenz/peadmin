@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import getOrders from '../../utils/getOrders';
 
 class Exceptions extends Component {
   state = {
@@ -7,15 +7,8 @@ class Exceptions extends Component {
     error: false,
   };
 
-  async componentDidMount() {
-    try {
-      const response = await axios.get('/admin/exceptions');
-      console.log('the response:', response.data);
-      this.setState({ orders: response.data, error: false });
-    } catch (e) {
-      this.setState({ error: true });
-      console.log(e.response.data.message);
-    }
+  componentDidMount() {
+    getOrders('exceptions', this);
   }
 
   render() {

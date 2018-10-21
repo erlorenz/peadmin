@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export default async page => {
+export default async (page, component) => {
   try {
     const response = await axios.get(`/admin/${page}`);
     console.log('the response:', response.data);
-    this.setState({ orders: response.data, error: false });
+    component.setState({ orders: response.data, error: false });
   } catch (e) {
-    this.setState({ error: true });
+    component.setState({ error: true });
     console.log(e.response.data.message);
   }
 };
