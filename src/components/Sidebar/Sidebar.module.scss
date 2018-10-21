@@ -1,3 +1,5 @@
+@import "../../scss/variables.scss";
+
 .sidebar {
   background-color: white;
   display: flex;
@@ -10,7 +12,7 @@
   margin-right: 0.5rem;
 }
 
-.sidebar__logo {
+.logo {
   height: 4rem;
   display: flex;
   justify-content: center;
@@ -19,38 +21,33 @@
   padding: 0 3rem;
 }
 
-.user-signed-in {
-  font-size: 1rem;
-  padding: 2rem;
-}
-
-.sidebar__list {
+.list {
   margin-top: 2rem;
 }
 
-.sidebar__list-item {
+.listItem {
   width: 100%;
 }
 
-.sidebar__list-item:hover {
+.listItem:hover {
   background-color: $main-hover-color;
 }
 
-.sidebar__list-link {
+.listLink {
   display: block;
   line-height: 3.5rem;
   padding-left: 3.5rem;
   color: rgb(139, 139, 139);
 }
 
-.sidebar__order-form-list-item {
+.orderForm {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1.5rem;
 }
 
-.sidebar__order-form-link {
+.orderFormLink {
   background-color: $button-color-secondary;
   color: white;
   line-height: 3rem;
@@ -68,7 +65,7 @@
   padding-left: 48px;
 }
 
-.sidebar__logout {
+.logOut {
   display: none;
 }
 
@@ -83,19 +80,19 @@
     transition: ease-in 0.2s all;
   }
 
-  .sidebar__logo {
+  .logo {
     display: none;
   }
 
-  .sidebar--open {
+  .sidebarOpen {
     transform: translateX(0);
   }
 
-  .sidebar__logout {
+  .logOut {
     display: block;
   }
 
-  .sidebar__list-link {
+  .listLink {
     padding-left: 8rem;
   }
 }

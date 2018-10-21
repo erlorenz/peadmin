@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 
-import App from './containers/App';
+import App from './App';
 import './scss/index.scss';
 import reducers from './reducers';
 

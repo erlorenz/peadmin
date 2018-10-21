@@ -1,3 +1,5 @@
+@import "../../scss/index.scss";
+
 .topbar {
   position: fixed;
   top: 0;
@@ -10,7 +12,7 @@
   width: 100%;
 }
 
-.topbar__menu {
+.menu {
   display: none;
   position: absolute;
   top: 0;
@@ -18,45 +20,50 @@
   height: 100%;
   width: 64px;
   padding: 1rem;
+
+  .hamburger {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-.topbar__list {
+.list {
   display: flex;
   justify-content: flex-end;
   width: 30vw;
 }
 
-.topbar__list-item {
+.listItem {
   display: flex;
   align-items: center;
   padding-right: 2rem;
   color: white;
 }
 
-.react-gravatar {
+.avatar {
   border-radius: 50%;
   height: 37px;
   width: 37px;
   margin-left: 0.5rem;
 }
 
-.topbar__log-out:hover {
+.logOut:hover {
   color: lightblue;
 }
 
-.topbar__log-out a {
+.logOut a {
   line-height: 64px;
 }
 
 @media (max-width: 1000px) {
-  .topbar__list {
-    width: 50%;
+  .list {
+    width: 55%;
   }
-  .topbar__log-out {
+  .logOut {
     display: none;
   }
 
-  .topbar__menu {
+  .menu {
     display: block;
   }
 }

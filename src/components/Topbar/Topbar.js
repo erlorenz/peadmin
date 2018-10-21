@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Gravatar from 'react-gravatar';
-import Hamburger from '../assets/img/hamburger.svg';
+import { ReactComponent as Hamburger } from '../../assets/img/hamburger.svg';
+import styles from './Topbar.module.scss';
 
 class Topbar extends Component {
   render() {
     return (
-      <header className="topbar">
-        <div className="topbar__menu" onClick={this.props.clicked}>
-          <img src={Hamburger} className="topbar__hamburger" alt="menu icon" />
+      <header className={styles.topbar}>
+        <div className={styles.menu} onClick={this.props.clicked}>
+          <Hamburger className={styles.hamburger} alt="menu icon" />
         </div>
-        <ul className="topbar__list">
-          <li className="topbar__list-item">
+        <ul className={styles.list}>
+          <li className={styles.listItem}>
             <span>Hello, {this.props.userName}!</span>
-            <Gravatar email={this.props.user} />
+            <Gravatar email={this.props.user} className={styles.avatar} />
           </li>
 
-          <li className="topbar__list-item topbar__log-out">
+          <li className={`${styles.listItem} ${styles.logOut}`}>
             <Link to="/logout">LOG OUT</Link>
           </li>
         </ul>

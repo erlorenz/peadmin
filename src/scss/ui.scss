@@ -36,7 +36,7 @@ button {
   border-radius: 2px;
   margin-bottom: 1.5rem;
 }
-.button:hover {
+button:hover {
   background-color: $button-hover;
 }
 
@@ -50,6 +50,7 @@ input {
 select {
   padding: 0.5rem;
 }
+
 input {
   display: block;
   border: 1px solid $form-element-border;
@@ -84,12 +85,6 @@ input::placeholder {
 }
 
 @media (max-width: 1000px) {
-  .order__edits {
-    flex-direction: column;
-  }
-  .sidebar {
-    display: none;
-  }
   .main {
     font-size: 0.9rem;
   }

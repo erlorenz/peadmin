@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import Login from '../components/Login';
-import Admin from './Admin';
-import NotFound from '../components/NotFound';
-import Logout from '../components/Logout';
+import Login from './components/Login';
+import Admin from './containers/Admin';
+import NotFound from './components/NotFound';
+import Logout from './components/Logout';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {

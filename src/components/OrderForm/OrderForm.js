@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router-dom';
 import { compose } from 'redux';
 import Spinner from 'react-spinkit';
-import Portal from './Portal';
+import Portal from '../Portal';
+import styles from './OrderForm.module.scss';
 
 class OrderForm extends Component {
   onSubmit = formData => {
@@ -26,7 +27,7 @@ class OrderForm extends Component {
     }
 
     return (
-      <div className="card order-form">
+      <div className={styles.orderForm}>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field
             type="text"

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../../actions';
 import { Redirect } from 'react-router-dom';
-import { main, form } from '../scss/Login.module.scss';
+import styles from './Login.module.scss';
 
 class Login extends Component {
   onSubmit = formData => {
@@ -19,8 +19,8 @@ class Login extends Component {
     }
 
     return (
-      <div className={main}>
-        <form className={form} onSubmit={handleSubmit(this.onSubmit)}>
+      <div className={styles.main}>
+        <form className={styles.form} onSubmit={handleSubmit(this.onSubmit)}>
           <Field
             type="email"
             component="input"

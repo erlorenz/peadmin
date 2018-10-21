@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import Active from '../components/Active';
+import {
+  Active,
+  Completed,
+  Exceptions,
+  SpecialOrders,
+  Cancelled,
+} from '../components/Orders';
 import Order from './Order';
-import Completed from '../components/Completed';
-import Exceptions from '../components/Exceptions';
-import Cancelled from '../components/Cancelled';
 import OrderForm from '../components/OrderForm';
-import SpecialOrders from '../components/SpecialOrders';
 import SpecialOrder from './SpecialOrder';
 import Topbar from '../components/Topbar';
 import { connect } from 'react-redux';
@@ -16,6 +18,7 @@ class Admin extends Component {
   state = {
     sidebarOpen: false,
   };
+
   componentDidMount() {
     if (!this.props.auth) {
       alert('You are not logged in!');

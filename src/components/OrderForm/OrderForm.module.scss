@@ -1,9 +1,10 @@
-.order-form {
+.orderForm {
   padding: 4rem 20rem;
+  background-color: white;
 }
 
 @media (max-width: 1000px) {
-  .order-form {
+  .orderForm {
     display: flex;
     padding: 4rem 0 1.8rem 0;
     flex-direction: column;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link, withRouter } from 'react-router-dom';
-import { ReactComponent as Logo } from '../assets/img/pressexpresslogo.svg';
+import { ReactComponent as Logo } from '../../assets/img/pressexpresslogo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
@@ -9,51 +9,52 @@ import {
   faGift,
   faBan,
 } from '@fortawesome/free-solid-svg-icons';
+import styles from './Sidebar.module.scss';
 
 const Sidebar = ({ user, isOpen, clicked }) => {
-  let sidebarClass = 'sidebar';
+  let sidebarClass = styles.sidebar;
   if (isOpen) {
-    sidebarClass = 'sidebar sidebar--open';
+    sidebarClass = `${styles.sidebar} ${styles.sidebarOpen}`;
   }
 
   return (
     <nav className={sidebarClass} onClick={clicked}>
-      <div className="sidebar__logo">
+      <div className={styles.logo}>
         <Logo alt="Press Express Logo" />
       </div>
-      <ul className="sidebar__list">
-        <li className="sidebar__list-item sidebar__order-form-list-item">
-          <Link to="/admin/orderform" className=" sidebar__order-form-link">
+      <ul className={styles.list}>
+        <li className={`${styles.listItem} ${styles.orderForm}`}>
+          <Link to="/admin/orderform" className={styles.orderFormLink}>
             Order Form
           </Link>
         </li>
-        <li className="sidebar__list-item">
-          <NavLink to="/admin/active" className="sidebar__list-link">
+        <li className={styles.listItem}>
+          <NavLink to="/admin/active" className={styles.listLink}>
             <FontAwesomeIcon icon={faClock} /> Active
           </NavLink>
         </li>
-        <li className="sidebar__list-item">
-          <NavLink to="/admin/completed" className="sidebar__list-link">
+        <li className={styles.listItem}>
+          <NavLink to="/admin/completed" className={styles.listLink}>
             <FontAwesomeIcon icon={faCheckCircle} /> Completed
           </NavLink>
         </li>
-        <li className="sidebar__list-item">
-          <NavLink to="/admin/special" className="sidebar__list-link">
+        <li className={styles.listItem}>
+          <NavLink to="/admin/special" className={styles.listLink}>
             <FontAwesomeIcon icon={faGift} /> Special Orders
           </NavLink>
         </li>
-        <li className="sidebar__list-item">
-          <NavLink to="/admin/cancelled" className="sidebar__list-link">
+        <li className={styles.listItem}>
+          <NavLink to="/admin/cancelled" className={styles.listLink}>
             <FontAwesomeIcon icon={faBan} /> Cancelled
           </NavLink>
         </li>
-        <li className="sidebar__list-item">
-          <NavLink to="/admin/exceptions" className="sidebar__list-link">
+        <li className={styles.listItem}>
+          <NavLink to="/admin/exceptions" className={styles.listLink}>
             <FontAwesomeIcon icon={faExclamationTriangle} /> Exceptions
           </NavLink>
         </li>
-        <li className="sidebar__list-item sidebar__logout">
-          <Link to="/logout" className="sidebar__list-link">
+        <li className={`${styles.listItem} ${styles.logOut}`}>
+          <Link to="/logout" className={styles.listLink}>
             Log Out
           </Link>
         </li>
