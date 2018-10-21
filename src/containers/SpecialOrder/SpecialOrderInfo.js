@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SpecialOrderInfo = ({ order }) => {
+const SpecialOrderInfo = ({ order, styles }) => {
   return (
-    <div className="order__info card">
+    <div className={styles.info}>
       <table className="order__info1">
         <tbody>
           <tr>

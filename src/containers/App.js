@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Login from './Login';
+import Login from '../components/Login';
 import Admin from './Admin';
 import NotFound from '../components/NotFound';
 import Logout from '../components/Logout';

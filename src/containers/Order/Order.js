@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import OrderInfo from '../components/Order/OrderInfo';
-import OrderStatus from '../components/Order/OrderStatus';
-import OrderCart from '../components/Order/OrderCart';
-import OrderComments from '../components/Order/OrderComments';
-import OrderEdits from '../components/Order/OrderEdits';
-import styles from '../scss/Order.module.scss';
+import OrderInfo from './OrderInfo';
+import OrderStatus from './OrderStatus';
+import OrderCart from './OrderCart';
+import OrderComments from './OrderComments';
+import OrderEdits from './OrderEdits';
+import styles from './Order.module.scss';
 
 class Order extends Component {
   state = {
@@ -102,7 +102,7 @@ class Order extends Component {
 
     return (
       <Fragment>
-        <div className={`card ${styles.title}`}>
+        <div className={styles.title}>
           <p>{order.status && id ? title.toUpperCase() : null}</p>
         </div>
 

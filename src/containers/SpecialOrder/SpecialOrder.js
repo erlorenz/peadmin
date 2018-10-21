@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import SpecialOrderInfo from '../components/SpecialOrder/SpecialOrderInfo';
-import SpecialOrderComments from '../components/SpecialOrder/SpecialOrderComments';
-import SpecialOrderEdits from '../components/SpecialOrder/SpecialOrderEdits';
+import SpecialOrderInfo from './SpecialOrderInfo';
+import SpecialOrderComments from './SpecialOrderComments';
+import SpecialOrderEdits from './SpecialOrderEdits';
+import styles from './SpecialOrder.module.scss';
 
 class SpecialOrder extends Component {
   state = {
@@ -95,18 +96,19 @@ class SpecialOrder extends Component {
 
     return (
       <Fragment>
-        <div className="card order__title">
+        <div className={styles.title}>
           <p>{order.status && id ? title.toUpperCase() : null}</p>
         </div>
 
-        <SpecialOrderInfo order={order} />
-        <SpecialOrderComments comments={comments} />
+        <SpecialOrderInfo order={order} styles={styles} />
+        <SpecialOrderComments comments={comments} styles={styles} />
         <SpecialOrderEdits
           adminCommentValue={adminComment}
           statusValue={status}
           changed={this.changeHandler}
           commentClicked={this.commentAddHandler}
           statusClicked={this.statusChangeHandler}
+          styles={styles}
         />
       </Fragment>
     );
