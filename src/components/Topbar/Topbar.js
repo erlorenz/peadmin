@@ -15,7 +15,7 @@ class Topbar extends Component {
         <ul className={styles.list}>
           <li className={styles.listItem}>
             <span>Hello, {this.props.userName}!</span>
-            <Gravatar email={this.props.user} className={styles.avatar} />
+            <Gravatar email={this.props.user} default={'robohash'} className={styles.avatar} />
           </li>
 
           <li className={`${styles.listItem} ${styles.logOut}`}>
