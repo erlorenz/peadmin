@@ -26,7 +26,7 @@ class Active extends Component {
     ));
 
     if (this.state.error) {
-      return <h1>Error retrieving data, please log out and try again</h1>;
+      return <h1>Error retrieving the data, please log out and try again</h1>;
     }
 
     return (
