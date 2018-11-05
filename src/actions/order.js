@@ -31,9 +31,10 @@ export const submitOrder = formData => async dispatch => {
     // const tokenResponse = await createToken();
     // console.log(tokenResponse.token.id);
     // submitData.stripeToken = tokenResponse.token.id;
-    console.log(submitData);
+    submitData.stripeToken = 'tok_visa';
+    console.log('submitData', submitData);
     // Make API call
-    const response = await axios.post('/orderForm', submitData);
+    const response = await axios.post('/specialOrder', submitData);
     console.log(response.data);
     // Remove Spinner and Show Returned Message
     dispatch({

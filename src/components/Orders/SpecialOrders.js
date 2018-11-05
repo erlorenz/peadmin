@@ -9,7 +9,7 @@ class SpecialOrders extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get('/orderform');
+      const response = await axios.get('/specialOrder');
       console.log('the response:', response.data);
       this.setState({ orders: response.data, error: false });
     } catch (e) {
