@@ -17,6 +17,7 @@ const userName = localStorage.getItem('userName');
 // Axios URL and Header setup on load and refresh
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.headers.common.Authorization = token;
+console.log('API URL:', process.env.REACT_APP_API_URL);
 
 // Check for initial state
 const checkAuth = {
