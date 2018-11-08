@@ -15,8 +15,7 @@ const user = localStorage.getItem('user');
 const userName = localStorage.getItem('userName');
 
 // Axios URL and Header setup on load and refresh
-axios.defaults.baseURL = 'http://localhost:3001';
-// axios.defaults.baseURL = 'https://press-express-staging.herokuapp.com';
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.headers.common.Authorization = token;
 
 // Check for initial state
