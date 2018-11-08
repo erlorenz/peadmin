@@ -15,7 +15,13 @@ export const login = formData => async dispatch => {
     localStorage.setItem('token', jwt);
     localStorage.setItem('userName', name);
   } catch (e) {
-    dispatch({ type: AUTH_ERROR, payload: e.response.data.message });
+    let errorMessage = 'Failure with axios sending';
+    if (e.response) {
+      errorMessage = e.response.data.message;
+    } else if (e.request) {
+      errorMessage = 'No response from server.';
+    }
+    dispatch({ type: AUTH_ERROR, payload: errorMessage });
     setTimeout(() => {
       dispatch({ type: AUTH_ERROR, payload: '' });
     }, 5000);
