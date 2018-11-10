@@ -6,7 +6,7 @@ export const login = formData => async dispatch => {
     const response = await axios.post('/auth/login', formData);
     const jwt = response.data.token;
     const name = response.data.userName;
-    axios.defaults.headers.common.Authorization = jwt;
+    axios.defaults.headers.common['x-auth-token'] = jwt;
     dispatch({
       type: AUTH_USER,
       payload: { token: jwt, user: formData.email, userName: name },

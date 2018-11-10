@@ -23,15 +23,13 @@ const OrderEdits = ({
     <div className={styles.changestatus}>
       <select value={statusValue} name="status" onChange={changed}>
         <option disabled />
-        <option>Processed</option>
-        <option>Picked Up</option>
-        <option>Checked In</option>
-        <option>Out For Delivery</option>
-        <option>Completed</option>
-        <option>Cancelled</option>
-        <option>Refunded</option>
-        <option>Additional Charge</option>
-        <option>Returned</option>
+        <option value="processed">Processed</option>
+        <option value="pickedUp">Picked Up</option>
+        <option value="checkedIn">Checked In</option>
+        <option value="outForDelivery">Out For Delivery</option>
+        <option value="completed">Completed</option>
+        <option value="cancelled">Cancelled</option>
+        <option value="exception">Exception</option>
       </select>
       <button type="button" onClick={statusClicked}>
         Update Status

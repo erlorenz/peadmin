@@ -34,7 +34,7 @@ class SpecialOrder extends Component {
   statusChangeHandler = async () => {
     if (this.state.status) {
       try {
-        const response = await axios.patch(
+        const response = await axios.put(
           `/specialOrder/${this.state.id}/status`,
           {
             status: this.state.status,
@@ -59,7 +59,7 @@ class SpecialOrder extends Component {
   commentAddHandler = async () => {
     if (this.state.adminComment) {
       try {
-        const response = await axios.patch(
+        const response = await axios.put(
           `/specialOrder/${this.state.id}/comments`,
           {
             comment: this.state.adminComment,
