@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import {
-  Active,
-  Completed,
-  Exceptions,
-  SpecialOrders,
-  Cancelled,
-} from '../components/Orders';
+import { OrderList } from '../components/Orders';
 import Order from './Order';
 import OrderForm from '../components/OrderForm';
 import SpecialOrder from './SpecialOrder';
 import Topbar from '../components/Topbar';
 import { connect } from 'react-redux';
+import getOrders from '../utils/getOrders';
 
 class Admin extends Component {
   state = {
     sidebarOpen: false,
+    orders: null,
+    list: this.props.match.params.list,
+    error: false,
   };
 
   componentDidMount() {
@@ -24,6 +22,8 @@ class Admin extends Component {
       alert('You are not logged in!');
       this.props.history.push('/');
     }
+
+    getOrders(this.state.list, this);
   }
 
   sidebarToggleHandler = () => {
@@ -31,6 +31,8 @@ class Admin extends Component {
   };
 
   render() {
+    console.log('Admin: ', this.state.orders);
+
     return (
       <div className="admin">
         <Sidebar
@@ -40,14 +42,19 @@ class Admin extends Component {
         <main className="main">
           <Topbar clicked={this.sidebarToggleHandler} />
           <Switch>
-            <Route exact path="/admin/active" component={Active} />
             <Route exact path="/admin/order/:id" component={Order} />
-            <Route exact path="/admin/completed" component={Completed} />
-            <Route exact path="/admin/exceptions" component={Exceptions} />
-            <Route exact path="/admin/cancelled" component={Cancelled} />
             <Route exact path="/admin/orderform" component={OrderForm} />
-            <Route exact path="/admin/special" component={SpecialOrders} />
             <Route exact path="/admin/special/:id" component={SpecialOrder} />
+            <Route
+              path="/admin/"
+              render={props => (
+                <OrderList
+                  {...props}
+                  orders={this.state.orders}
+                  error={this.state.error}
+                />
+              )}
+            />
           </Switch>
         </main>
       </div>

@@ -11,7 +11,7 @@ class App extends Component {
       <Fragment>
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route path="/admin" component={Admin} />
+          <Route path="/admin/:list" component={Admin} />
           <Route path="/logout" component={Logout} />
           <Route path="/" component={NotFound} />
         </Switch>
