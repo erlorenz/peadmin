@@ -17,7 +17,7 @@ export const login = formData => async dispatch => {
   } catch (e) {
     let errorMessage = 'Failure with axios sending';
     if (e.response) {
-      errorMessage = e.response.data.message;
+      errorMessage = e.response.data.error;
     } else if (e.request) {
       errorMessage = 'No response from server.';
     }

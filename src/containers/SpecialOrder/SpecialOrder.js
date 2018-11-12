@@ -18,8 +18,7 @@ class SpecialOrder extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get(`/specialOrder/${this.state.id}`);
-      console.log('the response:', response.data);
+      const response = await axios.get(`/admin/specialOrder/${this.state.id}`);
       this.setState({
         order: response.data,
         error: false,
@@ -35,7 +34,7 @@ class SpecialOrder extends Component {
     if (this.state.status) {
       try {
         const response = await axios.put(
-          `/specialOrder/${this.state.id}/status`,
+          `/admin/specialOrder/${this.state.id}/status`,
           {
             status: this.state.status,
           },
@@ -60,7 +59,7 @@ class SpecialOrder extends Component {
     if (this.state.adminComment) {
       try {
         const response = await axios.put(
-          `/specialOrder/${this.state.id}/comments`,
+          `/admin/specialOrder/${this.state.id}/comments`,
           {
             comment: this.state.adminComment,
             user: this.state.username,

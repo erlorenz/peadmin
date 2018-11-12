@@ -1,11 +1,3 @@
-export { default as Active } from './Active';
-
-export { default as Completed } from './Completed';
-
-export { default as Exceptions } from './Exceptions';
-
-export { default as SpecialOrders } from './SpecialOrders';
-
-export { default as Cancelled } from './Cancelled';
+export { default as SpecialOrderList } from './SpecialOrderList';
 
 export { default as OrderList } from './OrderList';

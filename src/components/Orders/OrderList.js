@@ -1,15 +1,14 @@
 import React from 'react';
 
-const OrderList = ({ orders, error }) => {
+const OrderList = ({ orders, error, history }) => {
+  // Display order information if there is any
   let orderRows;
   if (orders) {
-    console.log('THERE ARE ORDERS');
-
     orderRows = orders.map(order => (
       <tr
         key={order._id}
         className="order-row"
-        onClick={() => this.props.history.push(`/admin/${order._id}`)}>
+        onClick={() => history.push(`/admin/order/${order._id}`)}>
         <td>{order.name}</td>
         <td>{order.hotel}</td>
         <td>{order.pickupDate + ' ' + order.pickupHour}</td>
@@ -19,9 +18,13 @@ const OrderList = ({ orders, error }) => {
     ));
   }
 
+  // Display error message
   if (error) {
     return <h1>Error retrieving the data, please log out and try again</h1>;
   }
+
+  // Display different headers
+
   return (
     <div className="card">
       <table>

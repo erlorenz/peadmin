@@ -39,7 +39,7 @@ const Sidebar = ({ user, isOpen, clicked }) => {
           </NavLink>
         </li>
         <li className={styles.listItem}>
-          <NavLink to="/admin/special" className={styles.listLink}>
+          <NavLink to="/admin/specialorders" className={styles.listLink}>
             <FontAwesomeIcon icon={faGift} /> Special Orders
           </NavLink>
         </li>

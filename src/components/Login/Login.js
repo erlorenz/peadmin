@@ -15,7 +15,7 @@ class Login extends Component {
     const { handleSubmit } = this.props;
 
     if (this.props.authenticated) {
-      return <Redirect to="/admin/lists/active" />;
+      return <Redirect to="/admin/active" />;
     }
 
     return (
