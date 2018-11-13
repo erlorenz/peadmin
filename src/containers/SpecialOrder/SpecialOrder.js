@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import SpecialOrderInfo from './SpecialOrderInfo';
 import SpecialOrderComments from './SpecialOrderComments';
 import SpecialOrderEdits from './SpecialOrderEdits';
@@ -114,7 +113,4 @@ class SpecialOrder extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { user: state.auth.user, userName: state.auth.userName };
-};
-export default connect(mapStateToProps)(SpecialOrder);
+export default SpecialOrder;

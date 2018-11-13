@@ -1,65 +1,34 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../actions';
-import { Field, reduxForm } from 'redux-form';
-import { Redirect } from 'react-router-dom';
-import { compose } from 'redux';
-import Spinner from 'react-spinkit';
-import Portal from '../Portal';
+// import { Redirect } from 'react-router-dom';
+// import Spinner from 'react-spinkit';
+// import Portal from '../Portal';
 import styles from './OrderForm.module.scss';
 
 class OrderForm extends Component {
-  onSubmit = formData => {
-    this.props.submitOrder(formData);
-  };
+  onSubmit = () => console.log('Order submitted!');
 
   render() {
-    if (this.props.orderStatus === 'success') {
-      return <Redirect to="/admin/specialorders" />;
-    }
+    // if (this.props.orderStatus === 'success') {
+    //   return <Redirect to="/admin/specialorders" />;
+    // }
 
-    if (this.props.orderStatus === 'pending') {
-      return (
-        <Portal>
-          <Spinner name="three-bounce" className="spinner" />
-        </Portal>
-      );
-    }
+    // if (this.props.orderStatus === 'pending') {
+    //   return (
+    //     <Portal>
+    //       <Spinner name="three-bounce" className="spinner" />
+    //     </Portal>
+    //   );
+    // }
 
     return (
       <div className={styles.orderForm}>
-        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-          <Field
-            type="text"
-            component="input"
-            name="name"
-            placeholder="Full Name"
-          />
-          <Field
-            type="email"
-            component="input"
-            name="email"
-            placeholder="Email"
-          />
-          <Field
-            type="tel"
-            placeholder="Phone Number"
-            name="phone"
-            component="input"
-          />
-          <Field
-            type="text"
-            placeholder="Company"
-            name="company"
-            component="input"
-          />
-          <Field
-            type="number"
-            placeholder="Total Price"
-            name="totalPrice"
-            component="input"
-          />
-          <Field name="description" component="textarea" rows="10" />
+        <form onSubmit={this.onSubmit}>
+          <input type="text" name="name" placeholder="Full Name" />
+          <input type="email" name="email" placeholder="Email" />
+          <input type="tel" placeholder="Phone Number" name="phone" />
+          <input type="text" placeholder="Company" name="company" />
+          <input type="number" placeholder="Total Price" name="totalPrice" />
+          <textarea name="description" rows="10" />
           <button type="submit" className="button">
             Submit
           </button>
@@ -70,18 +39,4 @@ class OrderForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    orderStatus: state.order.status,
-    errorMessage: state.order.errorMessage,
-    message: state.order.message,
-  };
-};
-
-export default compose(
-  connect(
-    mapStateToProps,
-    actions,
-  ),
-  reduxForm({ form: 'orderForm' }),
-)(OrderForm);
+export default OrderForm;

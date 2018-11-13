@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
-import { OrderList, SpecialOrderList } from '../components/Orders';
-import Order from './Order';
-import OrderForm from '../components/OrderForm';
-import SpecialOrder from './SpecialOrder';
-import Topbar from '../components/Topbar';
-import { connect } from 'react-redux';
-import getOrders from '../utils/getOrders';
+import Sidebar from '../../components/Sidebar';
+import { OrderList, SpecialOrderList } from '../../components/Orders';
+import Order from '../Order';
+import OrderForm from '../../components/OrderForm';
+import SpecialOrder from '../SpecialOrder';
+import Topbar from '../../components/Topbar';
+import getOrders from '../../utils/getOrders';
 
 class Admin extends Component {
   state = {
@@ -17,10 +16,6 @@ class Admin extends Component {
   };
 
   componentDidMount() {
-    if (!this.props.auth) {
-      alert('You are not logged in!');
-      this.props.history.push('/');
-    }
     getOrders(this.props.match.params.list, this);
   }
 
@@ -76,8 +71,4 @@ class Admin extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { auth: state.auth.authenticated };
-};
-
-export default connect(mapStateToProps)(Admin);
+export default Admin;

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import OrderInfo from './OrderInfo';
 import OrderStatus from './OrderStatus';
 import OrderCart from './OrderCart';
@@ -123,7 +122,4 @@ class Order extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { user: state.auth.user, userName: state.auth.userName };
-};
-export default connect(mapStateToProps)(Order);
+export default Order;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import Gravatar from 'react-gravatar';
 import { ReactComponent as Hamburger } from '../../assets/img/hamburger.svg';
 import styles from './Topbar.module.scss';
@@ -15,7 +14,11 @@ class Topbar extends Component {
         <ul className={styles.list}>
           <li className={styles.listItem}>
             <span>Hello, {this.props.userName}!</span>
-            <Gravatar email={this.props.user} default={'robohash'} className={styles.avatar} />
+            <Gravatar
+              email={this.props.user}
+              default={'robohash'}
+              className={styles.avatar}
+            />
           </li>
 
           <li className={`${styles.listItem} ${styles.logOut}`}>
@@ -27,7 +30,4 @@ class Topbar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { user: state.auth.user, userName: state.auth.userName };
-};
-export default connect(mapStateToProps)(Topbar);
+export default Topbar;
