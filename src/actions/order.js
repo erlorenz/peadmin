@@ -25,7 +25,7 @@ export const submitOrder = formData => async dispatch => {
     dispatch({ type: ORDER_PENDING });
 
     //Change Dollar Amount
-    submitData.totalPrice = submitData.totalPrice * 100;
+    submitData.totalPrice = Math.round(submitData.totalPrice * 100);
 
     // Get Stripe Token
     // const tokenResponse = await createToken();
@@ -49,6 +49,6 @@ export const submitOrder = formData => async dispatch => {
     }, 3000);
     // Handle Erorrs
   } catch (e) {
-    dispatch({ type: ORDER_ERROR, payload: e.message });
+    dispatch({ type: ORDER_ERROR, payload: e.response.data.error });
   }
 };

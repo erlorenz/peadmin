@@ -15,7 +15,7 @@ class OrderForm extends Component {
 
   render() {
     if (this.props.orderStatus === 'success') {
-      return <Redirect to="/admin/special" />;
+      return <Redirect to="/admin/specialorders" />;
     }
 
     if (this.props.orderStatus === 'pending') {
