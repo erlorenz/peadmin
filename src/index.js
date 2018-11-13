@@ -3,5 +3,11 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 import './scss/index.scss';
+import { AuthProvider } from './contexts';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <AuthProvider>
+    <App />
+  </AuthProvider>,
+  document.getElementById('root'),
+);

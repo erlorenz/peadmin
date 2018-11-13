@@ -7,8 +7,10 @@ import OrderForm from '../../components/OrderForm';
 import SpecialOrder from '../SpecialOrder';
 import Topbar from '../../components/Topbar';
 import getOrders from '../../utils/getOrders';
+import { AuthContext } from '../../contexts';
 
 class Admin extends Component {
+  static contextType = AuthContext;
   state = {
     sidebarOpen: false,
     orders: null,
@@ -17,6 +19,8 @@ class Admin extends Component {
 
   componentDidMount() {
     getOrders(this.props.match.params.list, this);
+
+    if (!this.context.isAuthenticated) this.props.history.push('/');
   }
 
   componentDidUpdate(prevProps, prevState) {

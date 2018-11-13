@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default () => {
   // Check if there is any information in local storage
+  const isAdmin = localStorage.getItem('isAdmin');
   const token = localStorage.getItem('token');
-  const user = localStorage.getItem('user');
   const userName = localStorage.getItem('userName');
 
   // Axios URL and Header setup on load and refresh
@@ -11,8 +11,8 @@ export default () => {
   axios.defaults.headers.common['x-auth-token'] = token;
 
   return {
-    authenticated: token,
-    user,
+    isAuthenticated: token,
     userName,
+    isAdmin,
   };
 };

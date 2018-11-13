@@ -93,9 +93,8 @@ class Order extends Component {
   render() {
     const { order, id, cartItems, comments, adminComment, status } = this.state;
 
-    if (this.state.error) {
+    if (this.state.error)
       return <h1>Error retrieving data, please log out and try again</h1>;
-    }
 
     const title = `${id} - ${order.status}`;
 
