@@ -5,9 +5,12 @@ import OrderStatus from './OrderStatus';
 import OrderCart from './OrderCart';
 import OrderComments from './OrderComments';
 import OrderEdits from './OrderEdits';
+import SpecialOrderInfo from './SpecialOrderInfo';
 import styles from './Order.module.scss';
+import { AuthContext } from '../../contexts';
 
 class Order extends Component {
+  static contextType = AuthContext;
   state = {
     order: {},
     id: this.props.match.params.id,
@@ -15,13 +18,15 @@ class Order extends Component {
     adminComment: '',
     cartItems: [],
     comments: [],
-    username: this.props.userName,
+    userName: this.context.userName,
   };
 
+  // API call
   async componentDidMount() {
     try {
-      const response = await axios.get(`/admin/order/${this.state.id}`);
-      console.log('the response:', response.data);
+      const response = await axios.get(
+        `/admin/${this.props.type}/${this.state.id}`,
+      );
       this.setState({
         order: response.data,
         error: false,
@@ -38,7 +43,7 @@ class Order extends Component {
     if (this.state.status) {
       try {
         const response = await axios.put(
-          `/admin/order/${this.state.id}/status`,
+          `/admin/${this.props.type}/${this.state.id}/status`,
           {
             status: this.state.status,
           },
@@ -64,10 +69,10 @@ class Order extends Component {
     if (this.state.adminComment) {
       try {
         const response = await axios.put(
-          `/admin/order/${this.state.id}/comments`,
+          `/admin/${this.props.type}/${this.state.id}/comments`,
           {
             comment: this.state.adminComment,
-            user: this.state.username,
+            user: this.state.userName,
           },
         );
         this.setState({
@@ -97,16 +102,21 @@ class Order extends Component {
       return <h1>Error retrieving data, please log out and try again</h1>;
 
     const title = `${id} - ${order.status}`;
+    let info;
+    this.props.type === 'order'
+      ? (info = <OrderInfo order={order} styles={styles} />)
+      : (info = <SpecialOrderInfo order={order} styles={styles} />);
 
     return (
       <Fragment>
         <div className={styles.title}>
           <p>{order.status && id ? title.toUpperCase() : null}</p>
         </div>
-
-        <OrderInfo order={order} styles={styles} />
+        {info}
         <OrderStatus order={order} styles={styles} />
-        <OrderCart order={order} cartItems={cartItems} styles={styles} />
+        {this.props.type === 'order' && (
+          <OrderCart order={order} cartItems={cartItems} styles={styles} />
+        )}{' '}
         <OrderComments comments={comments} styles={styles} />
         <OrderEdits
           adminCommentValue={adminComment}

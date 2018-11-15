@@ -5,6 +5,7 @@ export default () => {
   const isAdmin = localStorage.getItem('isAdmin');
   const token = localStorage.getItem('token');
   const userName = localStorage.getItem('userName');
+  const email = localStorage.getItem('email');
 
   // Axios URL and Header setup on load and refresh
   axios.defaults.baseURL = process.env.REACT_APP_API_URL;
@@ -14,5 +15,6 @@ export default () => {
     isAuthenticated: token,
     userName,
     isAdmin,
+    email,
   };
 };

@@ -11,7 +11,7 @@ const OrderStatus = ({ order }) => {
             <th>Picked Up</th>
             <th>Checked In</th>
             <th>Out For Delivery</th>
-            <th>Delivered</th>
+            <th>Completed</th>
           </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@ const OrderStatus = ({ order }) => {
             <td>{formatDate(order.pickedUp)}</td>
             <td>{formatDate(order.checkedIn)}</td>
             <td>{formatDate(order.outForDelivery)}</td>
-            <td>{formatDate(order.delivered)}</td>
+            <td>{formatDate(order.completed)}</td>
           </tr>
         </tbody>
       </table>

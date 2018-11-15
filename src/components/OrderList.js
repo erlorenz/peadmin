@@ -1,20 +1,26 @@
 import React from 'react';
 
-const OrderList = ({ orders, error, history }) => {
+const OrderList = ({ orders, error, history, fields, type }) => {
   // Display order information if there is any
-  let orderRows;
+
+  let orderRows, orderHeaders;
   if (orders) {
     orderRows = orders.map(order => (
       <tr
         key={order._id}
         className="order-row"
-        onClick={() => history.push(`/admin/order/${order._id}`)}>
-        <td>{order.name}</td>
-        <td>{order.hotel}</td>
-        <td>{order.pickupDate + ' ' + order.pickupHour}</td>
-        <td>{order.returnDate + ' ' + order.returnHour}</td>
-        <td>{order.status}</td>
+        onClick={() => history.push(`/admin/${type}/${order._id}`)}>
+        {fields.map((field, index) =>
+          field === 'totalPrice' ? (
+            <td key={index}>{order[field] / 100}</td>
+          ) : (
+            <td key={index}>{order[field]}</td>
+          ),
+        )}
       </tr>
+    ));
+    orderHeaders = fields.map((field, index) => (
+      <th key={index}>{field.toUpperCase()}</th>
     ));
   }
 
@@ -24,18 +30,11 @@ const OrderList = ({ orders, error, history }) => {
   }
 
   // Display different headers
-
   return (
     <div className="card">
       <table>
         <thead>
-          <tr>
-            <th>Name</th>
-            <th>Hotel</th>
-            <th>Pickup</th>
-            <th>Return</th>
-            <th>Status</th>
-          </tr>
+          <tr>{orderHeaders}</tr>
         </thead>
         <tbody>{orderRows}</tbody>
       </table>

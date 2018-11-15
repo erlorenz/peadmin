@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Spinner from 'react-spinkit';
-import Portal from '../Portal';
-import SpecialOrderForm from './SpecialOrderForm';
+import Portal from '../../components/Portal';
+import OrderForm from './OrderForm';
+import submitOrderForm from './submitOrderForm';
 
-class OrderForm extends Component {
+class OrderFormContainer extends Component {
   state = {
     orderStatus: '',
     name: '',
@@ -16,18 +17,21 @@ class OrderForm extends Component {
     errorMessage: '',
   };
 
-  handleSubmit = () => console.log('Order submitted!');
+  handleSubmit = event => {
+    event.preventDefault();
+    submitOrderForm(this.state, this);
+  };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
-    if (this.props.orderStatus === 'success') {
+    if (this.state.orderStatus === 'success') {
       return <Redirect to="/admin/specialorders" />;
     }
 
-    if (this.props.orderStatus === 'pending') {
+    if (this.state.orderStatus === 'pending') {
       return (
         <Portal>
           <Spinner name="three-bounce" className="spinner" />
@@ -36,7 +40,7 @@ class OrderForm extends Component {
     }
 
     return (
-      <SpecialOrderForm
+      <OrderForm
         name={this.state.name}
         phone={this.state.phone}
         email={this.state.email}
@@ -44,9 +48,10 @@ class OrderForm extends Component {
         company={this.state.company}
         onSubmit={this.handleSubmit}
         onChange={this.handleChange}
+        errorMessage={this.state.errorMessage}
       />
     );
   }
 }
 
-export default OrderForm;
+export default OrderFormContainer;

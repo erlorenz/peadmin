@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
-import { OrderList, SpecialOrderList } from '../../components/Orders';
+import OrderList from '../../components/OrderList';
 import Order from '../Order';
-import OrderForm from '../../components/OrderForm';
-import SpecialOrder from '../SpecialOrder';
+import OrderForm from '../../containers/OrderForm';
 import Topbar from '../../components/Topbar';
 import getOrders from '../../utils/getOrders';
 import { AuthContext } from '../../contexts';
-
+import { orderFields, specialOrderFields } from '../Order/orderFields';
 class Admin extends Component {
   static contextType = AuthContext;
   state = {
@@ -39,22 +38,32 @@ class Admin extends Component {
           clicked={this.sidebarToggleHandler}
         />
         <main className="main">
-          <Topbar clicked={this.sidebarToggleHandler} />
+          <Topbar
+            clicked={this.sidebarToggleHandler}
+            email={this.context.email}
+            userName={this.context.userName}
+          />
           <Switch>
             <Route exact path="/admin/orderform" component={OrderForm} />
-            <Route exact path="/admin/order/:id" component={Order} />
+            <Route
+              exact
+              path="/admin/order/:id"
+              render={props => <Order {...props} type="order" />}
+            />
             <Route
               exact
               path="/admin/specialOrder/:id"
-              component={SpecialOrder}
+              render={props => <Order {...props} type="specialOrder" />}
             />
             <Route
               path="/admin/specialorders"
               render={props => (
-                <SpecialOrderList
+                <OrderList
                   {...props}
                   orders={this.state.orders}
                   error={this.state.error}
+                  fields={specialOrderFields}
+                  type="specialOrder"
                 />
               )}
             />
@@ -65,6 +74,8 @@ class Admin extends Component {
                   {...props}
                   orders={this.state.orders}
                   error={this.state.error}
+                  fields={orderFields}
+                  type="order"
                 />
               )}
             />

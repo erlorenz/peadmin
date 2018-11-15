@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import initialAuth from '../utils/initialAuth';
 
 const DEFAULT_STATE = initialAuth();
-console.log('Default state:', DEFAULT_STATE);
 
 const AuthContext = React.createContext(DEFAULT_STATE);
 
@@ -13,10 +12,23 @@ class AuthProvider extends Component {
     this.setState(authData);
   };
 
+  logoutHandler = () => {
+    this.setState({
+      isAdmin: '',
+      isAuthenticated: '',
+      userName: '',
+      email: '',
+    });
+  };
+
   render() {
     return (
       <AuthContext.Provider
-        value={{ ...this.state, authenticate: this.authHandler }}>
+        value={{
+          ...this.state,
+          authenticate: this.authHandler,
+          logout: this.logoutHandler,
+        }}>
         {this.props.children}
       </AuthContext.Provider>
     );

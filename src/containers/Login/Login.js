@@ -33,12 +33,14 @@ class Login extends Component {
       this.context.authenticate({
         isAuthenticated: token,
         userName,
+        email: this.state.email,
       });
 
       // Persist to local storage
       localStorage.setItem('token', token);
       localStorage.setItem('isAdmin', isAdmin);
       localStorage.setItem('userName', userName);
+      localStorage.setItem('email', this.state.email);
 
       //Create error message
     } catch (e) {
