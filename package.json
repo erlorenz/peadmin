@@ -1,20 +1,20 @@
 {
-  "name": "pressreactadmin",
+  "name": "peadmin",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.9",
-    "@fortawesome/free-solid-svg-icons": "^5.6.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.12",
+    "@fortawesome/free-solid-svg-icons": "^5.6.3",
     "@fortawesome/react-fontawesome": "^0.1.3",
     "axios": "^0.18.0",
-    "date-fns": "^1.29.0",
-    "node-sass": "^4.10.0",
-    "npm": "^6.4.1",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "date-fns": "^1.30.1",
+    "node-sass": "^4.11.0",
+    "npm": "^6.5.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-gravatar": "^2.6.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
+    "react-scripts": "^2.1.2",
     "react-spinkit": "^3.0.0",
     "react-stripe-elements": "^2.0.1"
   },
@@ -35,7 +35,7 @@
   ],
   "devDependencies": {
     "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "prettier": "^1.15.3"
   }
 }
