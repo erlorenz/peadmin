@@ -1,11 +1,11 @@
 export default (component, e) => {
   // Extract error
-  let errorMessage = 'Failure with axios sending';
+  let errorMessage;
   if (e.response) {
     errorMessage = e.response.data.error;
   } else if (e.request) {
     errorMessage = 'No response from server.';
-  } else errorMessage = 'Something went wrong.';
+  } else errorMessage = 'Could not send request';
   console.log(errorMessage);
 
   // Show Error Message for 5 Seconds

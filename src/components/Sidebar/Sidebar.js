@@ -1,14 +1,15 @@
 import React from 'react';
-import { NavLink, Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/img/pressexpresslogo.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
   faCheckCircle,
   faExclamationTriangle,
   faGift,
   faBan,
+  faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import SidebarLink from '../SidebarLink';
 import styles from './Sidebar.module.scss';
 
 const Sidebar = ({ user, isOpen, clicked }) => {
@@ -23,41 +24,27 @@ const Sidebar = ({ user, isOpen, clicked }) => {
         <Logo alt="Press Express Logo" />
       </div>
       <ul className={styles.list}>
-        <li className={`${styles.listItem} ${styles.orderForm}`}>
-          <Link to="/admin/orderform" className={styles.orderFormLink}>
-            Order Form
-          </Link>
-        </li>
-        <li className={styles.listItem}>
-          <NavLink to="/admin/active" className={styles.listLink}>
-            <FontAwesomeIcon icon={faClock} /> Active
-          </NavLink>
-        </li>
-        <li className={styles.listItem}>
-          <NavLink to="/admin/completed" className={styles.listLink}>
-            <FontAwesomeIcon icon={faCheckCircle} /> Completed
-          </NavLink>
-        </li>
-        <li className={styles.listItem}>
-          <NavLink to="/admin/specialorders" className={styles.listLink}>
-            <FontAwesomeIcon icon={faGift} /> Special Orders
-          </NavLink>
-        </li>
-        <li className={styles.listItem}>
-          <NavLink to="/admin/cancelled" className={styles.listLink}>
-            <FontAwesomeIcon icon={faBan} /> Cancelled
-          </NavLink>
-        </li>
-        <li className={styles.listItem}>
-          <NavLink to="/admin/exceptions" className={styles.listLink}>
-            <FontAwesomeIcon icon={faExclamationTriangle} /> Exceptions
-          </NavLink>
-        </li>
-        <li className={`${styles.listItem} ${styles.logOut}`}>
-          <Link to="/logout" className={styles.listLink}>
-            Log Out
-          </Link>
-        </li>
+        <SidebarLink route="/admin/orderform" orderForm={true}>
+          Order Form
+        </SidebarLink>
+        <SidebarLink route="/admin/active" icon={faClock}>
+          Active
+        </SidebarLink>
+        <SidebarLink route="/admin/specialorders" icon={faGift}>
+          Special Orders
+        </SidebarLink>
+        <SidebarLink route="/admin/completed" icon={faCheckCircle}>
+          Completed
+        </SidebarLink>
+        <SidebarLink route="/admin/cancelled" icon={faBan}>
+          Cancelled
+        </SidebarLink>
+        <SidebarLink route="/admin/exceptions" icon={faExclamationTriangle}>
+          Exceptions
+        </SidebarLink>
+        <SidebarLink route="/signout" icon={faSignOutAlt}>
+          Log Out
+        </SidebarLink>
       </ul>
     </nav>
   );

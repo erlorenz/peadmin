@@ -2,25 +2,21 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../contexts';
 import axios from 'axios';
+import { localStorageHelper } from '../utils';
 
-class Logout extends Component {
+class SignOut extends Component {
   static contextType = AuthContext;
 
   componentDidMount() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('isAdmin');
+    localStorageHelper.remove();
     delete axios.defaults.headers.common.Authorization;
 
-    this.context.authenticate({
-      userName: '',
-      isAuthenticated: '',
-      isAdmin: false,
-    });
+    this.context.signOut();
   }
+
   render() {
     return <Redirect to="/" />;
   }
 }
 
-export default Logout;
+export default SignOut;

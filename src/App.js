@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
-import Login from './containers/Login';
-import Admin from './containers/Admin';
-import NotFound from './components/NotFound';
-import Logout from './components/Logout';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
-// const auth = initialAuth();
+import SignIn from './containers/SignIn';
+import Admin from './containers/Admin';
+import NotFound from './components/NotFound';
+import SignOut from './components/SignOut';
+import AdminLoading from './components/AdminLoading';
+import AdminLanding from './components/AdminLanding';
+import { AuthContext } from './contexts';
 
 class App extends Component {
+  static contextType = AuthContext;
+
+  componentDidMount() {
+    this.context.initialAuthCheck();
+  }
+
   render() {
+    if (!this.context.state.token) return <SignIn />;
+
+    if (this.context.state.isAuthenticating) return <AdminLoading />;
+
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={Login} />
+          <Route exact path="/" component={AdminLanding} />
           <Route path="/admin/:list" component={Admin} />
-          <Route path="/logout" component={Logout} />
+          <Route path="/signout" component={SignOut} />
           <Route path="/" component={NotFound} />
         </Switch>
       </Router>
     );
   }
 }
+
 export default App;

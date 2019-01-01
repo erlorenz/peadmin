@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import OrderList from '../../components/OrderList';
 import Order from '../Order';
-import OrderForm from '../../containers/OrderForm';
+import SpecialOrderForm from '../../containers/SpecialOrderForm';
 import Topbar from '../../components/Topbar';
 import getOrders from '../../utils/getOrders';
 import { AuthContext } from '../../contexts';
@@ -20,7 +20,7 @@ class Admin extends Component {
   componentDidMount() {
     getOrders(this.props.match.params.list, this);
 
-    if (!this.context.isAuthenticated) this.props.history.push('/');
+    if (!this.context.state.token) this.props.history.push('/');
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -33,7 +33,7 @@ class Admin extends Component {
 
   render() {
     return (
-      <div className="admin">
+      <div className="layout">
         <Sidebar
           isOpen={this.state.sidebarOpen}
           clicked={this.sidebarToggleHandler}
@@ -45,7 +45,7 @@ class Admin extends Component {
             userName={this.context.userName}
           />
           <Switch>
-            <Route exact path="/admin/orderform" component={OrderForm} />
+            <Route exact path="/admin/orderform" component={SpecialOrderForm} />
             <Route
               exact
               path="/admin/order/:id"
