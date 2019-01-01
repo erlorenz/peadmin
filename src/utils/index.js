@@ -1,5 +1,3 @@
-export { default as hydrateUser } from './hydrateUser';
-
 export { default as getOrders } from './getOrders';
 
 export { default as showError } from './showError';

@@ -16,8 +16,9 @@ class SignIn extends Component {
     const authData = {
       token: 'tok_visa',
       name: 'Erik Lorenz',
-      access_level: 'admin',
+      accessLevel: 'admin',
       email: 'e@email.com',
+      id: 'sdfkljdsjf',
     };
 
     this.context.signIn(authData);

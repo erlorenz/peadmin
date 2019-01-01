@@ -13,13 +13,19 @@ class App extends Component {
   static contextType = AuthContext;
 
   componentDidMount() {
-    this.context.initialAuthCheck();
+    this.context.hydrateUser();
   }
 
   render() {
     if (!this.context.state.token) return <SignIn />;
 
-    if (this.context.state.isAuthenticating) return <AdminLoading />;
+    if (this.context.state.isAuthenticating)
+      return (
+        <AdminLoading
+          checkToken={this.context.checkToken}
+          token={this.context.state.token}
+        />
+      );
 
     return (
       <Router>
