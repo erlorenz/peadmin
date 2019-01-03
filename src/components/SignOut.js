@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../contexts';
-import axios from 'axios';
 import { localStorageHelper } from '../utils';
 
 class SignOut extends Component {
@@ -9,8 +8,7 @@ class SignOut extends Component {
 
   componentDidMount() {
     localStorageHelper.remove();
-    delete axios.defaults.headers.common.Authorization;
-
+    console.log('Signing OUt');
     this.context.signOut();
   }
 

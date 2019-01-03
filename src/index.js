@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ApolloProvider, Query } from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
+import { BrowserRouter } from 'react-router-dom';
 
 import { AuthProvider } from './contexts';
 import App from './App';
@@ -12,10 +13,12 @@ export const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <AuthProvider>
+  <BrowserRouter>
     <ApolloProvider client={client}>
-      <App client={client} />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ApolloProvider>
-  </AuthProvider>,
+  </BrowserRouter>,
   document.querySelector('#root'),
 );

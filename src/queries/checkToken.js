@@ -1,15 +1,12 @@
 import gql from 'graphql-tag';
 
-export default token => {
-  return {
-    query: gql`
-        {
-            checkToken(token) {
-                success
-                message
-            }
-        }
-      
-      `,
-  };
-};
+export const CHECK_TOKEN = gql`
+  query CheckToken {
+    checkToken {
+      name
+      id
+      access_level
+      email
+    }
+  }
+`;

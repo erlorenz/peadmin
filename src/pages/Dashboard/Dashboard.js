@@ -3,13 +3,13 @@ import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import OrderList from '../../components/OrderList';
 import Order from '../Order';
-import SpecialOrderForm from '../../containers/SpecialOrderForm';
+import SpecialOrderForm from '../SpecialOrderForm';
 import Topbar from '../../components/Topbar';
 import getOrders from '../../utils/getOrders';
 import { AuthContext } from '../../contexts';
 import { orderFields, specialOrderFields } from '../Order/orderFields';
 
-class Admin extends Component {
+class Dashboard extends Component {
   static contextType = AuthContext;
   state = {
     sidebarOpen: false,
@@ -45,19 +45,23 @@ class Admin extends Component {
             userName={this.context.userName}
           />
           <Switch>
-            <Route exact path="/admin/orderform" component={SpecialOrderForm} />
             <Route
               exact
-              path="/admin/order/:id"
+              path="/dashboard/orderform"
+              component={SpecialOrderForm}
+            />
+            <Route
+              exact
+              path="/dashboard/order/:id"
               render={props => <Order {...props} type="order" />}
             />
             <Route
               exact
-              path="/admin/specialOrder/:id"
+              path="/dashboard/specialOrder/:id"
               render={props => <Order {...props} type="specialOrder" />}
             />
             <Route
-              path="/admin/specialorders"
+              path="/dashboard/specialorders"
               render={props => (
                 <OrderList
                   {...props}
@@ -69,7 +73,7 @@ class Admin extends Component {
               )}
             />
             <Route
-              path="/admin/"
+              path="/dashboard/"
               render={props => (
                 <OrderList
                   {...props}
@@ -87,4 +91,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default Dashboard;

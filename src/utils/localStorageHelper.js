@@ -6,7 +6,9 @@ export default {
       localStorage.setItem(key, value);
     }
   },
-  get: 'sdfsd',
+  get: () => {
+    console.log(Object.entries(localStorage));
+  },
 
   remove: () => {
     const keys = Object.keys(localStorage);
