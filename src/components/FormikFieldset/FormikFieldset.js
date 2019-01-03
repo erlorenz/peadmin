@@ -6,7 +6,7 @@ export default ({ type, name, label, ...props }) => {
   return (
     <fieldset className={styles.fieldset}>
       <label className={styles.label}>{label}</label>
-      <Field name={name} {...props} />
+      <Field name={name} type={type} {...props} className={styles.input} />
       <p className={styles.errorMessage}>
         <ErrorMessage name={name} />
       </p>

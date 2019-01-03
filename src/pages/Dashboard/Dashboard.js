@@ -18,14 +18,10 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    getOrders(this.props.match.params.list, this);
-
     if (!this.context.state.token) this.props.history.push('/');
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    getOrders(this.props.match.params.list, this, prevProps.match.params.list);
-  }
+  componentDidUpdate(prevProps, prevState) {}
 
   sidebarToggleHandler = () => {
     this.setState({ sidebarOpen: !this.state.sidebarOpen });
@@ -41,8 +37,8 @@ class Dashboard extends Component {
         <main className="main">
           <Topbar
             clicked={this.sidebarToggleHandler}
-            email={this.context.email}
-            userName={this.context.userName}
+            email={this.context.state.email}
+            userName={this.context.state.name}
           />
           <Switch>
             <Route

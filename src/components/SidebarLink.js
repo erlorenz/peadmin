@@ -9,13 +9,15 @@ export default function SidebarLink({
   route,
   icon,
   orderForm = false,
+  hide = false,
 }) {
   const liStyle = orderForm ? styles.orderForm : '';
   const linkStyle = orderForm ? 'orderFormLink' : 'listLink';
   const iconElement = icon ? <FontAwesomeIcon icon={icon} /> : null;
+  const hideOnDesktop = hide ? styles.hide : '';
 
   return (
-    <li className={`${styles.listItem} ${liStyle}`}>
+    <li className={`${styles.listItem} ${liStyle} ${hideOnDesktop}`}>
       <NavLink to={route} className={styles[linkStyle]}>
         {iconElement}
         {children}

@@ -24,25 +24,25 @@ const Sidebar = ({ user, isOpen, clicked }) => {
         <Logo alt="Press Express Logo" />
       </div>
       <ul className={styles.list}>
-        <SidebarLink route="/admin/orderform" orderForm={true}>
+        <SidebarLink route="/dashboard/orderform" orderForm={true}>
           Order Form
         </SidebarLink>
-        <SidebarLink route="/admin/active" icon={faClock}>
+        <SidebarLink route="/dashboard/active" icon={faClock}>
           Active
         </SidebarLink>
-        <SidebarLink route="/admin/specialorders" icon={faGift}>
+        <SidebarLink route="/dashboard/specialorders" icon={faGift}>
           Special Orders
         </SidebarLink>
-        <SidebarLink route="/admin/completed" icon={faCheckCircle}>
+        <SidebarLink route="/dashboard/completed" icon={faCheckCircle}>
           Completed
         </SidebarLink>
-        <SidebarLink route="/admin/cancelled" icon={faBan}>
+        <SidebarLink route="/dashboard/cancelled" icon={faBan}>
           Cancelled
         </SidebarLink>
-        <SidebarLink route="/admin/exceptions" icon={faExclamationTriangle}>
+        <SidebarLink route="/dashboard/exceptions" icon={faExclamationTriangle}>
           Exceptions
         </SidebarLink>
-        <SidebarLink route="/signout" icon={faSignOutAlt}>
+        <SidebarLink route="/signout" hide icon={faSignOutAlt}>
           Log Out
         </SidebarLink>
       </ul>

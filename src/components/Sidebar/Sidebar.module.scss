@@ -10,10 +10,11 @@
 
 .sidebar svg {
   margin-right: 0.5rem;
+  height: 100%;
 }
 
 .logo {
-  height: 4rem;
+  height: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,16 +23,17 @@
 }
 
 .list {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .listItem {
   width: 100%;
+
+  :hover {
+    background-color: $main-hover-color;
+  }
 }
 
-.listItem:hover {
-  background-color: $main-hover-color;
-}
 .listLink {
   display: block;
   line-height: 3.5rem;
@@ -39,22 +41,30 @@
   color: rgb(139, 139, 139);
 }
 
+.hide {
+  display: none;
+}
+
 .orderForm {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .orderFormLink {
-  background-color: $button-color-secondary;
-  color: white;
+  border: 4px solid $button-color-secondary;
+  color: darken($button-color-secondary, 10%);
   line-height: 3rem;
   font-weight: 500;
   width: 200px;
   text-align: center;
   border-radius: 3px;
   padding: 0;
+
+  :hover {
+    background-color: $active-link-color;
+  }
 }
 
 .active {
@@ -62,10 +72,6 @@
   border-left: 8px solid $active-link-color;
   background-color: $main-hover-color;
   padding-left: 48px;
-}
-
-.logOut {
-  display: none;
 }
 
 @media (max-width: 1000px) {

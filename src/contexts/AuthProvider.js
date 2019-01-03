@@ -1,5 +1,4 @@
 import React, { Component, createContext } from 'react';
-import { ApolloConsumer } from 'react-apollo';
 
 import { localStorageHelper } from '../utils';
 
@@ -50,19 +49,15 @@ export class AuthProvider extends Component {
 
   render() {
     return (
-      <ApolloConsumer>
-        {client => (
-          <AuthContext.Provider
-            value={{
-              state: this.state,
-              signOut: this.signOut,
-              signIn: this.signIn,
-              hydrateFromLocalStorage: this.hydrateFromLocalStorage,
-            }}>
-            {this.props.children}
-          </AuthContext.Provider>
-        )}
-      </ApolloConsumer>
+      <AuthContext.Provider
+        value={{
+          state: this.state,
+          signOut: this.signOut,
+          signIn: this.signIn,
+          hydrateFromLocalStorage: this.hydrateFromLocalStorage,
+        }}>
+        {this.props.children}
+      </AuthContext.Provider>
     );
   }
 }

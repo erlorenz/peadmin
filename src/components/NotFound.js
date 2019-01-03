@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 class NotFound extends Component {
-  state = {};
+  componentDidMount() {
+    setTimeout(() => this.props.history.push('/'), 3000);
+  }
   render() {
     return <h1>NOT FOUND</h1>;
   }
