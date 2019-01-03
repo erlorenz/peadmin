@@ -1,4 +1,5 @@
 import React from 'react';
+import { Query } from 'react-apollo';
 
 const OrderList = ({ orders, error, history, fields, type }) => {
   // Display order information if there is any

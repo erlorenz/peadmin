@@ -20,8 +20,8 @@ const Topbar = ({ email, clicked, userName }) => {
           />
         </li>
 
-        <li className={`${styles.listItem} ${styles.logOut}`}>
-          <Link to="/logout">LOG OUT</Link>
+        <li className={`${styles.listItem} ${styles.signOut}`}>
+          <Link to="/signout">LOG OUT</Link>
         </li>
       </ul>
     </header>
