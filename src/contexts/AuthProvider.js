@@ -23,6 +23,7 @@ export class AuthProvider extends Component {
       accessLevel: localStorage.getItem('accessLevel'),
       id: localStorage.getItem('id'),
     };
+    if (!user.token) this.signOut();
 
     this.setState(user);
   };
@@ -30,6 +31,8 @@ export class AuthProvider extends Component {
   signIn = authData => {
     console.log(authData);
     authData.isAuthenticated = true;
+    authData.accessLevel = authData.access_level;
+    delete authData.access_level;
     this.setState(authData);
     localStorageHelper.set(authData);
   };

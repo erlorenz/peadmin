@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path="/" component={SignIn} />
-        <Route path="/dashboard/:list" component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route path="/signout" component={SignOut} />
         <Route path="/" component={NotFound} />
       </Switch>

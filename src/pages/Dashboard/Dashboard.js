@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import OrderList from '../../components/OrderList';
 import Order from '../Order';
 import SpecialOrderForm from '../SpecialOrderForm';
 import Topbar from '../../components/Topbar';
-import getOrders from '../../utils/getOrders';
 import { AuthContext } from '../../contexts';
 import { orderFields, specialOrderFields } from '../Order/orderFields';
+import { ORDERS_BY_STATUS } from '../../queries';
 
 class Dashboard extends Component {
   static contextType = AuthContext;
+
   state = {
     sidebarOpen: false,
     orders: null,
     error: false,
   };
 
-  componentDidMount() {
-    if (!this.context.state.token) this.props.history.push('/');
-  }
+  componentDidMount() {}
 
   componentDidUpdate(prevProps, prevState) {}
 
@@ -28,6 +27,8 @@ class Dashboard extends Component {
   };
 
   render() {
+    if (!this.context.state.token) return <Redirect to="/" />;
+
     return (
       <div className="layout">
         <Sidebar
@@ -43,17 +44,15 @@ class Dashboard extends Component {
           <Switch>
             <Route
               exact
-              path="/dashboard/orderform"
+              path="/dashboard/specialorderform"
               component={SpecialOrderForm}
             />
             <Route
-              exact
-              path="/dashboard/order/:id"
+              path="/dashboard/orders/:id"
               render={props => <Order {...props} type="order" />}
             />
             <Route
-              exact
-              path="/dashboard/specialOrder/:id"
+              path="/dashboard/specialorders/:id"
               render={props => <Order {...props} type="specialOrder" />}
             />
             <Route
@@ -61,22 +60,19 @@ class Dashboard extends Component {
               render={props => (
                 <OrderList
                   {...props}
-                  orders={this.state.orders}
-                  error={this.state.error}
                   fields={specialOrderFields}
-                  type="specialOrder"
+                  type="specialOrders"
                 />
               )}
             />
             <Route
-              path="/dashboard/"
+              path="/dashboard/orders"
               render={props => (
                 <OrderList
                   {...props}
-                  orders={this.state.orders}
-                  error={this.state.error}
+                  query={ORDERS_BY_STATUS}
                   fields={orderFields}
-                  type="order"
+                  type="orders"
                 />
               )}
             />

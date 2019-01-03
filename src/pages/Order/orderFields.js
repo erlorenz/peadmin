@@ -1,8 +1,8 @@
 export const orderFields = [
   'name',
   'hotel',
-  'pickupTime',
-  'returnTime',
+  'pickup_date',
+  'return_date',
   'status',
 ];
 

@@ -1,18 +1,21 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import queryString from 'query-string';
 
-const OrderList = ({ orders, error, history, fields, type }) => {
+const OrderList = ({ query, history, location, fields, type }) => {
   // Display order information if there is any
 
-  let orderRows, orderHeaders;
-  if (orders) {
-    orderRows = orders.map(order => (
+  const { status } = queryString.parse(location.search);
+  console.log('status', status);
+
+  const renderRows = orders => {
+    return orders.map(order => (
       <tr
-        key={order._id}
+        key={order.id}
         className="order-row"
-        onClick={() => history.push(`/admin/${type}/${order._id}`)}>
+        onClick={() => history.push(`/dashboard/${type}/${order.id}`)}>
         {fields.map((field, index) =>
-          field === 'totalPrice' ? (
+          field === 'total_price' ? (
             <td key={index}>{order[field] / 100}</td>
           ) : (
             <td key={index}>{order[field]}</td>
@@ -20,26 +23,32 @@ const OrderList = ({ orders, error, history, fields, type }) => {
         )}
       </tr>
     ));
-    orderHeaders = fields.map((field, index) => (
-      <th key={index}>{field.toUpperCase()}</th>
-    ));
-  }
+  };
 
-  // Display error message
-  if (error) {
-    return <h1>Error retrieving the data, please log out and try again</h1>;
-  }
+  const renderHeaders = fields.map((field, index) => (
+    <th key={index}>{field.toUpperCase()}</th>
+  ));
 
   // Display different headers
   return (
-    <div className="card">
-      <table>
-        <thead>
-          <tr>{orderHeaders}</tr>
-        </thead>
-        <tbody>{orderRows}</tbody>
-      </table>
-    </div>
+    <Query query={query} variables={{ status }}>
+      {({ data, error, loading }) => {
+        if (loading) return <div>LOADING</div>;
+        if (error) return <h1>{error.message}</h1>;
+        console.log(data);
+        const { getCustomerOrdersByStatus: orders } = data;
+        return (
+          <div className="card">
+            <table>
+              <thead>
+                <tr>{renderHeaders}</tr>
+              </thead>
+              <tbody>{renderRows(orders)}</tbody>
+            </table>
+          </div>
+        );
+      }}
+    </Query>
   );
 };
 
