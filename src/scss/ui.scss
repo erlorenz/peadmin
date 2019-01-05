@@ -87,6 +87,9 @@ input::placeholder {
   .main {
     font-size: 0.9rem;
   }
+  .card {
+    border-top: 8px solid rgb(247, 247, 248);
+  }
   .App {
     grid-template-columns: 1fr;
     grid-template-rows: 60px 1fr;
