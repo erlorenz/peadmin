@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Sidebar from '../../components/Sidebar';
-import OrderList from '../../components/OrderList';
-import Order from '../Order';
-import SpecialOrderForm from '../SpecialOrderForm';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import OrderList from '../../components/OrderList/OrderList';
+import Order from '../Order/Order';
 import Topbar from '../../components/Topbar';
 import { AuthContext } from '../../contexts';
 import { orderFields, specialOrderFields } from '../Order/orderFields';
 import { ORDERS_BY_STATUS } from '../../queries';
+import CreateOrder from '../CreateOrder/CreateOrder';
 
 class Dashboard extends Component {
   static contextType = AuthContext;
@@ -45,7 +45,7 @@ class Dashboard extends Component {
             <Route
               exact
               path="/dashboard/specialorderform"
-              component={SpecialOrderForm}
+              component={CreateOrder}
             />
             <Route
               path="/dashboard/orders/:id"

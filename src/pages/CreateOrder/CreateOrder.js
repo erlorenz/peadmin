@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import { AuthContext } from '../../contexts';
-import { SIGN_IN } from '../../queries';
+import { CREATE_SPECIAL_ORDER } from '../../queries';
 import { Redirect } from 'react-router-dom';
-import SignInForm from './SignInForm';
+import CreateOrderForm from './CreateOrderForm';
 
-class SignIn extends Component {
+class CreateOrder extends Component {
   static contextType = AuthContext;
 
   handleSubmit = signIn => async (values, { setSubmitting, setStatus }) => {
     try {
-      const { data } = await signIn({
-        variables: {
-          email: values.email,
-          password: values.password,
-        },
+      const response = await signIn({
+        variables: { email: values.email, password: values.password },
       });
       setSubmitting(false);
-      console.log(data.signIn);
-
-      this.context.signIn(data.signIn);
+      const { _typename, ...authData } = response.data.signIn;
+      this.context.signIn(authData);
     } catch (e) {
-      console.log('ERRORR');
       const message = e.graphQLErrors
-        ? 'Invalid user name or password.'
+        ? 'Invalid username/password'
         : 'Network error';
       setStatus({ message });
       setSubmitting(false);
@@ -34,11 +29,13 @@ class SignIn extends Component {
     if (this.context.state.token) return <Redirect to="/dashboard/active" />;
     return (
       <div>
-        <Mutation mutation={SIGN_IN}>
-          {(signIn, { loading }) => (
-            <SignInForm
+        <Mutation mutation={CREATE_SPECIAL_ORDER}>
+          {(mutation, { error, loading }) => (
+            <CreateOrderForm
+              mutation={mutation}
+              requestError={error}
               loading={loading}
-              onSubmit={this.handleSubmit(signIn)}
+              onSubmit={this.handleSubmit(mutation)}
             />
           )}
         </Mutation>
@@ -47,4 +44,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default CreateOrder;

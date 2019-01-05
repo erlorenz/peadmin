@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import SignIn from './pages/SignIn';
-import Dashboard from './pages/Dashboard';
+import SignIn from './pages/SignIn/SignIn';
 import NotFound from './components/NotFound';
 import SignOut from './components/SignOut';
 import { AuthContext } from './contexts';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 class App extends Component {
   static contextType = AuthContext;

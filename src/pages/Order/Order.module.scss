@@ -1,14 +1,14 @@
 @import "../../scss/index.scss";
 
 .title {
-  @extend .card;
+  // @extend .card;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 500;
 }
 
 .info {
-  @extend .card;
+  // @extend .card;
   display: flex;
   justify-content: space-evenly;
   overflow-x: auto;

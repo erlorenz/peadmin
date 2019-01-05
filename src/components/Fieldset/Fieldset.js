@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './FormikFieldset.module.scss';
+import { Input } from '../UI';
 
 export default ({ field, form, ...props }) => {
   const { touched, errors } = form;
@@ -11,7 +11,7 @@ export default ({ field, form, ...props }) => {
   return (
     <fieldset>
       <label>{label}</label>
-      <input {...field} {...props} />
+      <Input {...field} {...props} />
       <p>{errorMessage}</p>
     </fieldset>
   );

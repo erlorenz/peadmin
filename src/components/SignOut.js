@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../contexts';
-import { localStorageHelper } from '../utils';
 import { ApolloConsumer } from 'react-apollo';
+import localStorageHelper from '../utils/localStorageHelper';
 
 class SignOut extends Component {
   static contextType = AuthContext;
-
-  componentDidMount() {
-    localStorageHelper.remove();
-    console.log('Signing OUt');
-    this.context.signOut();
-  }
 
   render() {
     return (
       <ApolloConsumer>
         {client => {
+          localStorageHelper.remove();
+          this.context.signOut();
           client.clearStore();
           return <Redirect to="/" />;
         }}

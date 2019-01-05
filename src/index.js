@@ -10,7 +10,10 @@ import './scss/index.scss';
 
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,
-  headers: { 'x-auth-token': localStorage.getItem('token') },
+  request: operation =>
+    operation.setContext({
+      headers: { 'x-auth-token': localStorage.getItem('token') },
+    }),
 });
 
 ReactDOM.render(
