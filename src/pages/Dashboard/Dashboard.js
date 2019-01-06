@@ -7,7 +7,7 @@ import Order from '../Order/Order';
 import Topbar from '../../components/Topbar/Topbar';
 import { AuthContext } from '../../contexts';
 import { orderFields, specialOrderFields } from '../Order/orderFields';
-import { ORDERS_BY_STATUS } from '../../queries';
+import { ORDERS_BY_STATUS, SPECIAL_ORDERS_BY_STATUS } from '../../queries';
 import CreateOrder from '../CreateOrder/CreateOrder';
 
 class Dashboard extends Component {
@@ -56,6 +56,7 @@ class Dashboard extends Component {
               render={props => (
                 <OrderList
                   {...props}
+                  query={SPECIAL_ORDERS_BY_STATUS}
                   fields={specialOrderFields}
                   type="specialOrders"
                 />
@@ -68,7 +69,7 @@ class Dashboard extends Component {
                   {...props}
                   query={ORDERS_BY_STATUS}
                   fields={orderFields}
-                  type="orders"
+                  type="customerOrders"
                 />
               )}
             />
@@ -84,20 +85,21 @@ export default Dashboard;
 const Layout = styled.div`
   display: block;
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100%;
 
   @media (min-width: 1000px) {
-    display: grid;
-    grid-template-columns: 255px auto;
+    padding-left: 255px;
   }
 `;
 
 const Main = styled.div`
   padding: 4rem 0 0 0;
   font-size: 0.9rem;
+  height: 100%;
 
   @media (min-width: 1000px) {
     padding: 5.8rem 1.8rem;
     background-color: ${props => props.theme.backgroundColor};
+    min-height: 100vh;
   }
 `;

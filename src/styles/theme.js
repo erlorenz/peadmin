@@ -7,7 +7,7 @@ const theme = {
   activeLink: 'rgb(36, 137, 184)',
   navLinkColor: '#7b7b7b',
   navLinkHover: '#1d9ecd',
-  tableHover: '#c0d5dd',
+  tableHover: '#cfe7f0',
   topbarColor: 'linear-gradient(120deg, #00e4d0, #5983e8)',
   borderRadius: '3px',
   formBorder: '2px solid #a8a8a8',

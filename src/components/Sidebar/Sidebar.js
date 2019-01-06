@@ -21,7 +21,7 @@ const Sidebar = ({ user, isOpen, onClick }) => {
         <Logo alt="Press Express Logo" />
       </LogoWrapper>
       <List>
-        <SidebarLink route="/dashboard/orderform" icon={faCreditCard}>
+        <SidebarLink route="/dashboard/specialorderform" icon={faCreditCard}>
           Order Form
         </SidebarLink>
         <SidebarLink
@@ -36,7 +36,16 @@ const Sidebar = ({ user, isOpen, onClick }) => {
           icon={faClock}>
           Active
         </SidebarLink>
-        <SidebarLink route="/dashboard/specialorders" icon={faGift}>
+        <SidebarLink
+          route={`/dashboard/specialorders?${queryString.stringify({
+            status: [
+              'processed',
+              'picked_up',
+              'checked_in',
+              'out_for_delivery',
+            ],
+          })}`}
+          icon={faGift}>
           Special Orders
         </SidebarLink>
         <SidebarLink
@@ -74,11 +83,12 @@ const Nav = styled.nav`
   z-index: 5;
 
   @media (min-width: 1000px) {
-    position: static;
+    position: fixed;
+    top: 0;
     display: flex;
     flex-direction: column;
     transform: translateX(0);
-    max-width: 100%;
+    width: 255px;
   }
 `;
 

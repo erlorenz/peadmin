@@ -10,6 +10,6 @@ export const specialOrderFields = [
   'name',
   'company',
   'phone',
-  'totalPrice',
+  'total_price',
   'status',
 ];

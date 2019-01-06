@@ -5,7 +5,9 @@ export const Card = styled.div`
   padding: 1.8rem;
   margin-bottom: 1.8rem;
   border-radius: ${props => props.theme.borderRadius};
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow-x: auto;
 
   @media (max-width: 1000px) {
@@ -55,13 +57,15 @@ export const Label = styled.label`
 `;
 
 export const TableRow = styled.tr`
-  cursor: ${props => (props.pointer ? 'pointer' : 'default')};
+  cursor: ${props => (props.hover ? 'pointer' : 'default')};
+  border-bottom: ${props => (props.underline ? `1px solid lightgray` : 'none')};
 
   :nth-child(even) {
     background-color: ${props => props.theme.backgroundColor};
   }
   :hover {
-    background-color: ${props => props.theme.tableHover};
+    background-color: ${props =>
+      props.hover ? props.theme.tableHover : undefined};
   }
 `;
 

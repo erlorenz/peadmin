@@ -5,16 +5,14 @@ import formatStatus from '../../utils/formatStatus';
 import { Card, TableRow, TableCell } from '../UI';
 
 const OrderList = ({ query, history, location, fields, type }) => {
-  // Display order information if there is any
-
+  // Extract query string of statuses
   const { status } = queryString.parse(location.search);
 
   const renderRows = orders => {
     return orders.map(order => (
       <TableRow
-        pointer={true}
+        hover={true}
         key={order.id}
-        className="order-row"
         onClick={() => history.push(`/dashboard/${type}/${order.id}`)}>
         {fields.map((field, index) => {
           if (field === 'total_price') {
@@ -47,12 +45,19 @@ const OrderList = ({ query, history, location, fields, type }) => {
         if (loading) return <div>LOADING</div>;
         if (error) return <h1>{error.message}</h1>;
 
-        const { getCustomerOrdersByStatus: orders } = data;
+        let orders;
+        if (type === 'specialOrders') {
+          orders = data.getSpecialOrdersByStatus;
+        }
+        if (type === 'customerOrders') {
+          orders = data.getCustomerOrdersByStatus;
+        }
+
         return (
           <Card>
             <table>
               <thead>
-                <TableRow>{renderHeaders}</TableRow>
+                <TableRow underline={true}>{renderHeaders}</TableRow>
               </thead>
               <tbody>{renderRows(orders)}</tbody>
             </table>

@@ -29,13 +29,15 @@ export default Topbar;
 const Header = styled.header`
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 4rem;
   background: ${props => props.theme.topbarColor};
-  width: 100%;
+  width: 100vw;
+  z-index: 1;
+  padding-right: 1rem;
 `;
 
 const Menu = styled.div`

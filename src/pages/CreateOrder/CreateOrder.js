@@ -26,20 +26,17 @@ class CreateOrder extends Component {
   };
 
   render() {
-    if (this.context.state.token) return <Redirect to="/dashboard/active" />;
     return (
-      <div>
-        <Mutation mutation={CREATE_SPECIAL_ORDER}>
-          {(mutation, { error, loading }) => (
-            <CreateOrderForm
-              mutation={mutation}
-              requestError={error}
-              loading={loading}
-              onSubmit={this.handleSubmit(mutation)}
-            />
-          )}
-        </Mutation>
-      </div>
+      <Mutation mutation={CREATE_SPECIAL_ORDER}>
+        {(mutation, { error, loading }) => (
+          <CreateOrderForm
+            mutation={mutation}
+            requestError={error}
+            loading={loading}
+            onSubmit={this.handleSubmit(mutation)}
+          />
+        )}
+      </Mutation>
     );
   }
 }
