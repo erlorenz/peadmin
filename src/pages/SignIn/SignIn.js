@@ -21,7 +21,7 @@ class SignIn extends Component {
 
       this.context.signIn(data.signIn);
     } catch (e) {
-      console.log('ERRORR');
+      console.log(e.message);
       const message = e.graphQLErrors
         ? 'Invalid user name or password.'
         : 'Network error';
@@ -33,16 +33,11 @@ class SignIn extends Component {
   render() {
     if (this.context.state.token) return <Redirect to="/dashboard/active" />;
     return (
-      <div>
-        <Mutation mutation={SIGN_IN}>
-          {(signIn, { loading }) => (
-            <SignInForm
-              loading={loading}
-              onSubmit={this.handleSubmit(signIn)}
-            />
-          )}
-        </Mutation>
-      </div>
+      <Mutation mutation={SIGN_IN}>
+        {(signIn, { loading }) => (
+          <SignInForm loading={loading} onSubmit={this.handleSubmit(signIn)} />
+        )}
+      </Mutation>
     );
   }
 }

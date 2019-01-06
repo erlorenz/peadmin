@@ -4,8 +4,7 @@ export const Card = styled.div`
   background-color: white;
   padding: 1.8rem;
   margin-bottom: 1.8rem;
-  border-radius: 2px;
-  // box-shadow: $box-shadow-card;
+  border-radius: ${props => props.theme.borderRadius};
   display: block;
   overflow-x: auto;
 
@@ -16,7 +15,7 @@ export const Card = styled.div`
 
 export const Button = styled.button`
   border: none;
-  background-color: $button-color;
+  background-color: ${props => props.theme.backgroundColor};
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
@@ -27,17 +26,17 @@ export const Button = styled.button`
   margin: 2rem 0;
 
   :hover {
-    background-color: $button-hover;
+    background-color: ${props => props.theme.buttonHover};
   }
 `;
 
 export const Input = styled.input`
   display: block;
-  border: 1px solid gray;
+  border: ${props => props.theme.formBorder};
   background-color: white;
   padding: 1rem 1.5rem;
   font-size: 1rem;
   font-family: inherit;
   width: 100%;
-  margin-bottom: 0.5rem;
+  border-radius: ${props => props.theme.borderRadius};
 `;

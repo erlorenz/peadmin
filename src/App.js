@@ -6,6 +6,7 @@ import NotFound from './components/NotFound';
 import SignOut from './components/SignOut';
 import { AuthContext } from './contexts';
 import Dashboard from './pages/Dashboard/Dashboard';
+import GlobalStyle from './styles/GlobalStyle';
 
 class App extends Component {
   static contextType = AuthContext;
@@ -16,12 +17,15 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={SignIn} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/signout" component={SignOut} />
-        <Route path="/" component={NotFound} />
-      </Switch>
+      <>
+        <GlobalStyle />
+        <Switch>
+          <Route exact path="/" component={SignIn} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/signout" component={SignOut} />
+          <Route path="/" component={NotFound} />
+        </Switch>
+      </>
     );
   }
 }

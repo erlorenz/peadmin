@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 import { AuthProvider } from './contexts';
+import theme from './styles/theme';
 import App from './App';
-import './scss/index.scss';
 
 export const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,
@@ -20,7 +21,9 @@ ReactDOM.render(
   <BrowserRouter>
     <ApolloProvider client={client}>
       <AuthProvider>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </AuthProvider>
     </ApolloProvider>
   </BrowserRouter>,

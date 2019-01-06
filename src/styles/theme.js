@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   backgroundColor: 'rgb(247, 247, 248)',
   hoverColor: 'rgb(216, 245, 252)',
   buttonColor: '#00a2ff',
@@ -8,4 +8,7 @@ export const theme = {
   textColor: '#1d7a8c',
   topbarColor: 'linear-gradient(120deg, #00e4d0, #5983e8)',
   borderRadius: '3px',
+  formBorder: '2px solid gray',
 };
+
+export default theme;
