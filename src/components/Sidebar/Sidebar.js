@@ -11,20 +11,19 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import SidebarLink from '../SidebarLink';
-import styles from './Sidebar.module.scss';
 
 const Sidebar = ({ user, isOpen, clicked }) => {
-  let sidebarClass = styles.sidebar;
+  // let sidebarClass = styles.sidebar;
   if (isOpen) {
-    sidebarClass = `${styles.sidebar} ${styles.sidebarOpen}`;
+    // sidebarClass = `${styles.sidebar} ${styles.sidebarOpen}`;
   }
 
   return (
-    <nav className={sidebarClass} onClick={clicked}>
-      <div className={styles.logo}>
+    <nav className="" onClick={clicked}>
+      <div className="">
         <Logo alt="Press Express Logo" />
       </div>
-      <ul className={styles.list}>
+      <ul className="">
         <SidebarLink route="/dashboard/orderform" orderForm={true}>
           Order Form
         </SidebarLink>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const Card = styled.div`
   background-color: white;
@@ -15,14 +15,14 @@ export const Card = styled.div`
 
 export const Button = styled.button`
   border: none;
-  background-color: ${props => props.theme.backgroundColor};
+  background-color: ${props => props.theme.buttonColor};
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
   padding: 1.1rem 1.5rem;
   cursor: pointer;
   width: 100%;
-  border-radius: 2px;
+  border-radius: ${props => props.borderRadius};
   margin: 2rem 0;
 
   :hover {
@@ -39,4 +39,8 @@ export const Input = styled.input`
   font-family: inherit;
   width: 100%;
   border-radius: ${props => props.theme.borderRadius};
+`;
+
+export const Label = styled.label`
+  color: ${props => props.theme.formBorder};
 `;

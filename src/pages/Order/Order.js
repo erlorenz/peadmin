@@ -6,7 +6,6 @@ import OrderCart from './OrderCart';
 import OrderComments from './OrderComments';
 import OrderEdits from './OrderEdits';
 import SpecialOrderInfo from './SpecialOrderInfo';
-import styles from './Order.module.scss';
 import { AuthContext } from '../../contexts';
 
 class Order extends Component {
@@ -104,27 +103,27 @@ class Order extends Component {
     const title = `${id} - ${order.status}`;
     let info;
     this.props.type === 'order'
-      ? (info = <OrderInfo order={order} styles={styles} />)
-      : (info = <SpecialOrderInfo order={order} styles={styles} />);
+      ? (info = <OrderInfo order={order} />)
+      : (info = <SpecialOrderInfo order={order} />);
 
     return (
       <Fragment>
-        <div className={styles.title}>
+        <div className="title">
           <p>{order.status && id ? title.toUpperCase() : null}</p>
         </div>
         {info}
-        <OrderStatus order={order} styles={styles} />
+        <OrderStatus order={order} styles />
         {this.props.type === 'order' && (
-          <OrderCart order={order} cartItems={cartItems} styles={styles} />
+          <OrderCart order={order} cartItems={cartItems} styles />
         )}{' '}
-        <OrderComments comments={comments} styles={styles} />
+        <OrderComments comments={comments} styles />
         <OrderEdits
           adminCommentValue={adminComment}
           statusValue={status}
           changed={this.changeHandler}
           commentClicked={this.commentAddHandler}
           statusClicked={this.statusChangeHandler}
-          styles={styles}
+          styles
         />
       </Fragment>
     );

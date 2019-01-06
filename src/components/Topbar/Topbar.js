@@ -2,25 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Gravatar from 'react-gravatar';
 import { ReactComponent as Hamburger } from '../../assets/img/hamburger.svg';
-import styles from './Topbar.module.scss';
 
 const Topbar = ({ email, clicked, userName }) => {
   return (
-    <header className={styles.topbar}>
-      <div className={styles.menu} onClick={clicked}>
-        <Hamburger className={styles.hamburger} alt="menu icon" />
+    <header>
+      <div onClick={clicked}>
+        <Hamburger alt="menu icon" />
       </div>
-      <ul className={styles.list}>
-        <li className={styles.listItem}>
+      <ul>
+        <li>
           <span>Hello, {userName}!</span>
-          <Gravatar
-            email={email}
-            default={'robohash'}
-            className={styles.avatar}
-          />
+          <Gravatar email={email} default={'robohash'} />
         </li>
 
-        <li className={`${styles.listItem} ${styles.signOut}`}>
+        <li>
           <Link to="/signout">LOG OUT</Link>
         </li>
       </ul>
