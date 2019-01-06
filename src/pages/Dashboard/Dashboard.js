@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import OrderList from '../../components/OrderList/OrderList';
 import Order from '../Order/Order';
-import Topbar from '../../components/Topbar';
+import Topbar from '../../components/Topbar/Topbar';
 import { AuthContext } from '../../contexts';
 import { orderFields, specialOrderFields } from '../Order/orderFields';
 import { ORDERS_BY_STATUS } from '../../queries';
