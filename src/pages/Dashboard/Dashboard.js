@@ -8,7 +8,7 @@ import Topbar from '../../components/Topbar/Topbar';
 import { AuthContext } from '../../contexts';
 import { orderFields, specialOrderFields } from '../Order/orderFields';
 import { ORDERS_BY_STATUS, SPECIAL_ORDERS_BY_STATUS } from '../../queries';
-import CreateOrder from '../CreateOrder/CreateOrder';
+import CreateSpecialOrder from '../CreateSpecialOrder/CreateSpecialOrder';
 
 class Dashboard extends Component {
   static contextType = AuthContext;
@@ -41,7 +41,7 @@ class Dashboard extends Component {
             <Route
               exact
               path="/dashboard/specialorderform"
-              component={CreateOrder}
+              component={CreateSpecialOrder}
             />
             <Route
               path="/dashboard/orders/:id"

@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import queryString from 'query-string';
 import formatStatus from '../../utils/formatStatus';
 import { Card, TableRow, TableCell } from '../UI';
+import formatTotalPrice from '../../utils/formatTotalPrice';
 
 const OrderList = ({ query, history, location, fields, type }) => {
   // Extract query string of statuses
@@ -16,7 +17,11 @@ const OrderList = ({ query, history, location, fields, type }) => {
         onClick={() => history.push(`/dashboard/${type}/${order.id}`)}>
         {fields.map((field, index) => {
           if (field === 'total_price') {
-            return <TableCell key={index}>{order[field] / 100}</TableCell>;
+            return (
+              <TableCell key={index}>
+                {formatTotalPrice(order[field])}
+              </TableCell>
+            );
           } else if (field === 'status') {
             return (
               <TableCell key={index}>{formatStatus(order[field])}</TableCell>

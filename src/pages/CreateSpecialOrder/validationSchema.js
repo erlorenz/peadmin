@@ -11,9 +11,11 @@ export default yup.object().shape({
     .required('Password required.'),
   company: yup.string(),
   description: yup.string().required('Description required.'),
-  phone: yup
-    .string()
-    .min(10, 'Please enter a 10 digit phone number.')
-    .max(10, 'Please enter a 10 digit phone number.')
+  decimalPrice: yup.number().required('Total price required.'),
+  phoneAsNumber: yup
+    .number()
+    .test('phoneLength', 'Please enter a 10 digit phone number', val =>
+      val ? val.toString().length === 10 : true,
+    )
     .required('Phone required'),
 });

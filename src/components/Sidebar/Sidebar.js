@@ -43,6 +43,7 @@ const Sidebar = ({ user, isOpen, onClick }) => {
               'picked_up',
               'checked_in',
               'out_for_delivery',
+              'completed',
             ],
           })}`}
           icon={faGift}>

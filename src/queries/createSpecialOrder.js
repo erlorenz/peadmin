@@ -1,13 +1,28 @@
 import gql from 'graphql-tag';
 
 export const CREATE_SPECIAL_ORDER = gql`
-  mutation CreateOrder($email: String!, $password: String!) {
-    signIn(email: $email, password: $password) {
-      name
-      id
-      access_level
-      email
-      token
+  mutation CreateSpecialOrder(
+    $stripeToken: String!
+    $name: String!
+    $company: String!
+    $total_price: Int!
+    $email: String!
+    $description: String!
+    $phone: String!
+  ) {
+    createSpecialOrder(
+      stripeToken: $stripeToken
+      name: $name
+      company: $company
+      total_price: $total_price
+      email: $email
+      phone: $phone
+      description: $description
+    ) {
+      database {
+        success
+        message
+      }
     }
   }
 `;
