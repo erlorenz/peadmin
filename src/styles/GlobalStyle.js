@@ -36,7 +36,7 @@ ul {
   list-style: none;
 }
 
-img {
+img, svg {
   max-width: 100%;
   height: auto;
 }

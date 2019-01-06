@@ -14,10 +14,10 @@ class Dashboard extends Component {
   static contextType = AuthContext;
 
   state = {
-    sidebarOpen: true,
+    sidebarOpen: false,
   };
 
-  sidebarToggleHandler = () => {
+  handleToggleSidebar = () => {
     this.setState({ sidebarOpen: !this.state.sidebarOpen });
   };
 
@@ -27,15 +27,13 @@ class Dashboard extends Component {
     return (
       // need to add the check token
       <Layout>
-        {this.state.sidebarOpen && (
-          <Sidebar
-            isOpen={this.state.sidebarOpen}
-            clicked={this.sidebarToggleHandler}
-          />
-        )}
+        <Sidebar
+          isOpen={this.state.sidebarOpen}
+          onClick={this.handleToggleSidebar}
+        />
         <Main>
           <Topbar
-            clicked={this.sidebarToggleHandler}
+            onClick={this.handleToggleSidebar}
             email={this.context.state.email}
             userName={this.context.state.name}
           />

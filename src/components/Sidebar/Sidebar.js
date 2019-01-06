@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import styled from 'styled-components/macro';
 import { ReactComponent as Logo } from '../../assets/img/pressexpresslogo.svg';
 import queryString from 'query-string';
 import {
@@ -9,22 +10,18 @@ import {
   faGift,
   faBan,
   faSignOutAlt,
+  faCreditCard,
 } from '@fortawesome/free-solid-svg-icons';
 import SidebarLink from '../SidebarLink';
 
-const Sidebar = ({ user, isOpen, clicked }) => {
-  // let sidebarClass = styles.sidebar;
-  if (isOpen) {
-    // sidebarClass = `${styles.sidebar} ${styles.sidebarOpen}`;
-  }
-
+const Sidebar = ({ user, isOpen, onClick }) => {
   return (
-    <nav className="" onClick={clicked}>
-      <div className="">
+    <Nav isOpen={isOpen} onClick={onClick}>
+      <LogoWrapper>
         <Logo alt="Press Express Logo" />
-      </div>
-      <ul className="">
-        <SidebarLink route="/dashboard/orderform" orderForm={true}>
+      </LogoWrapper>
+      <List>
+        <SidebarLink route="/dashboard/orderform" icon={faCreditCard}>
           Order Form
         </SidebarLink>
         <SidebarLink
@@ -55,12 +52,49 @@ const Sidebar = ({ user, isOpen, clicked }) => {
           icon={faExclamationTriangle}>
           Exceptions
         </SidebarLink>
-        <SidebarLink route="/signout" hide icon={faSignOutAlt}>
-          Log Out
+        <SidebarLink route="/signout" signOut={true} icon={faSignOutAlt}>
+          Sign Out
         </SidebarLink>
-      </ul>
-    </nav>
+      </List>
+    </Nav>
   );
 };
 
 export default withRouter(Sidebar);
+
+const Nav = styled.nav`
+  background-color: white;
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  transform: ${props => (props.isOpen ? 'translateX(0)' : 'translateX(-100%)')};
+  transition: ease-in 0.2s all;
+  z-index: 5;
+
+  @media (min-width: 1000px) {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(0);
+    max-width: 100%;
+  }
+`;
+
+const LogoWrapper = styled.div`
+  height: 64px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+  padding: 0 3rem;
+
+  @media (min-width: 1000px) {
+    display: flex;
+  }
+`;
+
+const List = styled.ul`
+  margin-top: 1.5rem;
+`;

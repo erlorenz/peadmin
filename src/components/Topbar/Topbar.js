@@ -4,10 +4,10 @@ import Gravatar from 'react-gravatar';
 import styled from 'styled-components/macro';
 import { ReactComponent as HamburgerIcon } from '../../assets/img/hamburger.svg';
 
-const Topbar = ({ email, clicked, userName }) => {
+const Topbar = ({ email, onClick, userName }) => {
   return (
     <Header>
-      <Menu onClick={clicked}>
+      <Menu onClick={onClick}>
         <StyledHamburgerIcon alt="menu icon" />
       </Menu>
       <List>
