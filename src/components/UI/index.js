@@ -44,11 +44,30 @@ export const Input = styled.input`
   margin: 3px 0;
 
   :focus {
-    border: 2px solid black;
+    border: ${props =>
+      props.error ? props.theme.errorBorder : '2px solid black'};
     outline: none;
   }
 `;
 
 export const Label = styled.label`
   color: ${props => props.theme.labelColor};
+`;
+
+export const TableRow = styled.tr`
+  cursor: ${props => (props.pointer ? 'pointer' : 'default')};
+
+  :nth-child(even) {
+    background-color: ${props => props.theme.backgroundColor};
+  }
+  :hover {
+    background-color: ${props => props.theme.tableHover};
+  }
+`;
+
+export const TableCell = styled.td`
+  padding: 1.1rem 1.8rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  white-space: pre-line;
 `;

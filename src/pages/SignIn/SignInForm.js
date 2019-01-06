@@ -36,7 +36,7 @@ export default SignInForm;
 const StyledForm = styled(Form)`
   background: white;
   padding: 1rem;
-  max-width: 500px;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,6 +49,7 @@ const StyledForm = styled(Form)`
 
 const StyledLogo = styled(Logo)`
   width: 80%;
+  padding: 2rem 0;
 `;
 
 const Status = styled.div`

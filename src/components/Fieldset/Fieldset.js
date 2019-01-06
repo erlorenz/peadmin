@@ -12,7 +12,11 @@ const Fieldset = ({ field, form, ...props }) => {
   return (
     <StyledFieldset>
       <Label>{label}</Label>
-      <Input error={errorMessage} {...field} {...props} />
+      <Input
+        error={touched[name] && errors[name] ? 'true' : undefined}
+        {...field}
+        {...props}
+      />
       <ErrorText>{errorMessage}</ErrorText>
     </StyledFieldset>
   );
