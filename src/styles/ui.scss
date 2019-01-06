@@ -44,13 +44,3 @@ input {
   }
 }
 
-@media (max-width: 1000px) {
-  .main {
-    font-size: 0.9rem;
-  }
-
-  .layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: 60px 1fr;
-  }
-}

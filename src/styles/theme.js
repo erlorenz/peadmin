@@ -8,7 +8,10 @@ const theme = {
   textColor: '#1d7a8c',
   topbarColor: 'linear-gradient(120deg, #00e4d0, #5983e8)',
   borderRadius: '3px',
-  formBorder: '2px solid gray',
+  formBorder: '2px solid #a8a8a8',
+  labelColor: '#545454',
+  errorColor: '#c43126',
+  errorBorder: '2px solid #c43126',
 };
 
 export default theme;

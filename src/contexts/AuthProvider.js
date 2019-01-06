@@ -26,6 +26,7 @@ export class AuthProvider extends Component {
     if (!user.token) this.signOut();
 
     this.setState(user);
+    console.log('Hydrating', this.state.token);
   };
 
   signIn = authData => {

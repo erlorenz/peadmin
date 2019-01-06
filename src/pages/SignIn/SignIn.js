@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
+import styled from 'styled-components/macro';
+
 import { AuthContext } from '../../contexts';
 import { SIGN_IN } from '../../queries';
 import { Redirect } from 'react-router-dom';
@@ -21,10 +23,7 @@ class SignIn extends Component {
 
       this.context.signIn(data.signIn);
     } catch (e) {
-      console.log(e.message);
-      const message = e.graphQLErrors
-        ? 'Invalid user name or password.'
-        : 'Network error';
+      const message = 'Unable to sign in.';
       setStatus({ message });
       setSubmitting(false);
     }
@@ -33,13 +32,28 @@ class SignIn extends Component {
   render() {
     if (this.context.state.token) return <Redirect to="/dashboard/active" />;
     return (
-      <Mutation mutation={SIGN_IN}>
-        {(signIn, { loading }) => (
-          <SignInForm loading={loading} onSubmit={this.handleSubmit(signIn)} />
-        )}
-      </Mutation>
+      <Layout>
+        <Mutation mutation={SIGN_IN}>
+          {(signIn, { loading }) => (
+            <SignInForm
+              loading={loading}
+              onSubmit={this.handleSubmit(signIn)}
+            />
+          )}
+        </Mutation>
+      </Layout>
     );
   }
 }
 
 export default SignIn;
+
+const Layout = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${props => props.theme.topbarColor};
+  min-height: 100vh;
+  width: 100vw;
+  padding: 1rem;
+`;

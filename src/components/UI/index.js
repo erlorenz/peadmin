@@ -22,8 +22,8 @@ export const Button = styled.button`
   padding: 1.1rem 1.5rem;
   cursor: pointer;
   width: 100%;
-  border-radius: ${props => props.borderRadius};
-  margin: 2rem 0;
+  border-radius: ${props => props.theme.borderRadius};
+  margin: 1.5rem 0;
 
   :hover {
     background-color: ${props => props.theme.buttonHover};
@@ -32,15 +32,23 @@ export const Button = styled.button`
 
 export const Input = styled.input`
   display: block;
-  border: ${props => props.theme.formBorder};
+  border: ${props =>
+    props.error ? props.theme.errorBorder : props.theme.formBorder};
   background-color: white;
+  color: ${props => props.theme.labelColor};
   padding: 1rem 1.5rem;
   font-size: 1rem;
   font-family: inherit;
   width: 100%;
   border-radius: ${props => props.theme.borderRadius};
+  margin: 3px 0;
+
+  :focus {
+    border: 2px solid black;
+    outline: none;
+  }
 `;
 
 export const Label = styled.label`
-  color: ${props => props.theme.formBorder};
+  color: ${props => props.theme.labelColor};
 `;
