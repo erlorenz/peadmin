@@ -5,6 +5,7 @@ import formatStatus from '../../utils/formatStatus';
 import { Card, TableRow, TableCell } from '../../components/UI';
 import formatTotalPrice from '../../utils/formatTotalPrice';
 import formatDate from '../../utils/formatDate';
+import styled from 'styled-components/macro';
 
 const OrderList = ({ query, history, location, fields, type }) => {
   // Extract query string of statuses
@@ -48,33 +49,31 @@ const OrderList = ({ query, history, location, fields, type }) => {
     </TableCell>
   ));
 
-  // Display different headers
   return (
     <Query
       query={query}
       variables={{ status, orderBy: order_by, direction }}
-      pollInterval={30000}
-      fetchPolicy={'cache-and-network'}>
+      pollInterval={10000}>
       {({ data, error, loading }) => {
-        if (loading) return <div>LOADING</div>;
+        if (loading) return null;
         if (error) return <h1>{error.message}</h1>;
 
-        let orders;
-        if (type === 'specialOrders') {
-          orders = data.getSpecialOrdersByStatus;
-        }
-        if (type === 'customerOrders') {
-          orders = data.getCustomerOrdersByStatus;
-        }
+        let orders = [];
+        orders =
+          type === 'specialOrders'
+            ? data.getSpecialOrdersByStatus
+            : data.getCustomerOrdersByStatus;
 
         return (
           <Card>
-            <table>
-              <thead>
-                <TableRow underline={true}>{renderHeaders}</TableRow>
-              </thead>
-              <tbody>{renderRows(orders)}</tbody>
-            </table>
+            <ScrollContainer>
+              <table>
+                <thead>
+                  <TableRow underline={true}>{renderHeaders}</TableRow>
+                </thead>
+                <tbody>{renderRows(orders)}</tbody>
+              </table>
+            </ScrollContainer>
           </Card>
         );
       }}
@@ -83,3 +82,8 @@ const OrderList = ({ query, history, location, fields, type }) => {
 };
 
 export default OrderList;
+
+const ScrollContainer = styled.div`
+  overflow-x: auto;
+  width: 100%;
+`;

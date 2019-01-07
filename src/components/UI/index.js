@@ -52,6 +52,26 @@ export const Input = styled.input`
   }
 `;
 
+export const TextArea = styled.textarea`
+  display: block;
+  border: ${props =>
+    props.error ? props.theme.errorBorder : props.theme.formBorder};
+  background-color: white;
+  color: ${props => props.theme.labelColor};
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+  border-radius: ${props => props.theme.borderRadius};
+  margin: 3px 0;
+
+  :focus {
+    border: ${props =>
+      props.error ? props.theme.errorBorder : '2px solid black'};
+    outline: none;
+  }
+`;
+
 export const Label = styled.label`
   color: ${props => props.theme.labelColor};
 `;

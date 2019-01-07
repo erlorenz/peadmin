@@ -46,7 +46,7 @@ class Dashboard extends Component {
               component={CreateSpecialOrder}
             />
             <Route
-              path="/dashboard/orders/:id"
+              path="/dashboard/customerorders/:id"
               render={props => <Order {...props} type="order" />}
             />
             <Route
@@ -97,11 +97,10 @@ const Layout = styled.div`
 const Main = styled.div`
   padding: 4rem 0 0 0;
   font-size: 0.9rem;
-  height: 100%;
+  min-height: 100vh;
 
   @media (min-width: 1000px) {
     padding: 5.8rem 1.8rem;
     background-color: ${props => props.theme.backgroundColor};
-    min-height: 100vh;
   }
 `;

@@ -24,7 +24,9 @@ const SidebarLink = ({
 
 export default SidebarLink;
 
-const StyledNavLink = styled(NavLink)`
+const activeClassName = 'active';
+
+const StyledNavLink = styled(NavLink).attrs({ activeClassName })`
   padding-left: 5rem;
   color: ${props => props.theme.navLinkColor};
   display: block;
@@ -32,6 +34,10 @@ const StyledNavLink = styled(NavLink)`
   font-size: 1.2rem;
 
   :hover {
+    color: ${props => props.theme.navLinkHover};
+  }
+
+  &.${activeClassName} {
     color: ${props => props.theme.navLinkHover};
   }
 

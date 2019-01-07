@@ -71,11 +71,11 @@ const List = styled.ul`
 const ListItem = styled.li`
   display: ${props => (props.signIn ? 'none' : 'flex')};
   align-items: center;
-  padding-right: 2rem;
   color: white;
 
   @media (min-width: 1000px) {
     display: flex;
+    padding-right: 2rem;
   }
 `;
 

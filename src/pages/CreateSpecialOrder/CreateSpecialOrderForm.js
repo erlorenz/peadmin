@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import styled from 'styled-components/macro';
 import Fieldset from '../../components/Fieldset/Fieldset';
-import Spinner from 'react-spinkit';
+import Loader from 'react-loader-spinner';
 import validationSchema from './validationSchema';
 import { Card, Button } from '../../components/UI';
 
@@ -54,14 +54,14 @@ const CreateSpecialOrderForm = ({ loading, onSubmit, signIn }) => {
               type="text"
               name="description"
               label="Description"
+              textarea={true}
+              rows="5"
               component={Fieldset}
             />
 
-            {loading ? (
-              <Spinner color="green" />
-            ) : (
-              <Button type="submit">Sign In</Button>
-            )}
+            <Button type="submit">
+              {loading ? <Loader type="Puff" height="1.1rem" /> : 'Sign In'}
+            </Button>
 
             <div>{status && status.message ? status.message : ''}</div>
           </StyledForm>

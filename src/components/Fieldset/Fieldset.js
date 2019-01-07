@@ -1,22 +1,32 @@
 import React from 'react';
-import { Input, Label } from '../UI';
+import { Input, Label, TextArea } from '../UI';
 import styled from 'styled-components/macro';
 
 const Fieldset = ({ field, form, ...props }) => {
   const { touched, errors } = form;
   const { name } = field;
-  const { label } = props;
+  const { label, textarea = false } = props;
+
+  const element = textarea ? (
+    <TextArea
+      error={touched[name] && errors[name] ? 'true' : undefined}
+      {...field}
+      {...props}
+    />
+  ) : (
+    <Input
+      error={touched[name] && errors[name] ? 'true' : undefined}
+      {...field}
+      {...props}
+    />
+  );
 
   const errorMessage = touched[name] && errors[name] ? errors[name] : '';
 
   return (
     <StyledFieldset>
       <Label>{label}</Label>
-      <Input
-        error={touched[name] && errors[name] ? 'true' : undefined}
-        {...field}
-        {...props}
-      />
+      {element}
       <ErrorText>{errorMessage}</ErrorText>
     </StyledFieldset>
   );

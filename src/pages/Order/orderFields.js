@@ -3,6 +3,7 @@ export const orderFields = [
   'hotel',
   'pickup_date',
   'return_date',
+  'total_price',
   'status',
 ];
 
