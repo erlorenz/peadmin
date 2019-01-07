@@ -11,3 +11,5 @@ export * from './getSpecialOrdersByStatus';
 export * from './getCustomerOrderDetails';
 
 export * from './getSpecialOrderDetails';
+
+export * from './changeStatus';

@@ -9,6 +9,8 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
 
   @media (min-width: 1000px) {
     padding: 1.8rem;
@@ -34,6 +36,26 @@ export const Button = styled.button`
 `;
 
 export const Input = styled.input`
+  display: block;
+  border: ${props =>
+    props.error ? props.theme.errorBorder : props.theme.formBorder};
+  background-color: white;
+  color: ${props => props.theme.labelColor};
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+  border-radius: ${props => props.theme.borderRadius};
+  margin: 3px 0;
+
+  :focus {
+    border: ${props =>
+      props.error ? props.theme.errorBorder : '2px solid black'};
+    outline: none;
+  }
+`;
+
+export const Select = styled.select`
   display: block;
   border: ${props =>
     props.error ? props.theme.errorBorder : props.theme.formBorder};
@@ -91,8 +113,21 @@ export const TableRow = styled.tr`
 `;
 
 export const TableCell = styled.td`
-  padding: 1.1rem 1.8rem;
+  padding: 0.9rem 1.3rem;
   font-size: 0.9rem;
   line-height: 1;
   white-space: pre-line;
+
+  @media (min-width: 1000px) {
+    padding: 1.1rem 1.8rem;
+  }
+`;
+
+export const CardRow = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
+  }
 `;

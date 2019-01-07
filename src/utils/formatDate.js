@@ -6,7 +6,7 @@ const formatDate = timestamp => {
       timeZone: 'America/Los_Angeles',
     });
 
-    return dayjs(pacificTime).format('ddd M-D h:mm A');
+    return dayjs(pacificTime).format('ddd M-D h A');
   } catch (e) {
     console.log(e.message);
     return '---';
