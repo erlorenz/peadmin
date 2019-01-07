@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import Sidebar from '../../components/Sidebar/Sidebar';
-import OrderList from '../../components/OrderList/OrderList';
+import Sidebar from './Sidebar';
+import OrderList from './OrderList';
 import Order from '../Order/Order';
-import Topbar from '../../components/Topbar/Topbar';
+import Topbar from './Topbar';
 import { AuthContext } from '../../contexts';
 import { orderFields, specialOrderFields } from '../Order/orderFields';
 import { ORDERS_BY_STATUS, SPECIAL_ORDERS_BY_STATUS } from '../../queries';
 import CreateSpecialOrder from '../CreateSpecialOrder/CreateSpecialOrder';
+import Landing from '../Landing.js/Landing';
 
 class Dashboard extends Component {
   static contextType = AuthContext;
@@ -38,6 +39,7 @@ class Dashboard extends Component {
             userName={this.context.state.name}
           />
           <Switch>
+            <Route exact path="/dashboard" component={Landing} />
             <Route
               exact
               path="/dashboard/specialorderform"
@@ -63,7 +65,7 @@ class Dashboard extends Component {
               )}
             />
             <Route
-              path="/dashboard/orders"
+              path="/dashboard/customerorders"
               render={props => (
                 <OrderList
                   {...props}

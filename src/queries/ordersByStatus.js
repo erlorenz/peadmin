@@ -1,8 +1,16 @@
 import gql from 'graphql-tag';
 
 export const ORDERS_BY_STATUS = gql`
-  query GetOrdersByStatus($status: [String!]!) {
-    getCustomerOrdersByStatus(status: $status) {
+  query GetCustomerOrdersByStatus(
+    $status: [String!]!
+    $orderBy: String
+    $direction: String
+  ) {
+    getCustomerOrdersByStatus(
+      status: $status
+      orderBy: $orderBy
+      direction: $direction
+    ) {
       name
       hotel
       pickup_date
@@ -10,6 +18,7 @@ export const ORDERS_BY_STATUS = gql`
       status
       id
       total_price
+      created_at
     }
   }
 `;

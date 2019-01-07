@@ -12,7 +12,7 @@ import {
   faSignOutAlt,
   faCreditCard,
 } from '@fortawesome/free-solid-svg-icons';
-import SidebarLink from '../SidebarLink';
+import SidebarLink from '../../components/SidebarLink';
 
 const Sidebar = ({ user, isOpen, onClick }) => {
   return (
@@ -25,7 +25,7 @@ const Sidebar = ({ user, isOpen, onClick }) => {
           Order Form
         </SidebarLink>
         <SidebarLink
-          route={`/dashboard/orders?${queryString.stringify({
+          route={`/dashboard/customerorders?${queryString.stringify({
             status: [
               'processed',
               'picked_up',
@@ -50,15 +50,17 @@ const Sidebar = ({ user, isOpen, onClick }) => {
           Special Orders
         </SidebarLink>
         <SidebarLink
-          route="/dashboard/orders?status=completed"
+          route="/dashboard/customerorders?status=completed"
           icon={faCheckCircle}>
           Completed
         </SidebarLink>
-        <SidebarLink route="/dashboard/orders?status=cancelled" icon={faBan}>
+        <SidebarLink
+          route="/dashboard/customerorders?status=cancelled"
+          icon={faBan}>
           Cancelled
         </SidebarLink>
         <SidebarLink
-          route="/dashboard/orders?status=exception"
+          route="/dashboard/customerorders?status=exception"
           icon={faExclamationTriangle}>
           Exceptions
         </SidebarLink>
