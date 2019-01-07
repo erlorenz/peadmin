@@ -2,8 +2,12 @@ export * from './checkToken';
 
 export * from './signIn';
 
-export * from './ordersByStatus';
+export * from './getCustomerOrdersByStatus';
 
 export * from './createSpecialOrder';
 
-export * from './specialOrdersByStatus';
+export * from './getSpecialOrdersByStatus';
+
+export * from './getCustomerOrderDetails';
+
+export * from './getSpecialOrderDetails';

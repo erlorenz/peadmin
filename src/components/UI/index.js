@@ -2,16 +2,17 @@ import styled from 'styled-components/macro';
 
 export const Card = styled.div`
   background-color: white;
-  padding: 1.8rem;
-  margin-bottom: 1.8rem;
+  padding: 0.9rem;
+  margin-bottom: 0.9rem;
   border-radius: ${props => props.theme.borderRadius};
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: auto;
+  width: 100%;
 
-  @media (max-width: 1000px) {
-    border-top: 8px solid rgb(247, 247, 248);
+  @media (min-width: 1000px) {
+    padding: 1.8rem;
+    margin-bottom: 1.8rem;
   }
 `;
 

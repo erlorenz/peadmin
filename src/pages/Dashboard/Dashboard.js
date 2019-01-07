@@ -6,7 +6,7 @@ import OrderList from './OrderList';
 import Order from '../Order/Order';
 import Topbar from './Topbar';
 import { AuthContext } from '../../contexts';
-import { orderFields, specialOrderFields } from '../Order/orderFields';
+import { orderFields, specialOrderFields } from './orderFields';
 import { ORDERS_BY_STATUS, SPECIAL_ORDERS_BY_STATUS } from '../../queries';
 import CreateSpecialOrder from '../CreateSpecialOrder/CreateSpecialOrder';
 import Landing from '../Landing.js/Landing';
@@ -95,12 +95,14 @@ const Layout = styled.div`
 `;
 
 const Main = styled.div`
-  padding: 4rem 0 0 0;
+  padding: 4.9rem 0.9rem 0.9rem 0.9rem;
   font-size: 0.9rem;
   min-height: 100vh;
+  background-color: ${props => props.theme.backgroundColor};
 
   @media (min-width: 1000px) {
     padding: 5.8rem 1.8rem;
-    background-color: ${props => props.theme.backgroundColor};
+    display: flex;
+    flex-direction: column;
   }
 `;
