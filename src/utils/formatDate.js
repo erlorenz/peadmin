@@ -1,9 +1,16 @@
-import format from 'date-fns/format';
+import dayjs from 'dayjs';
 
-const formatDate = isoDate => {
-  if (isoDate) return format(new Date(isoDate), 'MM/DD/YYYY h:mm a');
+const formatDate = timestamp => {
+  try {
+    const pacificTime = new Date(+timestamp).toLocaleString('en-US', {
+      timeZone: 'America/Los_Angeles',
+    });
 
-  return '---';
+    return dayjs(pacificTime).format('ddd M-D h:mm A');
+  } catch (e) {
+    console.log(e.message);
+    return '---';
+  }
 };
 
 export default formatDate;
