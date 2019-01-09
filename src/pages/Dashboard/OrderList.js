@@ -1,7 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import queryString from 'query-string';
-import formatStatus from '../../utils/formatStatus';
 import { Card, TableRow, TableCell, CardTitle } from '../../components/UI';
 import formatPrice from '../../utils/formatPrice';
 import formatDate from '../../utils/formatDate';

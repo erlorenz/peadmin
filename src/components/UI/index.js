@@ -79,7 +79,7 @@ export const Select = styled.select`
 
   :focus {
     border: ${props =>
-      props.error ? props.theme.errorBorder : '2px solid black'};
+      props.error ? props.theme.errorBorder : '2px solid #96afb5'};
     outline: none;
   }
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardRow } from '../../components/UI';
+import { Card } from '../../components/UI';
 import styled from 'styled-components/macro';
 import formatPrice from '../../utils/formatPrice';
 import StatusIndicator from '../../components/StatusIndicator';
@@ -27,11 +27,12 @@ const Price = styled(Title)``;
 const TitleCard = styled(Card)`
   @media (min-width: 1000px) {
     flex-direction: row;
+    justify-content: space-evenly;
   }
 `;
 
 const StyledStatusIndicator = styled(StatusIndicator)`
-  padding: 0.5rem 0.8rem;
+  padding: 1rem 1.5rem;
   margin: 0.5rem 0;
   cursor: pointer;
 `;

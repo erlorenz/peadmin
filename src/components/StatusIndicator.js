@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 const StatusIndicator = ({ status, ...props }) => {
-  console.log(status);
   switch (status) {
     case 'processed':
       return <PurpleBadge {...props}>Processed</PurpleBadge>;
