@@ -22,20 +22,26 @@ const OrderList = ({ query, history, location, fields, type }) => {
         {fields.map((field, index) => {
           if (field === 'total_price') {
             return (
-              <TableCell key={index}>{formatPrice(order[field])}</TableCell>
+              <StyledTableCell key={index}>
+                {formatPrice(order[field])}
+              </StyledTableCell>
             );
           } else if (field === 'status') {
             return (
-              <TableCell key={index}>
+              <StyledTableCell key={index}>
                 <StatusIndicator status={order.status} />
-              </TableCell>
+              </StyledTableCell>
             );
           } else if (field === 'return_date' || field === 'pickup_date') {
             return (
-              <TableCell key={index}>{formatDate(order[field])}</TableCell>
+              <StyledTableCell key={index}>
+                {formatDate(order[field])}
+              </StyledTableCell>
             );
           } else {
-            return <TableCell key={index}>{order[field]}</TableCell>;
+            return (
+              <StyledTableCell key={index}>{order[field]}</StyledTableCell>
+            );
           }
         })}
       </TableRow>
@@ -43,12 +49,12 @@ const OrderList = ({ query, history, location, fields, type }) => {
   };
 
   const renderHeaders = fields.map((field, index) => (
-    <TableCell as="th" key={index}>
+    <StyledTableCell as="th" key={index}>
       {field
         .toUpperCase()
         .split('_')
         .join(' ')}
-    </TableCell>
+    </StyledTableCell>
   ));
 
   return (
@@ -94,4 +100,8 @@ export default OrderList;
 const ScrollContainer = styled.div`
   overflow-x: auto;
   width: 100%;
+`;
+
+const StyledTableCell = styled(TableCell)`
+  white-space: nowrap;
 `;

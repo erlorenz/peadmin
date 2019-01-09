@@ -2,9 +2,9 @@ export * from './checkToken';
 
 export * from './signIn';
 
-export * from './getCustomerOrdersByStatus';
-
 export * from './createSpecialOrder';
+
+export * from './getCustomerOrdersByStatus';
 
 export * from './getSpecialOrdersByStatus';
 

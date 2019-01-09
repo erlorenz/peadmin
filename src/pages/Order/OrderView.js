@@ -18,7 +18,7 @@ class OrderView extends Component {
     });
   };
 
-  renderModal = (order, refetch) => {
+  renderModal = (order, refetch, type) => {
     if (this.state.changeStatusModalIsOpen)
       return (
         <Portal>
@@ -26,6 +26,7 @@ class OrderView extends Component {
             order={order}
             refetch={refetch}
             onClick={this.handleModalToggle}
+            type={type}
           />
         </Portal>
       );
@@ -34,12 +35,12 @@ class OrderView extends Component {
 
   render() {
     const { getCustomerOrderDetails: order } = this.props.data;
-    const { refetch } = this.props;
+    const { refetch, type } = this.props;
 
     return (
       <>
         <OrderTitle order={order} onClick={this.handleModalToggle} />
-        {this.renderModal(order, refetch)}
+        {this.renderModal(order, refetch, type)}
         <OrderInfo order={order} />
         <OrderHistory order={order} />
         <Card>

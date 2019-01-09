@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Label, TextArea } from '../UI';
+import { Input, Label, TextArea, Select } from '../UI';
 import styled from 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
@@ -7,21 +7,33 @@ import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 const Fieldset = ({ field, form, ...props }) => {
   const { touched, errors } = form;
   const { name } = field;
-  const { label, textarea = false } = props;
+  const { label, textarea = false, select = false } = props;
 
-  const element = textarea ? (
-    <TextArea
-      error={touched[name] && errors[name] ? 'true' : undefined}
-      {...field}
-      {...props}
-    />
-  ) : (
+  let element = (
     <Input
       error={touched[name] && errors[name] ? 'true' : undefined}
       {...field}
       {...props}
     />
   );
+
+  if (textarea)
+    element = (
+      <TextArea
+        error={touched[name] && errors[name] ? 'true' : undefined}
+        {...field}
+        {...props}
+      />
+    );
+
+  if (select)
+    element = (
+      <Select
+        error={touched[name] && errors[name] ? 'true' : undefined}
+        {...field}
+        {...props}
+      />
+    );
 
   const errorMessage = touched[name] && errors[name] ? errors[name] : '';
   const icon =

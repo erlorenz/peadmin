@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const SPECIAL_ORDERS_BY_STATUS = gql`
+export const GET_SPECIAL_ORDERS_BY_STATUS = gql`
   query GetSpecialOrdersByStatus(
     $status: [String!]!
     $orderBy: String

@@ -7,7 +7,12 @@ import Order from '../Order/Order';
 import Topbar from './Topbar';
 import { AuthContext } from '../../contexts';
 import { orderFields, specialOrderFields } from './orderFields';
-import { ORDERS_BY_STATUS, SPECIAL_ORDERS_BY_STATUS } from '../../queries';
+import {
+  GET_CUSTOMER_ORDER,
+  GET_SPECIAL_ORDER,
+  GET_CUSTOMER_ORDERS_BY_STATUS,
+  GET_SPECIAL_ORDERS_BY_STATUS,
+} from '../../queries';
 import CreateSpecialOrder from '../CreateSpecialOrder/CreateSpecialOrder';
 import Landing from '../Landing.js/Landing';
 
@@ -47,18 +52,30 @@ class Dashboard extends Component {
             />
             <Route
               path="/dashboard/customerorders/:id"
-              render={props => <Order {...props} type="order" />}
+              render={props => (
+                <Order
+                  {...props}
+                  type="customerOrder"
+                  query={GET_CUSTOMER_ORDER}
+                />
+              )}
             />
             <Route
               path="/dashboard/specialorders/:id"
-              render={props => <Order {...props} type="specialOrder" />}
+              render={props => (
+                <Order
+                  {...props}
+                  type="specialOrder"
+                  query={GET_SPECIAL_ORDER}
+                />
+              )}
             />
             <Route
               path="/dashboard/specialorders"
               render={props => (
                 <OrderList
                   {...props}
-                  query={SPECIAL_ORDERS_BY_STATUS}
+                  query={GET_SPECIAL_ORDERS_BY_STATUS}
                   fields={specialOrderFields}
                   type="specialOrders"
                 />
@@ -69,7 +86,7 @@ class Dashboard extends Component {
               render={props => (
                 <OrderList
                   {...props}
-                  query={ORDERS_BY_STATUS}
+                  query={GET_CUSTOMER_ORDERS_BY_STATUS}
                   fields={orderFields}
                   type="customerOrders"
                 />

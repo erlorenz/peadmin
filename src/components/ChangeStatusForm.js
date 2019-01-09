@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Button, Select } from './UI';
 import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components/macro';
+import Fieldset from './Fieldset/Fieldset';
 
 const ChangeStatusForm = ({ onSubmit, loading, onClick }) => {
   return (
@@ -10,7 +11,7 @@ const ChangeStatusForm = ({ onSubmit, loading, onClick }) => {
         <Overlay onClick={onClick}>
           <StyledForm onClick={e => e.stopPropagation()}>
             <StyledCard>
-              <Field component={Select} name="status">
+              <Field component={Fieldset} select={true} name="status">
                 <option value="" disabled />
                 <option value="processed">Processed</option>
                 <option value="picked_up">Picked Up</option>
