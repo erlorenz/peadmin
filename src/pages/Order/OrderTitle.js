@@ -5,7 +5,6 @@ import formatPrice from '../../utils/formatPrice';
 import StatusIndicator from '../../components/StatusIndicator';
 
 const OrderTitle = ({ order, onClick }) => {
-  const loggy = () => console.log('clicked');
   return (
     <TitleCard>
       <Title>{order.name}</Title>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Select } from './UI';
+import { Card, Button } from './UI';
 import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components/macro';
 import Fieldset from './Fieldset/Fieldset';

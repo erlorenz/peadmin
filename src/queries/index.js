@@ -8,8 +8,10 @@ export * from './getCustomerOrdersByStatus';
 
 export * from './getSpecialOrdersByStatus';
 
-export * from './getCustomerOrderDetails';
+export * from './getCustomerOrder';
 
-export * from './getSpecialOrderDetails';
+export * from './getSpecialOrder';
 
 export * from './changeStatus';
+
+export const refetchList = [];
