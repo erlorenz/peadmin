@@ -1,22 +1,17 @@
 import React from 'react';
-import { Card, CardRow, Button } from '../../components/UI';
-import formatStatus from '../../utils/formatStatus';
+import { Card, CardRow } from '../../components/UI';
 import styled from 'styled-components/macro';
 import formatPrice from '../../utils/formatPrice';
+import StatusIndicator from '../../components/StatusIndicator';
 
 const OrderTitle = ({ order, onClick }) => {
+  const loggy = () => console.log('clicked');
   return (
-    <CardRow>
-      <TitleCard>
-        <Title>
-          {order.name} - {formatStatus(order.status)}
-        </Title>
-        <p>{formatPrice(order.total_price)}</p>
-      </TitleCard>
-      <ChangeCard>
-        <StyledButton>CHANGE</StyledButton>
-      </ChangeCard>
-    </CardRow>
+    <TitleCard>
+      <Title>{order.name}</Title>
+      <Price>{formatPrice(order.total_price)}</Price>
+      <StyledStatusIndicator status={order.status} onClick={onClick} />
+    </TitleCard>
   );
 };
 
@@ -24,14 +19,19 @@ export default OrderTitle;
 
 const Title = styled.h1`
   font-size: 1.3rem;
+  margin-bottom: 0.3rem;
 `;
+
+const Price = styled(Title)``;
 
 const TitleCard = styled(Card)`
-  width: 80%;
+  @media (min-width: 1000px) {
+    flex-direction: row;
+  }
 `;
 
-const ChangeCard = styled(Card)`
-  width: 20%;
+const StyledStatusIndicator = styled(StatusIndicator)`
+  padding: 0.5rem 0.8rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
 `;
-
-const StyledButton = styled(Button)``;

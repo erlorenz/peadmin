@@ -1,32 +1,32 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-const StatusIndicator = ({ status }) => {
+const StatusIndicator = ({ status, ...props }) => {
   console.log(status);
   switch (status) {
     case 'processed':
-      return <PurpleBadge>Processed</PurpleBadge>;
+      return <PurpleBadge {...props}>Processed</PurpleBadge>;
 
     case 'picked_up':
-      return <BlueBadge>Picked Up</BlueBadge>;
+      return <BlueBadge {...props}>Picked Up</BlueBadge>;
 
     case 'checked_in':
-      return <PinkBadge>Checked In</PinkBadge>;
+      return <PinkBadge {...props}>Checked In</PinkBadge>;
 
     case 'out_for_delivery':
-      return <TurquoiseBadge>Out For Delivery</TurquoiseBadge>;
+      return <TurquoiseBadge {...props}>Out For Delivery</TurquoiseBadge>;
 
     case 'cancelled':
-      return <RedBadge>Cancelled</RedBadge>;
+      return <RedBadge {...props}>Cancelled</RedBadge>;
 
     case 'exception':
-      return <OrangeBadge>Exception</OrangeBadge>;
+      return <OrangeBadge {...props}>Exception</OrangeBadge>;
 
     case 'completed':
-      return <GreenBadge>Completed</GreenBadge>;
+      return <GreenBadge {...props}>Completed</GreenBadge>;
 
     default:
-      return <Badge>XXXX</Badge>;
+      return <Badge {...props}>XXXX</Badge>;
   }
 };
 
