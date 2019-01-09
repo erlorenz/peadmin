@@ -13,12 +13,12 @@ const SidebarLink = ({
   const iconElement = icon ? <StyledIcon icon={icon} /> : null;
 
   return (
-    <li>
+    <StyledLi>
       <StyledNavLink to={route} signout={signOut ? 'true' : undefined}>
         {iconElement}
         {children}
       </StyledNavLink>
-    </li>
+    </StyledLi>
   );
 };
 
@@ -28,26 +28,44 @@ const activeClassName = 'active';
 
 const StyledNavLink = styled(NavLink).attrs({ activeClassName })`
   padding-left: 5rem;
-  color: ${props => props.theme.navLinkColor};
+  color: #8d9498;
   display: block;
   line-height: 50px;
   font-size: 1.2rem;
 
   :hover {
-    color: ${props => props.theme.navLinkHover};
+    background-color: #eef0f3;
   }
+  
 
-  &.${activeClassName} {
-    color: ${props => props.theme.navLinkHover};
+
+
+  /* &.${activeClassName} {
+    color: ${props => props.theme.navLinkHover}; */
   }
 
   @media (min-width: 1000px) {
-    font-size: 1rem;
-    padding-left: 3rem;
+    font-size: .9rem;
+    padding-left: 2rem;
     display: ${props => (props.signout ? 'none' : 'block')};
   }
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  margin-right: 10px;
+  margin-right: 1.2rem;
+  font-size: 1rem;
+`;
+
+const StyledLi = styled.li`
+  border-bottom: 1px solid #f2f2f2;
+
+  :last-child {
+    border-bottom: none;
+  }
+
+  @media (min-width: 1000px) {
+    :nth-last-child(2) {
+      border-bottom: none;
+    }
+  }
 `;

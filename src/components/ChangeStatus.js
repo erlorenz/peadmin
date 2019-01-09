@@ -1,14 +1,14 @@
 import React from 'react';
-import { Card, Button, Select } from '../../components/UI';
+import { Card, Button, Select } from './UI';
 import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components/macro';
 
-const UpdateStatus = ({ onSubmit, loading }) => {
+const ChangeStatus = ({ onSubmit, loading }) => {
   return (
-    <StyledCard>
-      <Formik initialValues={{ status: '' }} onSubmit={onSubmit}>
-        {({ errors, status }) => (
-          <Form>
+    <Formik initialValues={{ status: '' }} onSubmit={onSubmit}>
+      {({ errors, status }) => (
+        <Form>
+          <StyledCard>
             <Field component={Select} name="status">
               <option value="" disabled />
               <option value="processed">Processed</option>
@@ -19,23 +19,23 @@ const UpdateStatus = ({ onSubmit, loading }) => {
               <option value="cancelled">Cancelled</option>
               <option value="exception">Exception</option>
             </Field>
-            <StatusButton type="submit">Update Status</StatusButton>
-          </Form>
-        )}
-      </Formik>
-    </StyledCard>
+            <StyledButton type="submit">Update</StyledButton>
+            <StyledButton cancel type="submit">
+              Cancel
+            </StyledButton>
+          </StyledCard>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
-export default UpdateStatus;
+export default ChangeStatus;
 
-const StatusButton = styled(Button)`
+const StyledButton = styled(Button)`
   margin: 1rem 0 0 0;
 `;
 
 const StyledCard = styled(Card)`
-  justify-content: space-around;
-  @media (min-width: 1000px) {
-    width: 30%;
-  }
+  justify-content: space-evenly;
 `;

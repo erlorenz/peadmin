@@ -32,6 +32,7 @@ const Sidebar = ({ user, isOpen, onClick }) => {
               'checked_in',
               'out_for_delivery',
             ],
+            title: 'active_orders',
           })}`}
           icon={faClock}>
           Active
@@ -45,22 +46,32 @@ const Sidebar = ({ user, isOpen, onClick }) => {
               'out_for_delivery',
               'completed',
             ],
+            title: 'special_orders',
           })}`}
           icon={faGift}>
           Special Orders
         </SidebarLink>
         <SidebarLink
-          route="/dashboard/customerorders?status=completed"
+          route={`/dashboard/customerorders?${queryString.stringify({
+            status: ['completed'],
+            title: 'completed_orders',
+          })}`}
           icon={faCheckCircle}>
           Completed
         </SidebarLink>
         <SidebarLink
-          route="/dashboard/customerorders?status=cancelled"
+          route={`/dashboard/customerorders?${queryString.stringify({
+            status: ['cancelled'],
+            title: 'cancelled_orders',
+          })}`}
           icon={faBan}>
           Cancelled
         </SidebarLink>
         <SidebarLink
-          route="/dashboard/customerorders?status=exception"
+          route={`/dashboard/customerorders?${queryString.stringify({
+            status: ['exception'],
+            title: 'exception_orders',
+          })}`}
           icon={faExclamationTriangle}>
           Exceptions
         </SidebarLink>

@@ -1,19 +1,21 @@
 const theme = {
-  backgroundColor: '#eef5f5',
+  backgroundColor: '#F6F8FA',
   hoverColor: 'rgb(216, 245, 252)',
   buttonColor: '#00a2ff',
   buttonColorSecondary: '#00ce67',
+  buttonColorCancel: '#dfdfdf',
+  buttonHoverCancel: '#bfbfbf',
   buttonHover: '#5983e8',
   activeLink: 'rgb(36, 137, 184)',
   navLinkColor: '#7b7b7b',
-  navLinkHover: '#1d9ecd',
-  tableHover: '#cfe7f0',
-  topbarColor: 'linear-gradient(120deg, #00e4d0, #5983e8)',
+  navLinkHover: '#f0f0f0',
+  tableHover: '#e3f3f4',
+  topbarColor: 'linear-gradient(88deg, #13b4ca, #18cabe)',
   borderRadius: '3px',
-  formBorder: '2px solid #a8a8a8',
+  formBorder: '2px solid #dfdfdf',
   labelColor: '#545454',
-  errorColor: '#c43126',
-  errorBorder: '2px solid #c43126',
+  errorColor: '#af4e46',
+  errorBorder: '2px solid #d69792',
 };
 
 export default theme;

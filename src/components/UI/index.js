@@ -18,9 +18,17 @@ export const Card = styled.div`
   }
 `;
 
+export const CardTitle = styled.h1`
+  margin-bottom: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  align-self: flex-start;
+`;
+
 export const Button = styled.button`
   border: none;
-  background-color: ${props => props.theme.buttonColor};
+  background-color: ${props =>
+    props.cancel ? props.theme.buttonColorCancel : props.theme.buttonColor};
   color: white;
   font-weight: bold;
   font-size: 1.1rem;
@@ -31,7 +39,8 @@ export const Button = styled.button`
   margin: 1.5rem 0;
 
   :hover {
-    background-color: ${props => props.theme.buttonHover};
+    background-color: ${props =>
+      props.cancel ? props.theme.buttonHoverCancel : props.theme.buttonHover};
   }
 `;
 
@@ -50,7 +59,7 @@ export const Input = styled.input`
 
   :focus {
     border: ${props =>
-      props.error ? props.theme.errorBorder : '2px solid black'};
+      props.error ? props.theme.errorBorder : '2px solid #96afb5'};
     outline: none;
   }
 `;

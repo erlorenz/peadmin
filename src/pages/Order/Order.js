@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { AuthContext } from '../../contexts';
 import { Query } from 'react-apollo';
 import OrderView from './OrderView';
 import { GET_CUSTOMER_ORDER } from '../../queries';
-import { Card } from '../../components/UI';
 
 class Order extends Component {
   static contextType = AuthContext;
@@ -13,10 +12,10 @@ class Order extends Component {
 
     return (
       <Query query={GET_CUSTOMER_ORDER} variables={{ id }}>
-        {({ data, error, loading }) => {
+        {({ data, error, loading, refetch }) => {
           if (loading) return null;
           if (error) return <h1>{error.message}</h1>;
-          return <OrderView data={data} />;
+          return <OrderView data={data} refetch={refetch} />;
         }}
       </Query>
     );

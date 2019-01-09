@@ -3,14 +3,16 @@ import { Card } from '../../components/UI';
 import styled from 'styled-components/macro';
 import OrderInfo from './OrderInfo';
 import OrderHistory from './OrderHistory';
-import TitleAndStatus from './TitleAndStatus';
+import StatusAndComment from '../../components/StatusAndComment';
+import OrderTitle from './OrderTitle';
 
-const OrderView = ({ data }) => {
+const OrderView = ({ data, refetch }) => {
   const { getCustomerOrderDetails: order } = data;
 
   return (
     <>
-      <TitleAndStatus order={order} />
+      <OrderTitle order={order} />
+      <StatusAndComment order={order} refetch={refetch} />
       <OrderInfo order={order} />
       <OrderHistory order={order} />
       <Card>

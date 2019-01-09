@@ -2,14 +2,17 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import queryString from 'query-string';
 import formatStatus from '../../utils/formatStatus';
-import { Card, TableRow, TableCell } from '../../components/UI';
-import formatTotalPrice from '../../utils/formatTotalPrice';
+import { Card, TableRow, TableCell, CardTitle } from '../../components/UI';
+import formatPrice from '../../utils/formatPrice';
 import formatDate from '../../utils/formatDate';
 import styled from 'styled-components/macro';
+import StatusIndicator from '../../components/StatusIndicator';
 
 const OrderList = ({ query, history, location, fields, type }) => {
   // Extract query string of statuses
-  const { status, order_by, direction } = queryString.parse(location.search);
+  const { status, order_by, direction, title } = queryString.parse(
+    location.search,
+  );
 
   const renderRows = orders => {
     return orders.map(order => (
@@ -20,13 +23,13 @@ const OrderList = ({ query, history, location, fields, type }) => {
         {fields.map((field, index) => {
           if (field === 'total_price') {
             return (
-              <TableCell key={index}>
-                {formatTotalPrice(order[field])}
-              </TableCell>
+              <TableCell key={index}>{formatPrice(order[field])}</TableCell>
             );
           } else if (field === 'status') {
             return (
-              <TableCell key={index}>{formatStatus(order[field])}</TableCell>
+              <TableCell key={index}>
+                <StatusIndicator status={order.status} />
+              </TableCell>
             );
           } else if (field === 'return_date' || field === 'pickup_date') {
             return (
@@ -53,10 +56,10 @@ const OrderList = ({ query, history, location, fields, type }) => {
     <Query
       query={query}
       variables={{ status, orderBy: order_by, direction }}
-      pollInterval={10000}>
+      pollInterval={4000}>
       {({ data, error, loading }) => {
-        if (loading) return null;
         if (error) return <h1>{error.message}</h1>;
+        if (loading) return <div>LOADING</div>;
 
         let orders = [];
         orders =
@@ -66,6 +69,12 @@ const OrderList = ({ query, history, location, fields, type }) => {
 
         return (
           <Card>
+            <CardTitle>
+              {title
+                .toUpperCase()
+                .split('_')
+                .join(' ')}
+            </CardTitle>
             <ScrollContainer>
               <table>
                 <thead>
