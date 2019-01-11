@@ -1,10 +1,10 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
-import Fieldset from '../../components/Fieldset/Fieldset';
 import { ReactComponent as Logo } from '../../assets/img/pressexpresslogo.svg';
 import validationSchema from './validationSchema';
 import { Button } from '../../components/UI';
 import styled from 'styled-components/macro';
+import FieldGroup from '../../components/FieldGroup/FieldGroup';
 
 const SignInForm = ({ loading, onSubmit, signIn }) => {
   return (
@@ -16,12 +16,17 @@ const SignInForm = ({ loading, onSubmit, signIn }) => {
         <StyledForm>
           <StyledLogo />
 
-          <Field type="text" name="email" label="Email" component={Fieldset} />
+          <Field
+            type="text"
+            name="email"
+            label="Email"
+            component={FieldGroup}
+          />
           <Field
             type="password"
             name="password"
             label="Password"
-            component={Fieldset}
+            component={FieldGroup}
           />
           <Button type="submit">Sign In</Button>
           <Status>{status && status.message ? status.message : ''}</Status>
@@ -35,7 +40,7 @@ export default SignInForm;
 
 const StyledForm = styled(Form)`
   background: white;
-  padding: 1rem;
+  padding: 1.8rem 1rem;
   max-width: 450px;
   display: flex;
   flex-direction: column;
@@ -43,13 +48,18 @@ const StyledForm = styled(Form)`
   border-radius: ${props => props.theme.borderRadius};
 
   @media (min-width: 550px) {
-    padding: 3rem;
+    padding: 1.8rem;
   }
 `;
 
 const StyledLogo = styled(Logo)`
-  width: 80%;
-  padding: 2rem 0;
+  width: 70%;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+
+  @media (min-width: 1000px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const Status = styled.div`

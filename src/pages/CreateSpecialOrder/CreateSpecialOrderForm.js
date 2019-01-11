@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import styled from 'styled-components/macro';
-import Fieldset from '../../components/Fieldset/Fieldset';
+import FieldGroup from '../../components/FieldGroup/FieldGroup';
 import Loader from 'react-loader-spinner';
 import validationSchema from './validationSchema';
 import { Card, Button } from '../../components/UI';
@@ -24,31 +24,36 @@ const CreateSpecialOrderForm = ({ loading, onSubmit, signIn }) => {
         validationSchema={validationSchema}>
         {({ status }) => (
           <StyledForm>
-            <Field type="text" name="name" label="Name" component={Fieldset} />
+            <Field
+              type="text"
+              name="name"
+              label="Name"
+              component={FieldGroup}
+            />
             <Field
               type="number"
               name="phoneAsNumber"
               label="Phone"
-              component={Fieldset}
+              component={FieldGroup}
             />
             <Field
               type="text"
               name="company"
               label="Company"
-              component={Fieldset}
+              component={FieldGroup}
             />
             <Field
               type="text"
               name="email"
               label="Email"
-              component={Fieldset}
+              component={FieldGroup}
             />
             <Field
               type="number"
               step=".01"
               name="decimalPrice"
               label="Total Price"
-              component={Fieldset}
+              component={FieldGroup}
             />
             <Field
               type="text"
@@ -56,7 +61,7 @@ const CreateSpecialOrderForm = ({ loading, onSubmit, signIn }) => {
               label="Description"
               textarea={true}
               rows="5"
-              component={Fieldset}
+              component={FieldGroup}
             />
 
             <Button type="submit">

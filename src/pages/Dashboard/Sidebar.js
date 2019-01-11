@@ -121,4 +121,5 @@ const LogoWrapper = styled.div`
 
 const List = styled.ul`
   margin-top: 1.5rem;
+  padding: 0;
 `;

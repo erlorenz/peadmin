@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo';
 import ChangeStatusForm from './ChangeStatusForm';
 import { CHANGE_STATUS } from '../queries';
 
-const ChangeStatusModal = ({ order, onClick, type }) => {
+const ChangeStatusModal = ({ order, onDismiss, type }) => {
   const typeVariable =
     type === 'specialOrder' ? 'special_order_id' : 'customer_order_id';
 
@@ -16,8 +16,7 @@ const ChangeStatusModal = ({ order, onClick, type }) => {
         variables: { status: values.status, [typeVariable]: order.id },
       });
       console.log(result);
-      // refetch();
-      onClick();
+      onDismiss();
     } catch (e) {
       console.log(e.message);
       setStatus();
@@ -28,7 +27,10 @@ const ChangeStatusModal = ({ order, onClick, type }) => {
       mutation={CHANGE_STATUS}
       refetchQueries={['GetCustomerOrder', 'GetSpecialOrder']}>
       {(mutate, { data, error, loading }) => (
-        <ChangeStatusForm onSubmit={handleSubmit(mutate)} onClick={onClick} />
+        <ChangeStatusForm
+          onSubmit={handleSubmit(mutate)}
+          onDismiss={onDismiss}
+        />
       )}
     </Mutation>
   );

@@ -10,11 +10,19 @@ ${styledSanitize}
 
 body,
 ol,
-ul {
+ul
+{
   font-weight: normal;
   font-family: "Open Sans", "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #363636;
+  color: ${props => props.theme.textColor};
+}
+
+button,
+input, 
+select, 
+textarea {
+  line-height: 1.5;
 }
 
 
@@ -34,7 +42,14 @@ table {
   width: 100%;
 }
 
-
+input, 
+textarea, 
+select,
+button,
+label
+ {
+  border-radius: 4px;
+}
 
 form {
   width: 100%;

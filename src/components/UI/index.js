@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { darken } from 'polished';
 
 export const Card = styled.div`
   background-color: white;
@@ -30,17 +31,17 @@ export const Button = styled.button`
   background-color: ${props =>
     props.cancel ? props.theme.buttonColorCancel : props.theme.buttonColor};
   color: white;
-  font-weight: bold;
-  font-size: 1.1rem;
-  padding: 1.1rem 1.5rem;
+  font-size: 1rem;
+  padding: 1.0625rem 2.5rem;
   cursor: pointer;
   width: 100%;
   border-radius: ${props => props.theme.borderRadius};
-  margin: 1.5rem 0;
 
   :hover {
     background-color: ${props =>
-      props.cancel ? props.theme.buttonHoverCancel : props.theme.buttonHover};
+      props.cancel
+        ? darken(0.02, props.theme.buttonColorCancel)
+        : darken(0.02, props.theme.buttonColor)};
   }
 `;
 

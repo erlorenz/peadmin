@@ -6,16 +6,20 @@ const borderSize = '1px';
 const labelColor = '#363636';
 const errorColor = '#ff3860';
 const borderColor = '#dbdbdb';
+const focusedBorderColor = '#389ac9';
+const focusedBoxShadow = '0 0 0 0.125em rgba(50,115,220,.25)';
+const errorBoxShadow = '0 0 0 0.125em rgba(255,56,96,.25)';
 
 export const Fieldset = styled.div`
-  margin-bottom: 0.8rem;
   width: 100%;
+  margin-bottom: 0.8rem;
 `;
 
 export const Label = styled.label`
   color: ${labelColor};
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-weight: 700;
+  display: block;
 `;
 
 export const Control = styled.div`
@@ -28,6 +32,7 @@ export const Help = styled.p`
   color: ${errorColor};
   font-size: 0.75rem;
   margin-top: 0.25rem;
+  margin-bottom: 0;
 `;
 
 export const Icon = styled(FontAwesomeIcon)`
@@ -42,11 +47,10 @@ export const Input = styled.input`
   color: inherit;
   padding: 1rem 1.5rem;
   font-size: 1rem;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   font-family: inherit;
   width: 100%;
   max-width: 100%;
-  border-radius: ${props => props.theme.borderRadius};
-  margin: 3px 0;
 
   :hover {
     border: ${borderSize} solid ${darken(0.1, borderColor)};
@@ -54,8 +58,9 @@ export const Input = styled.input`
 
   :focus {
     border: ${borderSize} solid
-      ${props => (props.error ? errorColor : '#96afb5')};
+      ${props => (props.error ? errorColor : focusedBorderColor)};
     outline: none;
+    box-shadow: ${props => (props.error ? errorBoxShadow : focusedBoxShadow)};
   }
 `;
 

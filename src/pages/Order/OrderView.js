@@ -5,7 +5,7 @@ import OrderInfo from './OrderInfo';
 import OrderHistory from './OrderHistory';
 import ChangeStatusModal from '../../components/ChangeStatusModal';
 import OrderTitle from './OrderTitle';
-import { Portal } from 'react-portal';
+import Modal from '../../components/Modal';
 
 class OrderView extends Component {
   state = {
@@ -18,29 +18,28 @@ class OrderView extends Component {
     });
   };
 
-  renderModal = (order, refetch, type) => {
+  renderModal = (order, type) => {
     if (this.state.changeStatusModalIsOpen)
       return (
-        <Portal>
+        <Modal onDismiss={this.handleModalToggle}>
           <ChangeStatusModal
             order={order}
-            refetch={refetch}
-            onClick={this.handleModalToggle}
             type={type}
+            // onDismiss={this.handleModalToggle}
           />
-        </Portal>
+        </Modal>
       );
     return null;
   };
 
   render() {
     const { getCustomerOrderDetails: order } = this.props.data;
-    const { refetch, type } = this.props;
+    const { type } = this.props;
 
     return (
       <>
         <OrderTitle order={order} onClick={this.handleModalToggle} />
-        {this.renderModal(order, refetch, type)}
+        {this.renderModal(order, type)}
         <OrderInfo order={order} />
         <OrderHistory order={order} />
         <Card>

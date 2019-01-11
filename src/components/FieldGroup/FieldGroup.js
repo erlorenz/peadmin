@@ -8,7 +8,7 @@ import {
   Fieldset,
   Help,
   Control,
-} from './FieldsetStyles';
+} from './FieldGroupStyles';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 const FieldGroup = ({ field, form, ...props }) => {
@@ -27,6 +27,7 @@ const FieldGroup = ({ field, form, ...props }) => {
   if (textarea)
     element = (
       <TextArea
+        as="textarea"
         error={touched[name] && errors[name] ? 'true' : undefined}
         {...field}
         {...props}
@@ -36,6 +37,7 @@ const FieldGroup = ({ field, form, ...props }) => {
   if (select)
     element = (
       <Select
+        as="select"
         error={touched[name] && errors[name] ? 'true' : undefined}
         {...field}
         {...props}
