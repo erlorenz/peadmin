@@ -1,38 +1,48 @@
 import React from 'react';
+import styled from 'styled-components/macro';
 
-const OrderCart = ({ order, cartItems, styles }) => {
-  const cartList = cartItems.map(cartItem => (
-    <tr key={cartItem.id}>
-      <td>{cartItem.name}</td>
-      <td>${cartItem.price / 100}</td>
-      <td>{cartItem.quantity}</td>
-      <td>${(cartItem.price * cartItem.quantity) / 100}</td>
-    </tr>
+import { TableRow, TableCell, Card, TableHead } from '../../components/UI';
+import formatPrice from '../../utils/formatPrice';
+
+const OrderCart = ({ order }) => {
+  const cartList = order.customerOrderItems.map(item => (
+    <TableRow key={item.id}>
+      <TableCell>{item.description}</TableCell>
+      <TableCellAlignRight>{formatPrice(item.price)}</TableCellAlignRight>
+      <TableCellAlignRight>{item.quantity}</TableCellAlignRight>
+      <TableCellAlignRight>
+        {formatPrice(item.price * item.quantity)}
+      </TableCellAlignRight>
+    </TableRow>
   ));
 
   return (
-    <div className="card">
-      <table className={styles.cart}>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
+    <Card>
+      <table>
+        <TableHead>
+          <TableRow>
+            <TableCell as="th">Item</TableCell>
+            <TableCellAlignRight as="th">Price</TableCellAlignRight>
+            <TableCellAlignRight as="th">Quantity</TableCellAlignRight>
+            <TableCellAlignRight as="th">Subtotal</TableCellAlignRight>
+          </TableRow>
+        </TableHead>
         <tbody>
           {cartList}
-          <tr>
+          <TableRow>
             <td />
             <td />
             <td />
-            <th>Total: ${order.totalPrice / 100}</th>
-          </tr>
+            <TableCell as="th">Total: ${order.total_price / 100}</TableCell>
+          </TableRow>
         </tbody>
       </table>
-    </div>
+    </Card>
   );
 };
 
 export default OrderCart;
+
+const TableCellAlignRight = styled(TableCell)`
+  text-align: right;
+`;

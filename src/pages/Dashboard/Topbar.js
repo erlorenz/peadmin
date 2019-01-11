@@ -13,7 +13,9 @@ const Topbar = ({ email, onClick, userName }) => {
       <List>
         <ListItem>
           <span>Hello, {userName}!</span>
-          <StyledGravatar email={email} default={'robohash'} />
+          <GravatarContainer>
+            {email && <Gravatar email={email} default={'robohash'} />}
+          </GravatarContainer>
         </ListItem>
 
         <ListItem signIn>
@@ -75,11 +77,12 @@ const ListItem = styled.li`
   }
 `;
 
-const StyledGravatar = styled(Gravatar)`
+const GravatarContainer = styled.div`
   border-radius: 50%;
   height: 37px;
   width: 37px;
   margin-left: 0.5rem;
+  overflow: hidden;
 `;
 
 const StyledLink = styled(Link)`

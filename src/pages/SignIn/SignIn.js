@@ -31,6 +31,7 @@ class SignIn extends Component {
 
   render() {
     if (this.context.state.token) return <Redirect to="/dashboard/" />;
+
     return (
       <Layout>
         <Mutation mutation={SIGN_IN}>

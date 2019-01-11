@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components/macro';
+import { Elements } from 'react-stripe-elements';
+
 import Sidebar from './Sidebar';
 import OrderList from './OrderList';
 import Order from '../Order/Order';
@@ -28,7 +30,7 @@ class Dashboard extends Component {
   };
 
   render() {
-    if (!this.context.state.token) return <Redirect to="/" />;
+    if (!localStorage.getItem('token')) return <Redirect to="/" />;
 
     return (
       // need to add the check token
@@ -48,26 +50,34 @@ class Dashboard extends Component {
             <Route
               exact
               path="/dashboard/specialorderform"
-              component={CreateSpecialOrder}
+              render={props => (
+                <Elements>
+                  <CreateSpecialOrder {...props} />
+                </Elements>
+              )}
             />
             <Route
               path="/dashboard/customerorders/:id"
               render={props => (
-                <Order
-                  {...props}
-                  type="customerOrder"
-                  query={GET_CUSTOMER_ORDER}
-                />
+                <Elements>
+                  <Order
+                    {...props}
+                    type="customerOrder"
+                    query={GET_CUSTOMER_ORDER}
+                  />
+                </Elements>
               )}
             />
             <Route
               path="/dashboard/specialorders/:id"
               render={props => (
-                <Order
-                  {...props}
-                  type="specialOrder"
-                  query={GET_SPECIAL_ORDER}
-                />
+                <Elements>
+                  <Order
+                    {...props}
+                    type="specialOrder"
+                    query={GET_SPECIAL_ORDER}
+                  />
+                </Elements>
               )}
             />
             <Route

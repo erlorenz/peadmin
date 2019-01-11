@@ -18,7 +18,7 @@ export const Fieldset = styled.div`
 export const Label = styled.label`
   color: ${labelColor};
   margin-bottom: 0.3rem;
-  font-weight: 700;
+  font-weight: 600;
   display: block;
 `;
 

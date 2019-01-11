@@ -4,13 +4,13 @@ import styled from 'styled-components/macro';
 const StatusIndicator = ({ status, ...props }) => {
   switch (status) {
     case 'processed':
-      return <PurpleBadge {...props}>Processed</PurpleBadge>;
+      return <PinkBadge {...props}>Processed</PinkBadge>;
 
     case 'picked_up':
-      return <BlueBadge {...props}>Picked Up</BlueBadge>;
+      return <PurpleBadge {...props}>Picked Up</PurpleBadge>;
 
     case 'checked_in':
-      return <PinkBadge {...props}>Checked In</PinkBadge>;
+      return <BlueBadge {...props}>Checked In</BlueBadge>;
 
     case 'out_for_delivery':
       return <TurquoiseBadge {...props}>Out For Delivery</TurquoiseBadge>;
@@ -39,7 +39,7 @@ const Badge = styled.label`
   width: 125px;
   display: inline-block;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 `;
 
 const PurpleBadge = styled(Badge)`

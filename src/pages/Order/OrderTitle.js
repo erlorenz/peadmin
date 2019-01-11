@@ -18,7 +18,6 @@ export default OrderTitle;
 
 const Title = styled.h1`
   font-size: 1.3rem;
-  margin-bottom: 0.3rem;
 `;
 
 const Price = styled(Title)``;
@@ -27,6 +26,7 @@ const TitleCard = styled(Card)`
   @media (min-width: 1000px) {
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
   }
 `;
 

@@ -3,8 +3,12 @@ import { Formik, Field, Form } from 'formik';
 import styled from 'styled-components/macro';
 import FieldGroup from '../../components/FieldGroup/FieldGroup';
 import Loader from 'react-loader-spinner';
+import { CardElement } from 'react-stripe-elements';
+
 import validationSchema from './validationSchema';
 import { Card, Button } from '../../components/UI';
+import theme from '../../styles/theme';
+import { Label } from '../../components/FieldGroup/FieldGroupStyles';
 
 const CreateSpecialOrderForm = ({ loading, onSubmit, signIn }) => {
   const initialValues = {
@@ -14,6 +18,19 @@ const CreateSpecialOrderForm = ({ loading, onSubmit, signIn }) => {
     description: '',
     phoneAsNumber: '',
     decimalPrice: '',
+  };
+
+  const style = {
+    base: {
+      color: 'inherit',
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSize: '16px',
+      lineHeight: '1.5',
+    },
+    invalid: {
+      color: theme.errorColor,
+      iconColor: theme.errorColor,
+    },
   };
 
   return (
@@ -63,6 +80,8 @@ const CreateSpecialOrderForm = ({ loading, onSubmit, signIn }) => {
               rows="5"
               component={FieldGroup}
             />
+            <Label>Card Details</Label>
+            <StyledCardElement style={style} />
 
             <Button type="submit">
               {loading ? <Loader type="Puff" height="1.1rem" /> : 'Sign In'}
@@ -82,4 +101,11 @@ const StyledForm = styled(Form)`
   @media (min-width: 1000px) {
     max-width: 450px;
   }
+`;
+
+const StyledCardElement = styled(CardElement)`
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #dbdbdb;
+  border-radius: ${theme.borderRadius};
 `;

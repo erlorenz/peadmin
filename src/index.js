@@ -4,6 +4,7 @@ import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components/macro';
+import { StripeProvider } from 'react-stripe-elements';
 
 import { AuthProvider } from './contexts';
 import theme from './styles/theme';
@@ -22,7 +23,9 @@ ReactDOM.render(
     <ApolloProvider client={client}>
       <AuthProvider>
         <ThemeProvider theme={theme}>
-          <App />
+          <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
+            <App />
+          </StripeProvider>
         </ThemeProvider>
       </AuthProvider>
     </ApolloProvider>

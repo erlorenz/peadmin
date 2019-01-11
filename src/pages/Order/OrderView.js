@@ -6,6 +6,7 @@ import OrderHistory from './OrderHistory';
 import ChangeStatusModal from '../../components/ChangeStatusModal';
 import OrderTitle from './OrderTitle';
 import Modal from '../../components/Modal';
+import OrderCart from './OrderCart';
 
 class OrderView extends Component {
   state = {
@@ -42,6 +43,7 @@ class OrderView extends Component {
         {this.renderModal(order, type)}
         <OrderInfo order={order} type={type} />
         <OrderHistory order={order} />
+        {type === 'customerOrder' && <OrderCart order={order} />}
         <Card>
           <Pre>{JSON.stringify(order, null, 2)}</Pre>
         </Card>

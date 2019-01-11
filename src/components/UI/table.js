@@ -24,3 +24,8 @@ export const TableCell = styled.td`
     padding: 0.8rem;
   }
 `;
+
+export const TableHead = styled.thead`
+  background-color: #a4c1c6;
+  color: white;
+`;

@@ -26,7 +26,6 @@ export class AuthProvider extends Component {
     if (!user.token) this.signOut();
 
     this.setState(user);
-    console.log('Hydrating', this.state.token);
   };
 
   signIn = authData => {
@@ -34,8 +33,8 @@ export class AuthProvider extends Component {
     authData.isAuthenticated = true;
     authData.accessLevel = authData.access_level;
     delete authData.__typename;
-    this.setState(authData);
     localStorageHelper.set(authData);
+    this.setState(authData);
   };
 
   signOut = () => {

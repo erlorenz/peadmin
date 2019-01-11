@@ -21,7 +21,10 @@ ul
 button,
 input, 
 select, 
-textarea {
+div,
+textarea,
+td, 
+th  {
   line-height: 1.5;
 }
 
@@ -42,8 +45,9 @@ table {
   width: 100%;
 }
 
-thead {
-  border-bottom: 1px solid lightgray;
+
+th {
+  font-weight: 600;
 }
 
 input, 

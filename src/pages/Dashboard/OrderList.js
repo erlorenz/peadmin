@@ -1,7 +1,13 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import queryString from 'query-string';
-import { Card, TableRow, TableCell, CardTitle } from '../../components/UI';
+import {
+  Card,
+  TableRow,
+  TableCell,
+  CardTitle,
+  TableHead,
+} from '../../components/UI';
 import formatPrice from '../../utils/formatPrice';
 import formatDate from '../../utils/formatDate';
 import styled from 'styled-components/macro';
@@ -83,9 +89,9 @@ const OrderList = ({ query, history, location, fields, type }) => {
             </CardTitle>
             <ScrollContainer>
               <table>
-                <thead>
+                <TableHead>
                   <TableRow underline={true}>{renderHeaders}</TableRow>
-                </thead>
+                </TableHead>
                 <tbody>{renderRows(orders)}</tbody>
               </table>
             </ScrollContainer>

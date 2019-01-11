@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import queryString from 'query-string';
+import { injectStripe } from 'react-stripe-elements';
+
 import { AuthContext } from '../../contexts';
 import { CREATE_SPECIAL_ORDER } from '../../queries';
 import CreateSpecialOrderForm from './CreateSpecialOrderForm';
@@ -14,6 +16,11 @@ class CreateSpecialOrder extends Component {
       const total_price = Math.round(values.decimalPrice * 100);
       const phone = values.phoneAsNumber.toString();
 
+      const { token } = await this.props.stripe.createToken({
+        name: values.name,
+      });
+      console.log(token);
+
       const response = await mutation({
         variables: {
           email: values.email,
@@ -22,7 +29,7 @@ class CreateSpecialOrder extends Component {
           total_price,
           phone,
           company: values.company,
-          stripeToken: 'tok_visa',
+          stripeToken: token.id,
         },
       });
       setSubmitting(false);
@@ -37,10 +44,10 @@ class CreateSpecialOrder extends Component {
             'out_for_delivery',
             'completed',
           ],
+          title: 'All Recent Special Orders',
         })}`,
       );
     } catch (e) {
-      console.log('Error');
       const message = 'Error with request';
       setStatus({ message });
       setSubmitting(false);
@@ -63,4 +70,4 @@ class CreateSpecialOrder extends Component {
   }
 }
 
-export default CreateSpecialOrder;
+export default injectStripe(CreateSpecialOrder);
