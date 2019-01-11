@@ -1,10 +1,17 @@
 import React from 'react';
-import { Input, Label, TextArea, Select } from '../UI';
-import styled from 'styled-components/macro';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  Icon,
+  Input,
+  Label,
+  TextArea,
+  Select,
+  Fieldset,
+  Help,
+  Control,
+} from './FieldsetStyles';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
-const Fieldset = ({ field, form, ...props }) => {
+const FieldGroup = ({ field, form, ...props }) => {
   const { touched, errors } = form;
   const { name } = field;
   const { label, textarea = false, select = false } = props;
@@ -37,35 +44,18 @@ const Fieldset = ({ field, form, ...props }) => {
 
   const errorMessage = touched[name] && errors[name] ? errors[name] : '';
   const icon =
-    touched[name] && errors[name] ? (
-      <StyledIcon icon={faExclamationCircle} />
-    ) : (
-      ''
-    );
+    touched[name] && errors[name] ? <Icon icon={faExclamationCircle} /> : '';
 
   return (
-    <StyledFieldset>
+    <Fieldset>
       <Label>{label}</Label>
-      {element}
-      <ErrorText>
+      <Control>{element}</Control>
+      <Help>
         {icon}
         {errorMessage}
-      </ErrorText>
-    </StyledFieldset>
+      </Help>
+    </Fieldset>
   );
 };
 
-export default Fieldset;
-
-const StyledFieldset = styled.fieldset`
-  margin-bottom: 1.2rem;
-  position: relative;
-`;
-
-const ErrorText = styled.div`
-  color: ${props => props.theme.errorColor};
-`;
-
-const StyledIcon = styled(FontAwesomeIcon)`
-  margin-right: 0.5rem;
-`;
+export default FieldGroup;

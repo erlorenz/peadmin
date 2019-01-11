@@ -12,10 +12,6 @@ const theme = {
   tableHover: '#e3f3f4',
   topbarColor: 'linear-gradient(88deg, #13b4ca, #18cabe)',
   borderRadius: '3px',
-  formBorder: '2px solid #dfdfdf',
-  labelColor: '#545454',
-  errorColor: '#af4e46',
-  errorBorder: '2px solid #d69792',
 };
 
 export default theme;
