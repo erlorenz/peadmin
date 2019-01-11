@@ -16,6 +16,7 @@ const OrderList = ({ query, history, location, fields, type }) => {
   const renderRows = orders => {
     return orders.map(order => (
       <TableRow
+        striped={true}
         hover={true}
         key={order.id}
         onClick={() => history.push(`/dashboard/${type}/${order.id}`)}>

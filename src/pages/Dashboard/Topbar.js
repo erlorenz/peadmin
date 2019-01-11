@@ -17,7 +17,7 @@ const Topbar = ({ email, onClick, userName }) => {
         </ListItem>
 
         <ListItem signIn>
-          <StyledLink to="/signout">LOG OUT</StyledLink>
+          <StyledLink to="/signout">Sign Out</StyledLink>
         </ListItem>
       </List>
     </Header>
@@ -61,11 +61,7 @@ const StyledHamburgerIcon = styled(HamburgerIcon)`
 const List = styled.ul`
   display: flex;
   justify-content: flex-end;
-  width: 55%;
-
-  @media (min-width: 1000px) {
-    width: 35vw;
-  }
+  font-weight: bold;
 `;
 
 const ListItem = styled.li`
@@ -89,6 +85,6 @@ const StyledGravatar = styled(Gravatar)`
 const StyledLink = styled(Link)`
   line-height: 64px;
   :hover {
-    color: lightblue;
+    color: #c6f1f7;
   }
 `;

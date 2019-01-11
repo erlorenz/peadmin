@@ -34,13 +34,13 @@ class OrderView extends Component {
 
   render() {
     const { getCustomerOrderDetails: order } = this.props.data;
-    const { type } = this.props;
+    const { type = 'customerOrder' } = this.props;
 
     return (
       <>
         <OrderTitle order={order} onClick={this.handleModalToggle} />
         {this.renderModal(order, type)}
-        <OrderInfo order={order} />
+        <OrderInfo order={order} type={type} />
         <OrderHistory order={order} />
         <Card>
           <Pre>{JSON.stringify(order, null, 2)}</Pre>

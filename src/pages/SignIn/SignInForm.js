@@ -19,13 +19,13 @@ const SignInForm = ({ loading, onSubmit, signIn }) => {
           <Field
             type="text"
             name="email"
-            label="Email"
+            placeholder="Email"
             component={FieldGroup}
           />
           <Field
             type="password"
             name="password"
-            label="Password"
+            placeholder="Password"
             component={FieldGroup}
           />
           <Button type="submit">Sign In</Button>
@@ -39,7 +39,6 @@ const SignInForm = ({ loading, onSubmit, signIn }) => {
 export default SignInForm;
 
 const StyledForm = styled(Form)`
-  background: white;
   padding: 1.8rem 1rem;
   max-width: 450px;
   display: flex;
@@ -57,6 +56,9 @@ const StyledLogo = styled(Logo)`
   margin-bottom: 1rem;
   padding: 1rem 0;
 
+  path {
+    fill: white;
+  }
   @media (min-width: 1000px) {
     margin-bottom: 1.5rem;
   }

@@ -50,10 +50,12 @@ export default SignIn;
 
 const Layout = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: ${props => props.theme.topbarColor};
+  justify-content: flex-start;
+  background: radial-gradient(600px 600px at 50% 45px, #31bfdb 0, #102a35 130%);
   min-height: 100vh;
   width: 100vw;
   padding: 1rem;
+  padding-top: 10vh;
 `;

@@ -63,5 +63,5 @@ const RedBadge = styled(Badge)`
 `;
 
 const TurquoiseBadge = styled(Badge)`
-  background-color: #01cfc9;
+  background-color: #02c7c2;
 `;

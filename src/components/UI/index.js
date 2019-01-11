@@ -40,8 +40,8 @@ export const Button = styled.button`
   :hover {
     background-color: ${props =>
       props.cancel
-        ? darken(0.02, props.theme.buttonColorCancel)
-        : darken(0.02, props.theme.buttonColor)};
+        ? darken(0.05, props.theme.buttonColorCancel)
+        : darken(0.05, props.theme.buttonColor)};
   }
 `;
 
@@ -50,7 +50,8 @@ export const TableRow = styled.tr`
   border-bottom: ${props => (props.underline ? `1px solid lightgray` : 'none')};
 
   :nth-child(even) {
-    background-color: ${props => props.theme.backgroundColor};
+    background-color: ${props =>
+      props.striped ? props.theme.backgroundColor : 'transparent'};
   }
   :hover {
     background-color: ${props =>

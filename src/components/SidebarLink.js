@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components/macro';
+import { darken } from 'polished';
 
 const SidebarLink = ({
   children,
@@ -34,7 +35,7 @@ const StyledNavLink = styled(NavLink).attrs({ activeClassName })`
   font-size: 1.2rem;
 
   :hover {
-    background-color: #eef0f3;
+    background-color: ${darken(0.02, 'white')};
   }
   
 

@@ -46,12 +46,15 @@ export const Input = styled.input`
   background-color: white;
   color: inherit;
   padding: 1rem 1.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   font-family: inherit;
   width: 100%;
   max-width: 100%;
 
+  @media (min-width: 450px) {
+    font-size: 1rem;
+  }
   :hover {
     border: ${borderSize} solid ${darken(0.1, borderColor)};
   }

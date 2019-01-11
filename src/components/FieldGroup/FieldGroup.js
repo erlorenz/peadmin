@@ -50,7 +50,7 @@ const FieldGroup = ({ field, form, ...props }) => {
 
   return (
     <Fieldset>
-      <Label>{label}</Label>
+      {label && <Label>{label}</Label>}
       <Control>{element}</Control>
       <Help>
         {icon}
