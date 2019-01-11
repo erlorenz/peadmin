@@ -7,25 +7,21 @@ const OrderHistory = ({ order }) => {
     <CardRow>
       <Card>
         <table>
-          <tbody>
+          <thead>
             <TableRow>
               <TableCell as="th">Created:</TableCell>
-              <TableCell>{formatDate(order.created_at)}</TableCell>
-            </TableRow>
-            <TableRow>
               <TableCell as="th">Picked Up:</TableCell>
-              <TableCell>{formatDate(order.picked_up)}</TableCell>
-            </TableRow>
-            <TableRow>
               <TableCell as="th">Checked In:</TableCell>
-              <TableCell>{formatDate(order.checked_in)}</TableCell>
-            </TableRow>
-            <TableRow>
               <TableCell as="th">Out For Delivery:</TableCell>
-              <TableCell>{formatDate(order.out_for_delivery)}</TableCell>
-            </TableRow>
-            <TableRow>
               <TableCell as="th">Completed:</TableCell>
+            </TableRow>
+          </thead>
+          <tbody>
+            <TableRow>
+              <TableCell>{formatDate(order.created_at)}</TableCell>
+              <TableCell>{formatDate(order.picked_up)}</TableCell>
+              <TableCell>{formatDate(order.checked_in)}</TableCell>
+              <TableCell>{formatDate(order.out_for_delivery)}</TableCell>
               <TableCell>{formatDate(order.completed)}</TableCell>
             </TableRow>
           </tbody>

@@ -1,6 +1,6 @@
 const theme = {
   backgroundColor: '#F6F8FA',
-  buttonColor: '#00b7da',
+  buttonColor: '#32c8e4',
   buttonColorSecondary: '#ED217C',
   buttonColorCancel: '#dfdfdf',
   activeLink: 'rgb(36, 137, 184)',
@@ -10,6 +10,8 @@ const theme = {
   topbarColor: 'linear-gradient(120deg,#10bbdd,#51d0e8)',
   borderRadius: '4px',
   textColor: '#656565',
+  signInColor:
+    'radial-gradient(600px 600px at 50% 45px,#00d6ff 0,#1d3540 130%)',
 };
 
 export default theme;

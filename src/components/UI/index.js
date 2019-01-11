@@ -1,6 +1,12 @@
 import styled from 'styled-components/macro';
 import { darken } from 'polished';
 
+/**
+ * Export all basic UI elements
+ */
+
+export * from './table';
+
 export const Card = styled.div`
   background-color: white;
   padding: 0.9rem;
@@ -32,7 +38,7 @@ export const Button = styled.button`
     props.cancel ? props.theme.buttonColorCancel : props.theme.buttonColor};
   color: white;
   font-size: 1rem;
-  padding: 1.0625rem 2.5rem;
+  padding: 0.8rem 2.5rem;
   cursor: pointer;
   width: 100%;
   border-radius: ${props => props.theme.borderRadius};
@@ -41,32 +47,7 @@ export const Button = styled.button`
     background-color: ${props =>
       props.cancel
         ? darken(0.05, props.theme.buttonColorCancel)
-        : darken(0.05, props.theme.buttonColor)};
-  }
-`;
-
-export const TableRow = styled.tr`
-  cursor: ${props => (props.hover ? 'pointer' : 'default')};
-  border-bottom: ${props => (props.underline ? `1px solid lightgray` : 'none')};
-
-  :nth-child(even) {
-    background-color: ${props =>
-      props.striped ? props.theme.backgroundColor : 'transparent'};
-  }
-  :hover {
-    background-color: ${props =>
-      props.hover ? props.theme.tableHover : undefined};
-  }
-`;
-
-export const TableCell = styled.td`
-  padding: 0.9rem 1.3rem;
-  font-size: 0.9rem;
-  line-height: 1;
-  white-space: ${props => (props.noWrap ? 'nowrap' : 'pre-line')};
-
-  @media (min-width: 1000px) {
-    padding: 1.1rem 1.8rem;
+        : darken(0.07, props.theme.buttonColor)};
   }
 `;
 

@@ -40,7 +40,7 @@ export default SignInForm;
 
 const StyledForm = styled(Form)`
   padding: 1.8rem 1rem;
-  max-width: 450px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,15 +52,11 @@ const StyledForm = styled(Form)`
 `;
 
 const StyledLogo = styled(Logo)`
-  width: 70%;
-  margin-bottom: 1rem;
-  padding: 1rem 0;
+  width: 150px;
+  margin-bottom: 1.5rem;
 
   path {
     fill: white;
-  }
-  @media (min-width: 1000px) {
-    margin-bottom: 1.5rem;
   }
 `;
 

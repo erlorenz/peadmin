@@ -45,7 +45,7 @@ export const Input = styled.input`
     ${props => (props.error ? errorColor : borderColor)};
   background-color: white;
   color: inherit;
-  padding: 1rem 1.5rem;
+  padding: calc(0.8rem - 1px) 1rem;
   font-size: 0.9rem;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   font-family: inherit;

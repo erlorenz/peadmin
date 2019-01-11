@@ -42,6 +42,10 @@ table {
   width: 100%;
 }
 
+thead {
+  border-bottom: 1px solid lightgray;
+}
+
 input, 
 textarea, 
 select,
