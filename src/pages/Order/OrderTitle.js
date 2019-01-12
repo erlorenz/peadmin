@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '../../components/UI';
 import styled from 'styled-components/macro';
 import formatPrice from '../../utils/formatPrice';
 import StatusIndicator from '../../components/StatusIndicator';
+import Modal from '../../components/Modal';
+import ChangeStatusModal from '../../components/ChangeStatusModal';
 
-const OrderTitle = ({ order, onClick }) => {
+const OrderTitle = ({ order, type }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleToggleModal = () => setModalIsOpen(!modalIsOpen);
+
   return (
-    <TitleCard>
-      <Title>{order.name}</Title>
-      <Price>{formatPrice(order.total_price)}</Price>
-      <StyledStatusIndicator status={order.status} onClick={onClick} />
-    </TitleCard>
+    <>
+      {modalIsOpen && (
+        <Modal onDismiss={handleToggleModal}>
+          <ChangeStatusModal order={order} type={type} />
+        </Modal>
+      )}
+      <TitleCard>
+        <Title>{order.name}</Title>
+        <Price>{formatPrice(order.total_price)}</Price>
+        <StyledStatusIndicator
+          status={order.status}
+          onClick={handleToggleModal}
+        />
+      </TitleCard>
+    </>
   );
 };
 

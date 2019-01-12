@@ -38,6 +38,7 @@ const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   @media (min-width: 450px) {
     padding: 2rem;

@@ -14,4 +14,6 @@ export * from './getSpecialOrder';
 
 export * from './changeStatus';
 
+export * from './insertAdminComment';
+
 export const refetchList = [];

@@ -12,10 +12,10 @@ class Order extends Component {
 
     return (
       <Query query={query} variables={{ id }}>
-        {({ data, error, loading, refetch }) => {
+        {({ data, error, loading }) => {
           if (loading) return null;
           if (error) return <h1>{error.message}</h1>;
-          return <OrderView data={data} refetch={refetch} type={type} />;
+          return <OrderView data={data} type={type} />;
         }}
       </Query>
     );
