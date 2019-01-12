@@ -23,7 +23,6 @@ export const Label = styled.label`
 `;
 
 export const Control = styled.div`
-  font-size: 1rem;
   position: relative;
   text-align: left;
 `;

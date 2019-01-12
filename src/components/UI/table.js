@@ -18,7 +18,7 @@ export const TableCell = styled.td`
   padding: 0.5rem;
   font-size: 0.9rem;
   line-height: 1;
-  white-space: ${props => (props.noWrap ? 'nowrap' : 'pre-line')};
+  white-space: ${props => (props.preLine ? 'pre-line' : 'nowrap')};
 
   @media (min-width: 1000px) {
     padding: 0.8rem;

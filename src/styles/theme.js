@@ -12,6 +12,9 @@ const theme = {
   textColor: '#656565',
   signInColor:
     'radial-gradient(600px 600px at 50% 45px,#00d6ff 0,#1d3540 130%)',
+  errorColor: '#ff3860',
+  errorBackgroundColor: '#e4c6cc',
+  borderWidth: '1px',
 };
 
 export default theme;

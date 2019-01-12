@@ -32,6 +32,7 @@ export const CardTitle = styled.h1`
   align-self: flex-start;
 `;
 
+// Takes props: cancel
 export const Button = styled.button`
   border: none;
   background-color: ${props =>
@@ -58,4 +59,26 @@ export const CardRow = styled.div`
   @media (min-width: 1000px) {
     flex-direction: row;
   }
+`;
+
+export const Notification = styled.div`
+  border-radius: ${props => props.theme.borderRadius};
+  margin-top: 0.8rem;
+  padding: calc(0.8rem - 1px) 1rem;
+  border-width: 1px;
+  font-size: 0.9rem;
+  border-style: solid;
+  border-color: ${props => (props.warn ? 'yellow' : props.theme.errorColor)};
+  background-color: ${props =>
+    props.warn ? 'yellow' : props.theme.errorBackgroundColor};
+  color: ${props => (props.warn ? 'yellow' : props.theme.errorColor)};
+
+  @media (min-width) {
+    font-size: 1rem;
+  }
+`;
+
+export const ScrollContainer = styled.div`
+  overflow-x: auto;
+  width: 100%;
 `;

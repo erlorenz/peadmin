@@ -7,6 +7,7 @@ import {
   TableCell,
   CardTitle,
   TableHead,
+  ScrollContainer,
 } from '../../components/UI';
 import formatPrice from '../../utils/formatPrice';
 import formatDate from '../../utils/formatDate';
@@ -103,11 +104,6 @@ const OrderList = ({ query, history, location, fields, type }) => {
 };
 
 export default OrderList;
-
-const ScrollContainer = styled.div`
-  overflow-x: auto;
-  width: 100%;
-`;
 
 const StyledTableCell = styled(TableCell)`
   white-space: nowrap;

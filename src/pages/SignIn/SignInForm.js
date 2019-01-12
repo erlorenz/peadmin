@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { ReactComponent as Logo } from '../../assets/img/pressexpresslogo.svg';
 import validationSchema from './validationSchema';
-import { Button } from '../../components/UI';
+import { Button, Notification } from '../../components/UI';
 import styled from 'styled-components/macro';
 import FieldGroup from '../../components/FieldGroup/FieldGroup';
 
@@ -29,7 +29,9 @@ const SignInForm = ({ loading, onSubmit, signIn }) => {
             component={FieldGroup}
           />
           <Button type="submit">Sign In</Button>
-          <Status>{status && status.message ? status.message : ''}</Status>
+          {status && status.message ? (
+            <Notification>{status.message}</Notification>
+          ) : null}
         </StyledForm>
       )}
     </Formik>
@@ -58,8 +60,4 @@ const StyledLogo = styled(Logo)`
   path {
     fill: white;
   }
-`;
-
-const Status = styled.div`
-  color: #c43126;
 `;
