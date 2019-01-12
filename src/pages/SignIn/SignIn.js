@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { Mutation } from 'react-apollo';
 import styled from 'styled-components/macro';
 
@@ -7,10 +7,13 @@ import { SIGN_IN } from '../../queries';
 import { Redirect } from 'react-router-dom';
 import SignInForm from './SignInForm';
 
-class SignIn extends Component {
-  static contextType = AuthContext;
+const SignIn = () => {
+  const auth = useContext(AuthContext);
 
-  handleSubmit = signIn => async (values, { setSubmitting, setStatus }) => {
+  const handleSubmit = signIn => async (
+    values,
+    { setSubmitting, setStatus },
+  ) => {
     try {
       const { data } = await signIn({
         variables: {
@@ -21,7 +24,7 @@ class SignIn extends Component {
       setSubmitting(false);
       console.log(data.signIn);
 
-      this.context.signIn(data.signIn);
+      auth.signIn(data.signIn);
     } catch (e) {
       const message = 'Unable to sign in.';
       setStatus({ message });
@@ -29,23 +32,18 @@ class SignIn extends Component {
     }
   };
 
-  render() {
-    if (this.context.state.token) return <Redirect to="/dashboard/" />;
+  if (auth.state.token) return <Redirect to="/dashboard/" />;
 
-    return (
-      <Layout>
-        <Mutation mutation={SIGN_IN}>
-          {(signIn, { loading }) => (
-            <SignInForm
-              loading={loading}
-              onSubmit={this.handleSubmit(signIn)}
-            />
-          )}
-        </Mutation>
-      </Layout>
-    );
-  }
-}
+  return (
+    <Layout>
+      <Mutation mutation={SIGN_IN}>
+        {(signIn, { loading }) => (
+          <SignInForm loading={loading} onSubmit={handleSubmit(signIn)} />
+        )}
+      </Mutation>
+    </Layout>
+  );
+};
 
 export default SignIn;
 

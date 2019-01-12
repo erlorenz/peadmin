@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useContext, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import SignIn from './pages/SignIn/SignIn';
@@ -8,26 +8,20 @@ import { AuthContext } from './contexts';
 import Dashboard from './pages/Dashboard/Dashboard';
 import GlobalStyle from './styles/GlobalStyle';
 
-class App extends Component {
-  static contextType = AuthContext;
+const App = () => {
+  const auth = useContext(AuthContext);
 
-  componentDidMount() {
-    this.context.hydrateFromLocalStorage();
-  }
-
-  render() {
-    return (
-      <>
-        <GlobalStyle />
-        <Switch>
-          <Route exact path="/" component={SignIn} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/signout" component={SignOut} />
-          <Route path="/" component={NotFound} />
-        </Switch>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <GlobalStyle />
+      <Switch>
+        <Route exact path="/" component={SignIn} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/signout" component={SignOut} />
+        <Route path="/" component={NotFound} />
+      </Switch>
+    </>
+  );
+};
 
 export default App;

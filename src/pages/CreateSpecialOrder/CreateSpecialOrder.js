@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Mutation } from 'react-apollo';
 import queryString from 'query-string';
 import { injectStripe } from 'react-stripe-elements';
 
-import { AuthContext } from '../../contexts';
 import { CREATE_SPECIAL_ORDER } from '../../queries';
 import CreateSpecialOrderForm from './CreateSpecialOrderForm';
 
-class CreateSpecialOrder extends Component {
-  static contextType = AuthContext;
-
-  handleSubmit = mutation => async (values, { setSubmitting, setStatus }) => {
+const CreateSpecialOrder = ({ stripe, history }) => {
+  const handleSubmit = mutation => async (
+    values,
+    { setSubmitting, setStatus },
+  ) => {
     try {
       // Format price and phone
       const total_price = Math.round(values.decimalPrice * 100);
       const phone = values.phoneAsNumber.toString();
 
-      const { token } = await this.props.stripe.createToken({
+      const { token } = await stripe.createToken({
         name: values.name,
       });
       console.log(token);
@@ -35,7 +35,7 @@ class CreateSpecialOrder extends Component {
       setSubmitting(false);
       console.log(response.data);
 
-      this.props.history.push(
+      history.push(
         `/dashboard/specialorders?${queryString.stringify({
           status: [
             'processed',
@@ -54,20 +54,18 @@ class CreateSpecialOrder extends Component {
     }
   };
 
-  render() {
-    return (
-      <Mutation mutation={CREATE_SPECIAL_ORDER}>
-        {(mutation, { error, loading }) => (
-          <CreateSpecialOrderForm
-            mutation={mutation}
-            requestError={error}
-            loading={loading}
-            onSubmit={this.handleSubmit(mutation)}
-          />
-        )}
-      </Mutation>
-    );
-  }
-}
+  return (
+    <Mutation mutation={CREATE_SPECIAL_ORDER}>
+      {(mutation, { error, loading }) => (
+        <CreateSpecialOrderForm
+          mutation={mutation}
+          requestError={error}
+          loading={loading}
+          onSubmit={handleSubmit(mutation)}
+        />
+      )}
+    </Mutation>
+  );
+};
 
 export default injectStripe(CreateSpecialOrder);

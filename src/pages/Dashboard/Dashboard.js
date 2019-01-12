@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useContext, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { Elements } from 'react-stripe-elements';
@@ -18,96 +18,89 @@ import {
 import CreateSpecialOrder from '../CreateSpecialOrder/CreateSpecialOrder';
 import Landing from '../Landing.js/Landing';
 
-class Dashboard extends Component {
-  static contextType = AuthContext;
+const Dashboard = () => {
+  const auth = useContext(AuthContext);
 
-  state = {
-    sidebarOpen: false,
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+
+  const handleToggleSidebar = () => {
+    setSidebarIsOpen(!sidebarIsOpen);
   };
 
-  handleToggleSidebar = () => {
-    this.setState({ sidebarOpen: !this.state.sidebarOpen });
-  };
+  if (!localStorage.getItem('token')) return <Redirect to="/" />;
 
-  render() {
-    if (!localStorage.getItem('token')) return <Redirect to="/" />;
-
-    return (
-      // need to add the check token
-      <Layout>
-        <Sidebar
-          isOpen={this.state.sidebarOpen}
-          onClick={this.handleToggleSidebar}
+  return (
+    // need to add the check token
+    <Layout>
+      <Sidebar isOpen={sidebarIsOpen} onClick={handleToggleSidebar} />
+      <Main>
+        <Topbar
+          onClick={handleToggleSidebar}
+          email={auth.state.email}
+          userName={auth.state.name}
         />
-        <Main>
-          <Topbar
-            onClick={this.handleToggleSidebar}
-            email={this.context.state.email}
-            userName={this.context.state.name}
+        <Switch>
+          <Route exact path="/dashboard" component={Landing} />
+          <Route
+            exact
+            path="/dashboard/specialorderform"
+            render={props => (
+              <Elements>
+                <CreateSpecialOrder {...props} />
+              </Elements>
+            )}
           />
-          <Switch>
-            <Route exact path="/dashboard" component={Landing} />
-            <Route
-              exact
-              path="/dashboard/specialorderform"
-              render={props => (
-                <Elements>
-                  <CreateSpecialOrder {...props} />
-                </Elements>
-              )}
-            />
-            <Route
-              path="/dashboard/customerorders/:id"
-              render={props => (
-                <Elements>
-                  <Order
-                    {...props}
-                    type="customerOrder"
-                    query={GET_CUSTOMER_ORDER}
-                  />
-                </Elements>
-              )}
-            />
-            <Route
-              path="/dashboard/specialorders/:id"
-              render={props => (
-                <Elements>
-                  <Order
-                    {...props}
-                    type="specialOrder"
-                    query={GET_SPECIAL_ORDER}
-                  />
-                </Elements>
-              )}
-            />
-            <Route
-              path="/dashboard/specialorders"
-              render={props => (
-                <OrderList
+          <Route
+            path="/dashboard/customerorders/:id"
+            render={props => (
+              <Elements>
+                <Order
                   {...props}
-                  query={GET_SPECIAL_ORDERS_BY_STATUS}
-                  fields={specialOrderFields}
-                  type="specialOrders"
+                  type="customerOrder"
+                  query={GET_CUSTOMER_ORDER}
                 />
-              )}
-            />
-            <Route
-              path="/dashboard/customerorders"
-              render={props => (
-                <OrderList
+              </Elements>
+            )}
+          />
+          <Route
+            path="/dashboard/specialorders/:id"
+            render={props => (
+              <Elements>
+                <Order
                   {...props}
-                  query={GET_CUSTOMER_ORDERS_BY_STATUS}
-                  fields={orderFields}
-                  type="customerOrders"
+                  type="specialOrder"
+                  query={GET_SPECIAL_ORDER}
                 />
-              )}
-            />
-          </Switch>
-        </Main>
-      </Layout>
-    );
-  }
-}
+              </Elements>
+            )}
+          />
+          <Route
+            path="/dashboard/specialorders"
+            render={props => (
+              <OrderList
+                {...props}
+                query={GET_SPECIAL_ORDERS_BY_STATUS}
+                fields={specialOrderFields}
+                type="specialOrders"
+              />
+            )}
+          />
+          <Route
+            path="/dashboard/customerorders"
+            render={props => (
+              <OrderList
+                {...props}
+                query={GET_CUSTOMER_ORDERS_BY_STATUS}
+                fields={orderFields}
+                type="customerOrders"
+              />
+            )}
+          />
+        </Switch>
+      </Main>
+    </Layout>
+  );
+};
 
 export default Dashboard;
 
