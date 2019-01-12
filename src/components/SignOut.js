@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../contexts';
 import { ApolloConsumer } from 'react-apollo';
-import localStorageHelper from '../utils/localStorageHelper';
 
 const SignOut = () => {
   const auth = useContext(AuthContext);

@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts';
 import { SIGN_IN } from '../../queries';
 import { Redirect } from 'react-router-dom';
 import SignInForm from './SignInForm';
+import setErrorMessage from '../../utils/setErrorMessage';
 
 const SignIn = () => {
   const auth = useContext(AuthContext);
@@ -22,11 +23,11 @@ const SignIn = () => {
         },
       });
       setSubmitting(false);
-      console.log(data.signIn);
 
+      console.log(data.signIn);
       auth.signIn(data.signIn);
     } catch (e) {
-      const message = 'Unable to sign in.';
+      const message = setErrorMessage(e);
       setStatus({ message });
       setSubmitting(false);
     }

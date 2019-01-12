@@ -29,9 +29,9 @@ const SignInForm = ({ loading, onSubmit, signIn }) => {
             component={FieldGroup}
           />
           <Button type="submit">Sign In</Button>
-          {status && status.message ? (
+          {status && status.message && (
             <Notification>{status.message}</Notification>
-          ) : null}
+          )}
         </StyledForm>
       )}
     </Formik>

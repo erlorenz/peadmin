@@ -7,11 +7,11 @@ export const AuthConsumer = AuthContext.Consumer;
 
 export class AuthProvider extends Component {
   state = {
-    email: null,
-    token: null,
-    name: null,
-    accessLevel: null,
-    id: null,
+    email: '',
+    token: '',
+    name: '',
+    accessLevel: '',
+    id: '',
     isAuthenticated: false,
   };
 
@@ -29,7 +29,6 @@ export class AuthProvider extends Component {
   };
 
   signIn = authData => {
-    console.log(authData);
     authData.isAuthenticated = true;
     authData.accessLevel = authData.access_level;
     delete authData.access_level;

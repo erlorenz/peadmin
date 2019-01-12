@@ -3,8 +3,8 @@ import { Query } from 'react-apollo';
 import OrderView from './OrderView';
 
 const Order = props => {
-  const { id } = this.props.match.params;
-  const { type, query } = this.props;
+  const { id } = props.match.params;
+  const { type, query } = props;
 
   return (
     <Query query={query} variables={{ id }}>

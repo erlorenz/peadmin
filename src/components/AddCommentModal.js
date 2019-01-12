@@ -3,33 +3,43 @@ import { Mutation } from 'react-apollo';
 import { INSERT_ADMIN_COMMENT } from '../queries';
 import AddCommentForm from './AddCommentForm';
 import { AuthContext } from '../contexts/AuthProvider';
+import setErrorMessage from '../utils/setErrorMessage';
+import * as yup from 'yup';
 
 const AddCommentModal = ({ order, onDismiss, type }) => {
   const auth = useContext(AuthContext);
 
-  console.log('AUTH CONTEXT: ', auth);
-
-  const typeVariable =
+  const idType =
     type === 'specialOrder' ? 'special_order_id' : 'customer_order_id';
 
-  const handleSubmit = mutate => async (
-    values,
-    { setSubmitting, setStatus },
-  ) => {
+  const schema = yup.object().shape({
+    admin_user_id: yup
+      .string('Admin Id Missing.')
+      .required('Admin ID missing.'),
+    comment_body: yup.string().required('Cannot submit blank comment.'),
+    [idType]: yup.string().required('Type is required'),
+  });
+
+  const handleSubmit = mutate => async (values, actions) => {
+    const { setSubmitting, setStatus } = actions;
+
     try {
-      const result = await mutate({
-        variables: {
-          admin_user_id: auth.state.id,
-          comment_body: values.comment_body,
-          [typeVariable]: order.id,
-        },
-      });
-      console.log(result);
+      const variables = {
+        admin_user_id: auth.state.id,
+        comment_body: values.comment_body,
+        [idType]: order.id,
+      };
+
+      await schema.validate(variables);
+
+      const result = await mutate({ variables });
+
+      console.log('Add Comment Result:', result);
       setSubmitting(false);
       onDismiss();
     } catch (e) {
       console.log(e.message);
-      const message = 'Error Adding Comment.';
+      const message = setErrorMessage(e);
       setStatus({ message });
       setSubmitting(false);
     }

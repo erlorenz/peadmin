@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from './UI';
+import { Button, Notification } from './UI';
 import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components/macro';
 import FieldGroup from './FieldGroup/FieldGroup';
@@ -16,6 +16,9 @@ const AddCommentForm = ({ onSubmit, loading, onDismiss }) => {
             </LeftButton>
             <RightButton type="submit">Update</RightButton>
           </Row>
+          {status && status.message && (
+            <Notification>{status.message}</Notification>
+          )}
         </Form>
       )}
     </Formik>
