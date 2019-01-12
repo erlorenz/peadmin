@@ -27,7 +27,7 @@ const Dashboard = () => {
     setSidebarIsOpen(!sidebarIsOpen);
   };
 
-  if (!localStorage.getItem('token')) return <Redirect to="/" />;
+  if (!auth.state.token) return <Redirect to="/" />;
 
   return (
     // need to add the check token

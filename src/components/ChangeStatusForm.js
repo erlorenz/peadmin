@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from './UI';
+import { Button, Notification } from './UI';
 import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components/macro';
 import FieldGroup from './FieldGroup/FieldGroup';
@@ -7,7 +7,7 @@ import FieldGroup from './FieldGroup/FieldGroup';
 const ChangeStatusForm = ({ onSubmit, loading, onDismiss }) => {
   return (
     <Formik initialValues={{ status: '' }} onSubmit={onSubmit}>
-      {({ errors, status }) => (
+      {({ status }) => (
         <Form>
           <Field component={FieldGroup} select={true} name="status">
             <option value="" disabled />
@@ -25,6 +25,9 @@ const ChangeStatusForm = ({ onSubmit, loading, onDismiss }) => {
             </LeftButton>
             <RightButton type="submit">Update</RightButton>
           </Row>
+          {status && status.message && (
+            <Notification>{status.message}</Notification>
+          )}
         </Form>
       )}
     </Formik>

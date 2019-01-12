@@ -2,25 +2,34 @@ import React from 'react';
 import { Mutation } from 'react-apollo';
 import ChangeStatusForm from './ChangeStatusForm';
 import { CHANGE_STATUS } from '../queries';
+import * as yup from 'yup';
+import setErrorMessage from '../utils/setErrorMessage';
 
 const ChangeStatusModal = ({ order, onDismiss, type }) => {
-  const typeVariable =
+  const idType =
     type === 'specialOrder' ? 'special_order_id' : 'customer_order_id';
 
-  const handleSubmit = mutate => async (
-    values,
-    { setSubmitting, setStatus },
-  ) => {
+  const schema = yup.object().shape({
+    status: yup.string().required('Status cannot be blank.'),
+    [idType]: yup.string().required('Type is required'),
+  });
+
+  const handleSubmit = mutate => async (values, actions) => {
+    const { setSubmitting, setStatus } = actions;
+
+    const variables = { status: values.status, [idType]: order.id };
+
     try {
+      await schema.validate(variables);
+
       const result = await mutate({
-        variables: { status: values.status, [typeVariable]: order.id },
+        variables,
       });
       console.log(result);
       setSubmitting(false);
       onDismiss();
     } catch (e) {
-      console.log(e.message);
-      const message = 'Error changing status.';
+      const message = setErrorMessage(e);
       setStatus({ message });
       setSubmitting(false);
     }

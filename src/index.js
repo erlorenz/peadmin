@@ -14,7 +14,9 @@ export const client = new ApolloClient({
   uri: process.env.REACT_APP_API_URL,
   request: operation =>
     operation.setContext({
-      headers: { 'x-auth-token': localStorage.getItem('token') },
+      headers: {
+        'x-auth-token': JSON.parse(localStorage.getItem('auth')).token,
+      },
     }),
 });
 

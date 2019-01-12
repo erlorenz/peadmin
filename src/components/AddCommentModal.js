@@ -13,9 +13,7 @@ const AddCommentModal = ({ order, onDismiss, type }) => {
     type === 'specialOrder' ? 'special_order_id' : 'customer_order_id';
 
   const schema = yup.object().shape({
-    admin_user_id: yup
-      .string('Admin Id Missing.')
-      .required('Admin ID missing.'),
+    admin_user_id: yup.string().required('Admin ID missing.'),
     comment_body: yup.string().required('Cannot submit blank comment.'),
     [idType]: yup.string().required('Type is required'),
   });
@@ -23,13 +21,13 @@ const AddCommentModal = ({ order, onDismiss, type }) => {
   const handleSubmit = mutate => async (values, actions) => {
     const { setSubmitting, setStatus } = actions;
 
-    try {
-      const variables = {
-        admin_user_id: auth.state.id,
-        comment_body: values.comment_body,
-        [idType]: order.id,
-      };
+    const variables = {
+      admin_user_id: auth.state.id || '',
+      comment_body: values.comment_body,
+      [idType]: order.id,
+    };
 
+    try {
       await schema.validate(variables);
 
       const result = await mutate({ variables });
