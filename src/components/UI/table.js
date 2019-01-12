@@ -17,12 +17,9 @@ export const TableRow = styled.tr`
 export const TableCell = styled.td`
   padding: 0.5rem;
   font-size: 0.9rem;
-  line-height: 1;
+  line-height: 1.5;
   white-space: ${props => (props.preLine ? 'pre-line' : 'nowrap')};
-
-  @media (min-width: 1000px) {
-    padding: 0.8rem;
-  }
+  text-align: ${props => (props.right ? 'right' : 'left')};
 `;
 
 export const TableHead = styled.thead`

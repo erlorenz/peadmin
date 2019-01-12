@@ -11,7 +11,6 @@ import {
 } from '../../components/UI';
 import formatPrice from '../../utils/formatPrice';
 import formatDate from '../../utils/formatDate';
-import styled from 'styled-components/macro';
 import StatusIndicator from '../../components/StatusIndicator';
 
 const OrderList = ({ query, history, location, fields, type }) => {
@@ -30,26 +29,20 @@ const OrderList = ({ query, history, location, fields, type }) => {
         {fields.map((field, index) => {
           if (field === 'total_price') {
             return (
-              <StyledTableCell key={index}>
-                {formatPrice(order[field])}
-              </StyledTableCell>
+              <TableCell key={index}>{formatPrice(order[field])}</TableCell>
             );
           } else if (field === 'status') {
             return (
-              <StyledTableCell key={index}>
+              <TableCell key={index}>
                 <StatusIndicator status={order.status} />
-              </StyledTableCell>
+              </TableCell>
             );
           } else if (field === 'return_date' || field === 'pickup_date') {
             return (
-              <StyledTableCell key={index}>
-                {formatDate(order[field])}
-              </StyledTableCell>
+              <TableCell key={index}>{formatDate(order[field])}</TableCell>
             );
           } else {
-            return (
-              <StyledTableCell key={index}>{order[field]}</StyledTableCell>
-            );
+            return <TableCell key={index}>{order[field]}</TableCell>;
           }
         })}
       </TableRow>
@@ -57,12 +50,12 @@ const OrderList = ({ query, history, location, fields, type }) => {
   };
 
   const renderHeaders = fields.map((field, index) => (
-    <StyledTableCell as="th" key={index}>
+    <TableCell as="th" key={index}>
       {field
         .toUpperCase()
         .split('_')
         .join(' ')}
-    </StyledTableCell>
+    </TableCell>
   ));
 
   return (
@@ -104,7 +97,3 @@ const OrderList = ({ query, history, location, fields, type }) => {
 };
 
 export default OrderList;
-
-const StyledTableCell = styled(TableCell)`
-  white-space: nowrap;
-`;

@@ -7,27 +7,24 @@ import ChangeStatusModal from '../../components/ChangeStatusModal';
 import OrderTitle from './OrderTitle';
 import Modal from '../../components/Modal';
 import OrderCart from './OrderCart';
+import OrderComments from './OrderComments';
 
 class OrderView extends Component {
   state = {
     changeStatusModalIsOpen: false,
   };
 
-  handleModalToggle = () => {
+  handleChangeStatusModalToggle = () => {
     this.setState({
       changeStatusModalIsOpen: !this.state.changeStatusModalIsOpen,
     });
   };
 
-  renderModal = (order, type) => {
+  renderChangeStatusModal = (order, type) => {
     if (this.state.changeStatusModalIsOpen)
       return (
-        <Modal onDismiss={this.handleModalToggle}>
-          <ChangeStatusModal
-            order={order}
-            type={type}
-            // onDismiss={this.handleModalToggle}
-          />
+        <Modal onDismiss={this.handleChangeStatusModalToggle}>
+          <ChangeStatusModal order={order} type={type} />
         </Modal>
       );
     return null;
@@ -40,10 +37,16 @@ class OrderView extends Component {
     return (
       <>
         <OrderTitle order={order} onClick={this.handleModalToggle} />
-        {this.renderModal(order, type)}
+        {this.renderChangeStatusModal(order, type)}
         <OrderInfo order={order} type={type} />
         <OrderHistory order={order} />
         {type === 'customerOrder' && <OrderCart order={order} />}
+        <OrderComments
+          order={order}
+          type={type}
+          onClick={() => console.log('Clicked')}
+        />
+
         <Card>
           <Pre>{JSON.stringify(order, null, 2)}</Pre>
         </Card>

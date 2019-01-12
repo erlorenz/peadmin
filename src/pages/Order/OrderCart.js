@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+// import styled from 'styled-components/macro';
 
 import {
   TableRow,
@@ -14,11 +14,9 @@ const OrderCart = ({ order }) => {
   const cartList = order.customerOrderItems.map(item => (
     <TableRow key={item.id}>
       <TableCell>{item.description}</TableCell>
-      <TableCellAlignRight>{formatPrice(item.price)}</TableCellAlignRight>
-      <TableCellAlignRight>{item.quantity}</TableCellAlignRight>
-      <TableCellAlignRight>
-        {formatPrice(item.price * item.quantity)}
-      </TableCellAlignRight>
+      <TableCell right>{formatPrice(item.price)}</TableCell>
+      <TableCell right>{item.quantity}</TableCell>
+      <TableCell right>{formatPrice(item.price * item.quantity)}</TableCell>
     </TableRow>
   ));
 
@@ -29,9 +27,15 @@ const OrderCart = ({ order }) => {
           <TableHead>
             <TableRow>
               <TableCell as="th">Item</TableCell>
-              <TableCellAlignRight as="th">Price</TableCellAlignRight>
-              <TableCellAlignRight as="th">Quantity</TableCellAlignRight>
-              <TableCellAlignRight as="th">Subtotal</TableCellAlignRight>
+              <TableCell right as="th">
+                Price
+              </TableCell>
+              <TableCell right as="th">
+                Quantity
+              </TableCell>
+              <TableCell right as="th">
+                Subtotal
+              </TableCell>
             </TableRow>
           </TableHead>
           <tbody>
@@ -40,7 +44,9 @@ const OrderCart = ({ order }) => {
               <td />
               <td />
               <td />
-              <TableCell as="th">Total: ${order.total_price / 100}</TableCell>
+              <TableCell right as="th">
+                Total: ${order.total_price / 100}
+              </TableCell>
             </TableRow>
           </tbody>
         </table>
@@ -50,7 +56,3 @@ const OrderCart = ({ order }) => {
 };
 
 export default OrderCart;
-
-const TableCellAlignRight = styled(TableCell)`
-  text-align: right;
-`;
