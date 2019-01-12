@@ -32,6 +32,7 @@ export class AuthProvider extends Component {
     console.log(authData);
     authData.isAuthenticated = true;
     authData.accessLevel = authData.access_level;
+    delete authData.access_level;
     delete authData.__typename;
     localStorageHelper.set(authData);
     this.setState(authData);
