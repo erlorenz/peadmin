@@ -15,6 +15,10 @@ export const CHANGE_STATUS = gql`
         success
         message
       }
+      database {
+        success
+        message
+      }
     }
   }
 `;

@@ -45,6 +45,8 @@ const Sidebar = ({ user, isOpen, onClick }) => {
               'checked_in',
               'out_for_delivery',
               'completed',
+              'cancelled',
+              'exception',
             ],
             title: 'special_orders',
           })}`}

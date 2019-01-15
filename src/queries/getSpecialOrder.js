@@ -1,21 +1,17 @@
 import gql from 'graphql-tag';
 
 export const GET_SPECIAL_ORDER = gql`
-  query GetSpecialOrderDetails($id: ID!) {
+  query GetSpecialOrder($id: ID!) {
     getSpecialOrderDetails(special_order_id: $id) {
       status
       total_price
-      name
       id
+      description
+      company
+      name
       created_at
-      pickup_date
-      return_date
       email
-      hotel
       phone
-      room
-      starch
-      special_instructions
       stripe_charge
       stripe_customer
       adminComments {
@@ -34,15 +30,6 @@ export const GET_SPECIAL_ORDER = gql`
       additionalCharges {
         amount
         stripe_charge
-      }
-      text_sent
-      receipt_sent
-      customerOrderItems {
-        description
-        id
-        slug
-        quantity
-        price
       }
     }
   }

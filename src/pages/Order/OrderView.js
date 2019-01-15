@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card } from '../../components/UI';
 import styled from 'styled-components/macro';
 import OrderInfo from './OrderInfo';
@@ -7,26 +7,27 @@ import OrderTitle from './OrderTitle';
 import OrderCart from './OrderCart';
 import OrderComments from './OrderComments';
 
-class OrderView extends Component {
-  render() {
-    const { getCustomerOrderDetails: order } = this.props.data;
-    const { type = 'customerOrder' } = this.props;
+const OrderView = props => {
+  const { type, data } = props;
+  const order =
+    type === 'customerOrder'
+      ? data.getCustomerOrderDetails
+      : data.getSpecialOrderDetails;
 
-    return (
-      <>
-        <OrderTitle order={order} type={type} />
-        <OrderInfo order={order} type={type} />
-        <OrderHistory order={order} />
-        {type === 'customerOrder' && <OrderCart order={order} />}
-        <OrderComments order={order} type={type} />
+  return (
+    <>
+      <OrderTitle order={order} type={type} />
+      <OrderInfo order={order} type={type} />
+      <OrderHistory order={order} />
+      {type === 'customerOrder' && <OrderCart order={order} />}
+      <OrderComments order={order} type={type} />
 
-        <Card>
-          <Pre>{JSON.stringify(order, null, 2)}</Pre>
-        </Card>
-      </>
-    );
-  }
-}
+      <Card>
+        <Pre>{JSON.stringify(order, null, 2)}</Pre>
+      </Card>
+    </>
+  );
+};
 
 //
 
