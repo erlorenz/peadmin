@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 
-class NotFound extends Component {
-  componentDidMount() {
+const NotFound = () => {
+  useEffect(() => {
     setTimeout(() => this.props.history.push('/'), 3000);
-  }
-  render() {
-    return <h1>NOT FOUND</h1>;
-  }
-}
+  }, []);
+
+  return <h1>NOT FOUND</h1>;
+};
 
 export default NotFound;
