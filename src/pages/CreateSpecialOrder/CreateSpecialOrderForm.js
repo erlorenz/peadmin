@@ -84,7 +84,11 @@ const CreateSpecialOrderForm = ({ loading, onSubmit, signIn }) => {
             <StyledCardElement style={style} />
 
             <Button type="submit">
-              {loading ? <Loader type="Puff" height="1.1rem" /> : 'Sign In'}
+              {loading ? (
+                <Loader type="Puff" height="1.1rem" />
+              ) : (
+                'Create Order'
+              )}
             </Button>
 
             <div>{status && status.message ? status.message : ''}</div>
