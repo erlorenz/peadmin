@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const GET_CUSTOMER_ORDERS_BY_STATUS = gql`
-  query GetCustomerOrdersByStatus(
+  query getCustomerOrdersByStatus(
     $status: [String!]!
     $orderBy: String
     $direction: String

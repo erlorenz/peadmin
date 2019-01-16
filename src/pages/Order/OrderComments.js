@@ -24,7 +24,7 @@ const OrderComments = ({ order, type }) => {
     <TableRow striped key={comment.created_at}>
       <TableCell>{formatDate(comment.created_at)}</TableCell>
       <TableCell>{comment.name}</TableCell>
-      <TableCell>{comment.comment_body}</TableCell>
+      <TableCell preLine>{comment.comment_body}</TableCell>
     </TableRow>
   ));
 

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const INSERT_ADMIN_COMMENT = gql`
-  mutation InsertAdminComment(
+  mutation insertAdminComment(
     $customer_order_id: ID
     $special_order_id: ID
     $admin_user_id: ID!

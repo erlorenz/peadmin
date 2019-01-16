@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const GET_SPECIAL_ORDER = gql`
-  query GetSpecialOrder($id: ID!) {
-    getSpecialOrderDetails(special_order_id: $id) {
+  query getSpecialOrder($id: ID!) {
+    getSpecialOrder(id: $id) {
       status
       total_price
       id

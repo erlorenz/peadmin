@@ -6,6 +6,7 @@ import {
   TableRow,
   TableCell,
   TableHead,
+  CardTitle,
 } from '../../components/UI';
 // import styled from 'styled-components/macro';
 
@@ -13,6 +14,7 @@ const OrderHistory = ({ order }) => {
   return (
     <CardRow>
       <Card>
+        <CardTitle>History</CardTitle>
         <table>
           <TableHead>
             <TableRow>

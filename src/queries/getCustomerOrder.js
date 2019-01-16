@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const GET_CUSTOMER_ORDER = gql`
-  query GetCustomerOrder($id: ID!) {
-    getCustomerOrderDetails(customer_order_id: $id) {
+  query getCustomerOrder($id: ID!) {
+    getCustomerOrder(id: $id) {
       status
       total_price
       name

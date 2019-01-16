@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const CREATE_SPECIAL_ORDER = gql`
-  mutation CreateSpecialOrder(
+  mutation createSpecialOrder(
     $stripeToken: String!
     $name: String!
     $company: String!

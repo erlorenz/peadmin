@@ -9,6 +9,11 @@ const ChangeStatusModal = ({ order, onDismiss, type }) => {
   const idType =
     type === 'specialOrder' ? 'special_order_id' : 'customer_order_id';
 
+  const refetchQueries =
+    type === 'specialOrder'
+      ? ['getSpecialOrder']
+      : ['getCustomerOrder', 'getCustomerOrdersByStatus'];
+
   const schema = yup.object().shape({
     status: yup.string().required('Status cannot be blank.'),
     [idType]: yup.string().required('Type is required'),
@@ -25,7 +30,7 @@ const ChangeStatusModal = ({ order, onDismiss, type }) => {
       const result = await mutate({
         variables,
       });
-      console.log(result);
+      console.log('Change Result:', result);
       setSubmitting(false);
       onDismiss();
     } catch (e) {
@@ -35,9 +40,7 @@ const ChangeStatusModal = ({ order, onDismiss, type }) => {
     }
   };
   return (
-    <Mutation
-      mutation={CHANGE_STATUS}
-      refetchQueries={['GetCustomerOrder', 'GetSpecialOrder']}>
+    <Mutation mutation={CHANGE_STATUS} refetchQueries={refetchQueries}>
       {(mutate, { data, error, loading }) => (
         <ChangeStatusForm
           onSubmit={handleSubmit(mutate)}

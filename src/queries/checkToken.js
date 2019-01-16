@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const CHECK_TOKEN = gql`
-  query CheckToken {
+  query checkToken {
     checkToken {
       name
       id

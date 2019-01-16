@@ -7,6 +7,7 @@ import {
   Card,
   TableHead,
   ScrollContainer,
+  CardTitle,
 } from '../../components/UI';
 import formatPrice from '../../utils/formatPrice';
 
@@ -22,6 +23,7 @@ const OrderCart = ({ order }) => {
 
   return (
     <Card>
+      <CardTitle>Items</CardTitle>
       <ScrollContainer>
         <table>
           <TableHead>

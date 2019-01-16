@@ -12,6 +12,9 @@ const AddCommentModal = ({ order, onDismiss, type }) => {
   const idType =
     type === 'specialOrder' ? 'special_order_id' : 'customer_order_id';
 
+  const refetchQueries =
+    type === 'specialOrder' ? ['getSpecialOrder'] : ['getCustomerOrder'];
+
   const schema = yup.object().shape({
     admin_user_id: yup.string().required('Admin ID missing.'),
     comment_body: yup.string().required('Cannot submit blank comment.'),
@@ -43,9 +46,7 @@ const AddCommentModal = ({ order, onDismiss, type }) => {
     }
   };
   return (
-    <Mutation
-      mutation={INSERT_ADMIN_COMMENT}
-      refetchQueries={['GetCustomerOrder', 'GetSpecialOrder']}>
+    <Mutation mutation={INSERT_ADMIN_COMMENT} refetchQueries={refetchQueries}>
       {(mutate, { data, error, loading }) => (
         <AddCommentForm onSubmit={handleSubmit(mutate)} onDismiss={onDismiss} />
       )}
