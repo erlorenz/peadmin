@@ -7,6 +7,7 @@ import {
   TableHead,
   TableRow,
   TableCell,
+  CardTitle,
 } from '../../components/UI';
 import AddNew from '../../components/AddNew';
 import Modal from '../../components/Modal';
@@ -36,6 +37,7 @@ const OrderComments = ({ order, type }) => {
       )}
       <Card>
         <AddNew onClick={handleToggleModal} />
+        <CardTitle>COMMENTS</CardTitle>
         <ScrollContainer>
           <table>
             <TableHead>
