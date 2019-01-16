@@ -8,6 +8,7 @@ import OrderCart from './OrderCart';
 import OrderComments from './OrderComments';
 import OrderDescription from './OrderDescription';
 import OrderRefunds from './OrderRefunds';
+import OrderAdditionalCharges from './OrderAdditionalCharges';
 
 const OrderView = props => {
   const { type, data } = props;
@@ -23,6 +24,7 @@ const OrderView = props => {
       {type === 'customerOrder' && <OrderCart order={order} />}
       <OrderComments order={order} type={type} />
       <OrderRefunds order={order} type={type} />
+      <OrderAdditionalCharges order={order} type={type} />
 
       <Card>
         <ScrollContainer>

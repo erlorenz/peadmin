@@ -18,6 +18,7 @@ export const GET_SPECIAL_ORDER = gql`
         created_at
         comment_body
         name
+        id
       }
       picked_up
       checked_in
@@ -26,10 +27,14 @@ export const GET_SPECIAL_ORDER = gql`
       refunds {
         amount
         stripe_refund
+        id
+        created_at
       }
       additionalCharges {
         amount
         stripe_charge
+        created_at
+        id
       }
     }
   }

@@ -18,4 +18,6 @@ export * from './insertAdminComment';
 
 export * from './insertRefund';
 
+export * from './insertAdditionalCharge';
+
 export const refetchList = [];
