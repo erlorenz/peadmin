@@ -34,7 +34,7 @@ export default StatusIndicator;
 const Badge = styled.label`
   color: white;
   background-color: lightgray;
-  padding: 0.3rem;
+  padding: 0.5rem;
   border-radius: ${props => props.theme.borderRadius};
   width: 125px;
   display: inline-block;

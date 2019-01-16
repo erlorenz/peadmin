@@ -15,7 +15,7 @@ export const TableRow = styled.tr`
 `;
 
 export const TableCell = styled.td`
-  padding: 1rem;
+  padding: 0.8rem;
   font-size: 0.9rem;
   line-height: 1.5;
   white-space: ${props => (props.preLine ? 'pre-line' : 'nowrap')};
