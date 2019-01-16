@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from '../../components/UI';
+import { Card, ScrollContainer } from '../../components/UI';
 import styled from 'styled-components/macro';
 import OrderInfo from './OrderInfo';
 import OrderHistory from './OrderHistory';
@@ -23,7 +23,9 @@ const OrderView = props => {
       <OrderComments order={order} type={type} />
 
       <Card>
-        <Pre>{JSON.stringify(order, null, 2)}</Pre>
+        <ScrollContainer>
+          <Pre>{JSON.stringify(order, null, 2)}</Pre>
+        </ScrollContainer>
       </Card>
     </>
   );
@@ -35,4 +37,5 @@ export default OrderView;
 
 const Pre = styled.pre`
   font-size: 10px;
+  text-align: left;
 `;
