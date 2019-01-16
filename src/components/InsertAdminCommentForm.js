@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import styled from 'styled-components/macro';
 import FieldGroup from './FieldGroup/FieldGroup';
 
-const AddCommentForm = ({ onSubmit, loading, onDismiss }) => {
+const InsertAdminCommentForm = ({ onSubmit, loading, onDismiss }) => {
   return (
     <Formik initialValues={{ comment_body: '' }} onSubmit={onSubmit}>
       {({ errors, status }) => (
@@ -25,7 +25,7 @@ const AddCommentForm = ({ onSubmit, loading, onDismiss }) => {
   );
 };
 
-export default AddCommentForm;
+export default InsertAdminCommentForm;
 
 const RightButton = styled(Button)`
   display: inline-block;

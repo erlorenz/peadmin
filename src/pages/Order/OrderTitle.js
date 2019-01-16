@@ -3,7 +3,7 @@ import { Card } from '../../components/UI';
 import styled from 'styled-components/macro';
 import StatusIndicator from '../../components/StatusIndicator';
 import Modal from '../../components/Modal';
-import ChangeStatusModal from '../../components/ChangeStatusModal';
+import UpdateStatusModal from '../../components/UpdateStatusModal';
 
 const OrderTitle = ({ order, type }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -13,7 +13,7 @@ const OrderTitle = ({ order, type }) => {
     <>
       {modalIsOpen && (
         <Modal onDismiss={handleToggleModal}>
-          <ChangeStatusModal order={order} type={type} />
+          <UpdateStatusModal order={order} type={type} />
         </Modal>
       )}
       <Card>

@@ -22,6 +22,7 @@ export const GET_CUSTOMER_ORDER = gql`
         created_at
         comment_body
         name
+        id
       }
       picked_up
       checked_in
@@ -30,10 +31,14 @@ export const GET_CUSTOMER_ORDER = gql`
       refunds {
         amount
         stripe_refund
+        created_at
+        id
       }
       additionalCharges {
         amount
         stripe_charge
+        created_at
+        id
       }
       text_sent
       receipt_sent

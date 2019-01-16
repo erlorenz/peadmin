@@ -1,12 +1,12 @@
 import gql from 'graphql-tag';
 
-export const CHANGE_STATUS = gql`
-  mutation changeStatus(
+export const UPDATE_STATUS = gql`
+  mutation updateStatus(
     $status: String!
     $customer_order_id: ID
     $special_order_id: ID
   ) {
-    changeStatus(
+    updateStatus(
       status: $status
       customer_order_id: $customer_order_id
       special_order_id: $special_order_id

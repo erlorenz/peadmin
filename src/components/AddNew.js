@@ -6,28 +6,20 @@ import { Button } from './UI';
 
 const AddNew = ({ onClick }) => {
   return (
-    <Div>
-      <AddButton onClick={onClick}>
-        <Icon icon={faPlus} />
-        Add New
-      </AddButton>
-    </Div>
+    <AddButton onClick={onClick}>
+      <Icon icon={faPlus} />
+      Add New
+    </AddButton>
   );
 };
 
 export default AddNew;
 
-const Div = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-`;
-
 const AddButton = styled(Button)`
   width: auto;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  margin-bottom: 0.8rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.7rem;
+  height: 80%;
 `;
 
 const Icon = styled(FontAwesomeIcon)`

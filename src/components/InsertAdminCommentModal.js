@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { Mutation } from 'react-apollo';
 import { INSERT_ADMIN_COMMENT } from '../queries';
-import AddCommentForm from './AddCommentForm';
+import InsertAdminCommentForm from './InsertAdminCommentForm';
 import { AuthContext } from '../contexts/AuthProvider';
 import setErrorMessage from '../utils/setErrorMessage';
 import * as yup from 'yup';
 
-const AddCommentModal = ({ order, onDismiss, type }) => {
+const InsertAdminCommentModal = ({ order, onDismiss, type }) => {
   const auth = useContext(AuthContext);
 
   const idType =
@@ -48,10 +48,13 @@ const AddCommentModal = ({ order, onDismiss, type }) => {
   return (
     <Mutation mutation={INSERT_ADMIN_COMMENT} refetchQueries={refetchQueries}>
       {(mutate, { data, error, loading }) => (
-        <AddCommentForm onSubmit={handleSubmit(mutate)} onDismiss={onDismiss} />
+        <InsertAdminCommentForm
+          onSubmit={handleSubmit(mutate)}
+          onDismiss={onDismiss}
+        />
       )}
     </Mutation>
   );
 };
 
-export default AddCommentModal;
+export default InsertAdminCommentModal;

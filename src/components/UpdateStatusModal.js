@@ -1,11 +1,11 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
-import ChangeStatusForm from './ChangeStatusForm';
-import { CHANGE_STATUS } from '../queries';
+import UpdateStatusForm from './UpdateStatusForm';
+import { UPDATE_STATUS } from '../queries';
 import * as yup from 'yup';
 import setErrorMessage from '../utils/setErrorMessage';
 
-const ChangeStatusModal = ({ order, onDismiss, type }) => {
+const UpdateStatusModal = ({ order, onDismiss, type }) => {
   const idType =
     type === 'specialOrder' ? 'special_order_id' : 'customer_order_id';
 
@@ -40,9 +40,9 @@ const ChangeStatusModal = ({ order, onDismiss, type }) => {
     }
   };
   return (
-    <Mutation mutation={CHANGE_STATUS} refetchQueries={refetchQueries}>
+    <Mutation mutation={UPDATE_STATUS} refetchQueries={refetchQueries}>
       {(mutate, { data, error, loading }) => (
-        <ChangeStatusForm
+        <UpdateStatusForm
           onSubmit={handleSubmit(mutate)}
           onDismiss={onDismiss}
         />
@@ -51,4 +51,4 @@ const ChangeStatusModal = ({ order, onDismiss, type }) => {
   );
 };
 
-export default ChangeStatusModal;
+export default UpdateStatusModal;

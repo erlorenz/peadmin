@@ -12,20 +12,21 @@ import {
 } from '../../components/UI';
 import AddNew from '../../components/AddNew';
 import Modal from '../../components/Modal';
-import InsertAdminCommentModal from '../../components/InsertAdminCommentModal';
+import InsertRefundModal from '../../components/InsertRefundModal';
+import formatPrice from '../../utils/formatPrice';
 
-const OrderComments = ({ order, type }) => {
+const OrderRefunds = ({ order, type }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleToggleModal = () => {
     setModalIsOpen(!modalIsOpen);
   };
 
-  const commentList = order.adminComments.map(comment => (
-    <TableRow striped key={comment.created_at}>
-      <TableCell>{formatDate(comment.created_at)}</TableCell>
-      <TableCell>{comment.name}</TableCell>
-      <TableCell preLine>{comment.comment_body}</TableCell>
+  const commentList = order.refunds.map(refund => (
+    <TableRow striped key={refund.id}>
+      <TableCell>{formatDate(refund.created_at)}</TableCell>
+      <TableCell>{formatPrice(refund.amount)}</TableCell>
+      <TableCell preLine>{refund.stripe_refund}</TableCell>
     </TableRow>
   ));
 
@@ -33,12 +34,12 @@ const OrderComments = ({ order, type }) => {
     <>
       {modalIsOpen && (
         <Modal onDismiss={handleToggleModal}>
-          <InsertAdminCommentModal order={order} type={type} />
+          <InsertRefundModal order={order} type={type} />
         </Modal>
       )}
       <Card>
         <CardHead>
-          <CardTitle>Comments</CardTitle>
+          <CardTitle>Refunds</CardTitle>
           <AddNew onClick={handleToggleModal} />
         </CardHead>
         <ScrollContainer>
@@ -46,8 +47,8 @@ const OrderComments = ({ order, type }) => {
             <TableHead>
               <tr>
                 <TableCell as="th">Timestamp</TableCell>
-                <TableCell as="th">User</TableCell>
-                <TableCell as="th">Comments</TableCell>
+                <TableCell as="th">Amount</TableCell>
+                <TableCell as="th">Refund ID</TableCell>
               </tr>
             </TableHead>
             <tbody>{commentList}</tbody>
@@ -58,4 +59,4 @@ const OrderComments = ({ order, type }) => {
   );
 };
 
-export default OrderComments;
+export default OrderRefunds;

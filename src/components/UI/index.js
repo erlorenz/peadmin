@@ -25,8 +25,15 @@ export const Card = styled.div`
   }
 `;
 
+export const CardHead = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const CardTitle = styled.h1`
-  margin-bottom: 1.2rem;
+  margin: 1.2rem 0;
   font-size: 1.15rem;
   font-weight: 700;
   align-self: flex-start;
