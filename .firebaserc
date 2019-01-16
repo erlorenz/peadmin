@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "press-express-admin"
+    "staging": "press-express-admin-stag-b9bc8",
+    "production": "press-express-admin-61759"
   }
 }
