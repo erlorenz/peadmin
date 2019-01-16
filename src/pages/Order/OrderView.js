@@ -6,7 +6,6 @@ import OrderHistory from './OrderHistory';
 import OrderTitle from './OrderTitle';
 import OrderCart from './OrderCart';
 import OrderComments from './OrderComments';
-import OrderDescription from './OrderDescription';
 import OrderRefunds from './OrderRefunds';
 import OrderAdditionalCharges from './OrderAdditionalCharges';
 
@@ -20,7 +19,6 @@ const OrderView = props => {
       <OrderTitle order={order} type={type} />
       <OrderInfo order={order} type={type} />
       <OrderHistory order={order} />
-      {type === 'specialOrder' && <OrderDescription order={order} />}
       {type === 'customerOrder' && <OrderCart order={order} />}
       <OrderComments order={order} type={type} />
       <OrderRefunds order={order} type={type} />

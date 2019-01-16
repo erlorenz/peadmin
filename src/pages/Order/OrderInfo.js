@@ -9,11 +9,11 @@ import {
 } from '../../components/UI';
 import formatDate from '../../utils/formatDate';
 
-const OrderInfo = ({ order, styles }) => {
+const OrderInfo = ({ order, type }) => {
   return (
     <>
       <CardRow>
-        <LeftCard>
+        <Card>
           <CardTitle>Customer</CardTitle>
           <table>
             <tbody>
@@ -35,35 +35,43 @@ const OrderInfo = ({ order, styles }) => {
               </TableRow>
             </tbody>
           </table>
-        </LeftCard>
-        <Card>
-          <CardTitle>Pickup/Delivery</CardTitle>
-          <table>
-            <tbody>
-              <TableRow>
-                <TableCell as="th">Hotel:</TableCell>
-                <TableCell>{order.hotel}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell as="th">Room:</TableCell>
-                <TableCell>{order.room}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell as="th">Pickup:</TableCell>
-                <TableCell>{formatDate(order.pickup_date)}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell as="th">Return:</TableCell>
-                <TableCell>{formatDate(order.return_date)}</TableCell>
-              </TableRow>
-            </tbody>
-          </table>
         </Card>
+        {type === 'customerOrder' && (
+          <RightCard>
+            <CardTitle>Pickup/Delivery</CardTitle>
+            <table>
+              <tbody>
+                <TableRow>
+                  <TableCell as="th">Hotel:</TableCell>
+                  <TableCell>{order.hotel}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell as="th">Room:</TableCell>
+                  <TableCell>{order.room}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell as="th">Pickup:</TableCell>
+                  <TableCell>{formatDate(order.pickup_date)}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell as="th">Return:</TableCell>
+                  <TableCell>{formatDate(order.return_date)}</TableCell>
+                </TableRow>
+              </tbody>
+            </table>
+          </RightCard>
+        )}
       </CardRow>
       {order.special_instructions && (
         <Card>
           <CardTitle>Special Instructions</CardTitle>
           <Div>{order.special_instructions}</Div>
+        </Card>
+      )}
+      {order.description && (
+        <Card>
+          <CardTitle>Description</CardTitle>
+          <Div>{order.description}</Div>
         </Card>
       )}
     </>
@@ -79,8 +87,8 @@ const Div = styled.div`
   width: 100%;
 `;
 
-const LeftCard = styled(Card)`
+const RightCard = styled(Card)`
   @media (min-width: 1000px) {
-    margin-right: 1.8rem;
+    margin-left: 1.8rem;
   }
 `;

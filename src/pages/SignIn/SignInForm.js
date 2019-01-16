@@ -28,7 +28,7 @@ const SignInForm = ({ loading, onSubmit, signIn }) => {
             placeholder="Password"
             component={FieldGroup}
           />
-          <Button type="submit">Sign In</Button>
+          <Button type="submit">Create Order</Button>
           {status && status.message && (
             <Notification>{status.message}</Notification>
           )}
