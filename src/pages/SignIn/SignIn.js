@@ -57,5 +57,5 @@ const Layout = styled.div`
   min-height: 100vh;
   width: 100vw;
   padding: 1rem;
-  padding-top: 10vh;
+  padding-top: 20vh;
 `;

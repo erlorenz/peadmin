@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
-const NotFound = () => {
+const NotFound = ({ history }) => {
   useEffect(() => {
-    setTimeout(() => this.props.history.push('/'), 3000);
+    setTimeout(() => history.push('/'), 2000);
   }, []);
 
   return <h1>NOT FOUND</h1>;

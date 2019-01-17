@@ -62,7 +62,7 @@ const OrderList = ({ query, history, location, fields, type }) => {
     <Query
       query={query}
       variables={{ status, orderBy: order_by, direction }}
-      pollInterval={4000}>
+      pollInterval={1000}>
       {({ data, error, loading }) => {
         if (error) return <h1>{error.message}</h1>;
         if (loading) return <div>LOADING</div>;
