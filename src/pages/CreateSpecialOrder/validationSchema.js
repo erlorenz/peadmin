@@ -7,8 +7,8 @@ export default yup.object().shape({
     .required('Email required.'),
   name: yup
     .string()
-    .min(4, 'Password needs to be at least 4 characters.')
-    .required('Password required.'),
+    .min(4, 'Name needs to be at least 4 characters.')
+    .required('Name required.'),
   company: yup.string(),
   description: yup.string().required('Description required.'),
   decimalPrice: yup.number().required('Total price required.'),
