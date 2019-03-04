@@ -1,5 +1,5 @@
 import React from 'react';
-// import styled from 'styled-components/macro';
+import styled from 'styled-components/macro';
 
 import {
   TableRow,
@@ -25,7 +25,7 @@ const OrderCart = ({ order }) => {
     <Card>
       <CardTitle>Items</CardTitle>
       <ScrollContainer>
-        <table>
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell as="th">Item</TableCell>
@@ -47,14 +47,20 @@ const OrderCart = ({ order }) => {
               <td />
               <td />
               <TableCell right as="th">
-                Total: ${order.total_price / 100}
+                Total: {formatPrice(order.total_price)}
               </TableCell>
             </TableRow>
           </tbody>
-        </table>
+        </Table>
       </ScrollContainer>
     </Card>
   );
 };
 
 export default OrderCart;
+
+const Table = styled.table`
+  @media print {
+    color: black;
+  }
+`;

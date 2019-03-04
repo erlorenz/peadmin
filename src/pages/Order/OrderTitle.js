@@ -4,13 +4,14 @@ import styled from 'styled-components/macro';
 import StatusIndicator from '../../components/StatusIndicator';
 import Modal from '../../components/Modal';
 import UpdateStatusModal from '../../components/UpdateStatusModal';
+import NoPrint from '../../components/NoPrint';
 
 const OrderTitle = ({ order, type }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleToggleModal = () => setModalIsOpen(!modalIsOpen);
 
   return (
-    <>
+    <NoPrint>
       {modalIsOpen && (
         <Modal onDismiss={handleToggleModal}>
           <UpdateStatusModal order={order} type={type} />
@@ -22,7 +23,7 @@ const OrderTitle = ({ order, type }) => {
           onClick={handleToggleModal}
         />
       </Card>
-    </>
+    </NoPrint>
   );
 };
 

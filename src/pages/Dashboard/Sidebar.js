@@ -106,6 +106,10 @@ const Nav = styled.nav`
     transform: translateX(0);
     width: 255px;
   }
+
+  @media print {
+    display: none;
+  }
 `;
 
 const LogoWrapper = styled.div`

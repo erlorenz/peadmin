@@ -20,6 +20,11 @@ export const TableCell = styled.td`
   line-height: 1.5;
   white-space: ${props => (props.preLine ? 'pre-line' : 'nowrap')};
   text-align: ${props => (props.right ? 'right' : 'left')};
+
+  @media print {
+    padding: 0.2rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const TableHead = styled.thead`

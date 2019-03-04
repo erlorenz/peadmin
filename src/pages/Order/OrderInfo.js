@@ -11,7 +11,7 @@ import formatDate from '../../utils/formatDate';
 
 const OrderInfo = ({ order, type }) => {
   return (
-    <>
+    <PrintBlack>
       <CardRow>
         <Card>
           <CardTitle>Customer</CardTitle>
@@ -74,7 +74,7 @@ const OrderInfo = ({ order, type }) => {
           <Div>{order.description}</Div>
         </Card>
       )}
-    </>
+    </PrintBlack>
   );
 };
 
@@ -90,5 +90,11 @@ const Div = styled.div`
 const RightCard = styled(Card)`
   @media (min-width: 1000px) {
     margin-left: 1.8rem;
+  }
+`;
+
+const PrintBlack = styled.div`
+  @media print {
+    color: black;
   }
 `;

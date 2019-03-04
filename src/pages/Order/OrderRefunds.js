@@ -14,6 +14,7 @@ import AddNew from '../../components/AddNew';
 import Modal from '../../components/Modal';
 import InsertRefundModal from '../../components/InsertRefundModal';
 import formatPrice from '../../utils/formatPrice';
+import NoPrint from '../../components/NoPrint';
 
 const OrderRefunds = ({ order, type }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -31,7 +32,7 @@ const OrderRefunds = ({ order, type }) => {
   ));
 
   return (
-    <>
+    <NoPrint>
       {modalIsOpen && (
         <Modal onDismiss={handleToggleModal}>
           <InsertRefundModal order={order} type={type} />
@@ -55,7 +56,7 @@ const OrderRefunds = ({ order, type }) => {
           </table>
         </ScrollContainer>
       </Card>
-    </>
+    </NoPrint>
   );
 };
 

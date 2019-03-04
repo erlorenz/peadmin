@@ -1,17 +1,17 @@
-import dayjs from 'dayjs';
+import { DateTime } from 'luxon';
 
-const formatDate = timestamp => {
-  if (!timestamp) return '---';
+function formatDate(timestamp) {
+  if (!timestamp) return '--';
   try {
-    const pacificTime = new Date(+timestamp).toLocaleString('en-US', {
-      timeZone: 'America/Los_Angeles',
-    });
+    const pacificTime = DateTime.fromMillis(+timestamp).setZone(
+      'America/Los_Angeles',
+    );
 
-    return dayjs(pacificTime).format('ddd M/D h:mm A');
+    return pacificTime.toFormat('EEEE M/d t');
   } catch (e) {
     console.log(e.message);
-    return '---';
+    return '--';
   }
-};
+}
 
 export default formatDate;

@@ -8,6 +8,9 @@ import OrderCart from './OrderCart';
 import OrderComments from './OrderComments';
 import OrderRefunds from './OrderRefunds';
 import OrderAdditionalCharges from './OrderAdditionalCharges';
+import NoPrint from '../../components/NoPrint';
+import Checklist from './Checklist';
+import PrintInfo from './PrintInfo';
 
 const OrderView = props => {
   const { type, data } = props;
@@ -23,12 +26,15 @@ const OrderView = props => {
       <OrderComments order={order} type={type} />
       <OrderRefunds order={order} type={type} />
       <OrderAdditionalCharges order={order} type={type} />
-
-      <Card>
-        <ScrollContainer>
-          <Pre>{JSON.stringify(order, null, 2)}</Pre>
-        </ScrollContainer>
-      </Card>
+      <NoPrint>
+        <Card>
+          <ScrollContainer>
+            <Pre>{JSON.stringify(order, null, 2)}</Pre>
+          </ScrollContainer>
+        </Card>
+      </NoPrint>
+      <Checklist />
+      <PrintInfo order={order} />
     </>
   );
 };
@@ -40,4 +46,5 @@ export default OrderView;
 const Pre = styled.pre`
   font-size: 10px;
   text-align: left;
+  display: none;
 `;

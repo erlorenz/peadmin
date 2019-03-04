@@ -40,6 +40,10 @@ const Header = styled.header`
   width: 100vw;
   z-index: 1;
   padding-right: 1rem;
+
+  @media print {
+    display: none;
+  }
 `;
 
 const Menu = styled.div`

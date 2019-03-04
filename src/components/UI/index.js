@@ -23,6 +23,11 @@ export const Card = styled.div`
     padding: 1.8rem;
     margin-bottom: 1.8rem;
   }
+
+  @media print {
+    padding: 0;
+    margin-bottom: 1rem;
+  }
 `;
 
 export const CardHead = styled.div`

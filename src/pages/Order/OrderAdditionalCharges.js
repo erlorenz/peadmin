@@ -14,6 +14,7 @@ import AddNew from '../../components/AddNew';
 import Modal from '../../components/Modal';
 import formatPrice from '../../utils/formatPrice';
 import InsertAdditionalChargeModal from '../../components/InsertAdditionalChargeModal';
+import NoPrint from '../../components/NoPrint';
 
 const OrderAdditionalCharges = ({ order, type }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -31,7 +32,7 @@ const OrderAdditionalCharges = ({ order, type }) => {
   ));
 
   return (
-    <>
+    <NoPrint>
       {modalIsOpen && (
         <Modal onDismiss={handleToggleModal}>
           <InsertAdditionalChargeModal order={order} type={type} />
@@ -55,7 +56,7 @@ const OrderAdditionalCharges = ({ order, type }) => {
           </table>
         </ScrollContainer>
       </Card>
-    </>
+    </NoPrint>
   );
 };
 

@@ -13,6 +13,7 @@ import {
 import AddNew from '../../components/AddNew';
 import Modal from '../../components/Modal';
 import InsertAdminCommentModal from '../../components/InsertAdminCommentModal';
+import NoPrint from '../../components/NoPrint';
 
 const OrderComments = ({ order, type }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -30,7 +31,7 @@ const OrderComments = ({ order, type }) => {
   ));
 
   return (
-    <>
+    <NoPrint>
       {modalIsOpen && (
         <Modal onDismiss={handleToggleModal}>
           <InsertAdminCommentModal order={order} type={type} />
@@ -54,7 +55,7 @@ const OrderComments = ({ order, type }) => {
           </table>
         </ScrollContainer>
       </Card>
-    </>
+    </NoPrint>
   );
 };
 
