@@ -48,6 +48,7 @@ const CreateSpecialOrder = ({ stripe, history }) => {
         })}`,
       );
     } catch (e) {
+      console.log(e);
       const message = 'Error with request';
       setStatus({ message });
       setSubmitting(false);
