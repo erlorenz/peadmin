@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components/macro';
+import { ReactComponent as Logo } from '../../assets/img/pressexpresslogo.svg';
 
 function PrintInfo({ order }) {
   const { name, room, hotel } = order;
   return (
     <Div>
-      <div>
+      <Container>
         <H1>{name}</H1>
         <H1>{hotel}</H1>
-        <H1>{room}</H1>
-      </div>
+        <H1> Room {room}</H1>
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
+      </Container>
     </Div>
   );
 }
@@ -33,4 +37,17 @@ const Div = styled.div`
 
 const H1 = styled.h1`
   font-size: 4rem;
+  margin: 0;
+  color: #333;
+`;
+
+const LogoContainer = styled.div`
+  width: 200px;
+  margin-top: 3rem;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
